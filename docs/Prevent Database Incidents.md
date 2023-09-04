@@ -55,7 +55,7 @@ Once we have all the signals delivered to the platform, everything will work aut
 
 ## Integrating Metis
 
-To do that, follow the documentation for the technology stack you have in the[Setup Metis](SetupMetis.md) section. The steps you need to take come down to:
+To do that, follow the documentation for the technology stack you have in the [Setup Metis](category/-setup-metis) section. The steps you need to take come down to:
 
 - Add Open Telemetry dependencies if you don’t have them in your project already;
 - Add new Exporter to Open Telemetry to capture signals about REST requests (using our SDK);
@@ -79,7 +79,9 @@ You can see the HTTP code returned by the network call (1), the duration (2), an
 
 ## Insights page
 
-[https://www.youtube.com/watch?v=3AUILbgbmsA&list=PLPbjP_BDGh9iL-zpujHw2tLSepA6A368m&index=6](https://www.youtube.com/watch?v=3AUILbgbmsA&list=PLPbjP_BDGh9iL-zpujHw2tLSepA6A368m&index=6)
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3AUILbgbmsA?si=P9U3xEFH3ckkn1CJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</center>
 
 ![Untitled](Quickstart/Untitled%208.png)
 
@@ -141,7 +143,7 @@ Points 1 and 2 are outside of Metis. You need to configure them **\*\***\*\*\***
 
 To achieve point 3, you need to do the same things as in the previous section **Integrating Metis.** Depending on your technology stack, you may need to use the Metis Agent.
 
-To achieve point 4, follow [**Add** Metis’s Git actions to your repository ](Setup%20Metis/Add%20Metis%E2%80%99s%20Git%20actions%20to%20your%20repository.md)
+To achieve point 4, follow [**Add** Metis’s Git actions to your repository ](/category/add-metiss-git-actions-to-your-repository)
 
 ### GitHub Actions Integration with Metis
 

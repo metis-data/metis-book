@@ -166,12 +166,12 @@ In the near future add slow query log on docker/local database setup
 
 ## **Deploy methods**
 
-[Docker](Deploy%20Metis%20observability%20Agent%20f5cd915e877c47bcb59d05d08abfcb95/Docker%20c12e8df12e0a40859ade199aa4e6a2f1.md)
+[Docker](Docker.md)
 
-[AWS ECS](Deploy%20Metis%20observability%20Agent%20f5cd915e877c47bcb59d05d08abfcb95/AWS%20ECS%201592f4411c494204b4abdef59b2235eb.md)
+[AWS ECS](AWS%20ECS.md)
 
-[Using HELM Chart](Deploy%20Metis%20observability%20Agent%20f5cd915e877c47bcb59d05d08abfcb95/Using%20HELM%20Chart%2069b9cebc530940d79eefa07d8f1b07dd.md)
+[Using HELM Chart](Using%20HELM%20Chart.md)
 
 **Integrations**
 
-[Prometheus integration with Grafana](Deploy%20Metis%20observability%20Agent%20f5cd915e877c47bcb59d05d08abfcb95/Prometheus%20integration%20with%20Grafana%20662356224bd74eaeb12b4bde6878a8ab.md)
+[Prometheus integration with Grafana](Prometheus%20integration%20with%20Grafana.md)

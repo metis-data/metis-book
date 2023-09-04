@@ -107,7 +107,7 @@ Once we have all the signals delivered to the platform, everything will work aut
 
 ## Integrating Metis
 
-To do that, follow the documentation for the technology stack you have in the[Setup Metis](SetupMetis.md) section. The steps you need to take come down to:
+To do that, follow the documentation for the technology stack you have in the [Setup Metis](category/-setup-metis) section. The steps you need to take come down to:
 
 - Add Open Telemetry dependencies if you don’t have them in your project already;
 - Add new Exporter to Open Telemetry to capture signals about REST requests (using our SDK);
@@ -191,7 +191,7 @@ Points 1 and 2 are outside of Metis. You need to configure them **\*\***\*\*\***
 
 To achieve point 3, you need to do the same things as in the previous section **Integrating Metis.** Depending on your technology stack, you may need to use the Metis Agent.
 
-To achieve point 4, follow [**Add** Metis’s Git actions to your repository ](SetupMetis/Add%20Metis%E2%80%99s%20Git%20actions%20to%20your%20repository.md)
+To achieve point 4, follow [**Add** Metis’s Git actions to your repository ](/category/add-metiss-git-actions-to-your-repository)
 
 ### GitHub Actions Integration with Metis
 
@@ -244,7 +244,7 @@ MMC is open-source and you can verify how it works. It spins up periodic tasks (
 
 ### Integrate Metis Agent (MMC)
 
-To run Metis agent, follow the [**Deploy** Metis observability Agent](Setup%20Metis/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the MMC:
+To run Metis agent, follow the [**Deploy** Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the MMC:
 
 ![Untitled](Quickstart/Untitled%2022.png)
 
@@ -326,6 +326,6 @@ Add team members to Metis and you can
 
 Dive deeper on Metis capabilities
 
-[Prevent Database incidents](Prevent%20Database%20Incidents.md)
+[Prevent Database incidents](/docs/Prevent%20Database%20Incidents.md)
 
-[Monitor and troubleshoot databases](Monitor%20and%20troubleshoot%20databases.md)
+[Monitor and troubleshoot databases](/docs/Monitor%20and%20troubleshoot%20databases.md)

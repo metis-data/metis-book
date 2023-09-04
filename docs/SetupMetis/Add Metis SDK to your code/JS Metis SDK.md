@@ -37,7 +37,7 @@ It sends those sets to Metis, which analyze the queries and combine all this inf
 
 If you are using ESM continue to the ESM installation page
 
-[JS Metis SDK installation with ESM](JS%20Metis%20SDK/JS%20Metis%20SDK%20installation%20with%20ESM.md)
+[JS Metis SDK installation with ESM](./JS%20Metis%20SDK%20installation%20with%20ESM.md)
 
 Clone the [Metis JS SDK](https://docs.metisdata.io/metis/getting-started/sdk-integration/node.js-pg) for Github
 

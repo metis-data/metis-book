@@ -96,15 +96,15 @@ const config = {
             items: [
               {
                 label: 'Overview',
-                to: '/docs/MetisOverview',
+                to: '/',
               },
               {
                 label: 'Quickstart',
-                to: '/docs/Quickstart',
+                to: '/Quickstart',
               },
               {
                 label: 'Query Analyzer',
-                to: '/docs/Query%20analyzer',
+                to: '/Query%20analyzer',
               },
             ],
           },
@@ -125,12 +125,12 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'GitHub',
+                href: 'https://github.com/metis-data',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Discord',
+                href: 'https://discord.com/invite/D7PvX5bMyt?_gl=1*1exsdp5*_gcl_au*MTgwMDQ5MzY4LjE2OTI2OTE4Nzk.',
               },
             ],
           },

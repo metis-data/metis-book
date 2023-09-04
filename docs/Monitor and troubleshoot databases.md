@@ -24,7 +24,7 @@ MMC is open-source and you can verify how it works. It spins up periodic tasks (
 
 ### Integrate Metis Agent (MMC)
 
-To run Metis agent, follow the [**Deploy** Metis observability Agent](SetupMetis/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the MMC:
+To run Metis agent, follow the [**Deploy** Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the MMC:
 
 ![Untitled](Quickstart/Untitled%2022.png)
 

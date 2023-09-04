@@ -25,7 +25,7 @@ The Git action also will add a comment on the PR specifying that Metis analyzed 
 **Prerequisite:**
 
 - A Metis account with a valid API key. [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- Metis SDK installed on your project. [Add Metis SDK to your code](../Add%20Metis%20SDK%20to%20your%20code.md)
+- Metis SDK installed on your project. [Add Metis SDK to your code](../Add%20Metis%20SDK%20to%20your%20code/Add%20Metis%20SDK%20to%20your%20code.md)
 
 **Installation:**
 
