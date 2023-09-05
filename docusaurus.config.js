@@ -11,7 +11,7 @@ const config = {
   favicon: 'https://app.metisdata.io/assets/logo-278e43ab.svg',
 
   // Set the production url of your site here
-  url: 'https://app.metisdata.io/',
+  url: 'https://docs.metisdata.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -56,7 +56,7 @@ const config = {
       },
     ],
   ],
-
+  // themes: ['@docusaurus/theme-search-algolia'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -141,6 +141,31 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      metadata: [
+        {
+          name: 'description',
+          content:
+            'Improve database performance with our observability tool. Monitor & optimize queries in real-time to prevent production issues. Get started for free today!',
+        },
+        { name: 'og:title', content: 'Database Observability by Metis - Keep Production In Check' },
+        { name: 'twitter:title', content: 'Database Observability by Metis - Keep Production In Check' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'Database Observability by Metis - Keep Production In Check' },
+        {
+          name: 'og:description',
+          content:
+            'Improve database performance with our observability tool. Monitor & optimize queries in real-time to prevent production issues. Get started for free today!',
+        },
+        {
+          name: 'twitter:description',
+          content:
+            'Improve database performance with our observability tool. Monitor & optimize queries in real-time to prevent production issues. Get started for free today!',
+        },
+        {
+          name: 'og:image',
+          content: 'https://uploads-ssl.webflow.com/62d69ddf7813e9ad935e731f/63233be643cb042586cd7e13_Metis%20OpenGraph.png',
+        },
+      ],
     }),
 };
 
