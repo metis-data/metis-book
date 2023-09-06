@@ -1,4 +1,4 @@
-# Performance Analysis
+# 📈 Performance Analysis
 
 ### TL;DR
 
