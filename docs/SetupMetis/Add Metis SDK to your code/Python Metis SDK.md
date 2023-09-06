@@ -15,11 +15,10 @@ Run your code as usual while Metis generates distributed traces and sends them t
 - [FastAPI](https://fastapi.tiangolo.com)
 - [Flask](https://flask.palletsprojects.com/en/2.3.x/)
 
-<aside>
-💡 Check out our SDK example [projects](https://github.com/metis-data/sdk-examples/tree/main/python) that covers most of the ORMs listed above
+:::tip
+Check out our SDK example [projects](https://github.com/metis-data/sdk-examples/tree/main/python) that covers most of the ORMs listed above
 
-</aside>
-
+:::
 **How it works:**
 
 Metis Python SDK listens to SQL commands on your code, it receiving their execution plans from the PG server and combine them with their REST commands.

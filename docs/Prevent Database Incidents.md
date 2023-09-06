@@ -62,11 +62,10 @@ To do that, follow the documentation for the technology stack you have in the [S
 - Get execution plans for the SQL queries (using our SDK or by configuring your database, depending on the technology you use);
 - Deliver execution plans to Metis (using our SDK or by running Metis Agent, depending on the technology you use).
 
-<aside>
-💡 You can also see **[How To Seamlessly Integrate Sequelize with Node.js and JavaScript for Database Monitoring](https://www.metisdata.io/blog/how-to-seamlessly-integrate-sequelize-with-node-js-and-javascript-for-database-monitoring)** blog post taking you step by step through the integration of Sequelize ORM library with Metis platform.
+:::tip
+You can also see **[How To Seamlessly Integrate Sequelize with Node.js and JavaScript for Database Monitoring](https://www.metisdata.io/blog/how-to-seamlessly-integrate-sequelize-with-node-js-and-javascript-for-database-monitoring)** blog post taking you step by step through the integration of Sequelize ORM library with Metis platform.
 
-</aside>
-
+:::
 Once you do that, you will see **_Recent Activity_** card in your main project page:
 
 ![Untitled](Quickstart/Untitled%206.png)

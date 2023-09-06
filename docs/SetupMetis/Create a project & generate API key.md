@@ -1,9 +1,8 @@
-# Create a project & generate API key
+# 🥽 Create a project & generate API key
 
-<aside>
-💡 In this page you will learn how to create a Metis project and get an API key
-
-</aside>
+:::tip
+In this page you will learn how to create a Metis project and get an API key
+:::
 
 ## 1. Sign Up
 

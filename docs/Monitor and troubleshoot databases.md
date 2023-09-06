@@ -28,7 +28,9 @@ To run Metis agent, follow the [**Deploy** Metis observability Agent](/docs/Setu
 
 ![Untitled](Quickstart/Untitled%2022.png)
 
-[https://www.youtube.com/watch?v=kTHiobuZGo0&list=PLPbjP_BDGh9iL-zpujHw2tLSepA6A368m&index=12](https://www.youtube.com/watch?v=kTHiobuZGo0&list=PLPbjP_BDGh9iL-zpujHw2tLSepA6A368m&index=12)
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kTHiobuZGo0?si=6WapRtczr8Fn2PGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</center>
 
 Once you click on the server, you get the **Server Observability Dashboard**.
 

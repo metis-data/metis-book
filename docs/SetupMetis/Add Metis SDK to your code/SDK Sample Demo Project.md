@@ -1,10 +1,9 @@
-# SDK Sample Demo Project
+# 🖥️ SDK Sample Demo Project
 
-<aside>
-💡 The sample demo project is a good way to quickly see the Metis SDK in action and what value it brings
+:::tip
+The sample demo project is a good way to quickly see the Metis SDK in action and what value it brings
 This sample project works with SQLAlchemy + Flask
-
-</aside>
+:::
 
 Usage **overview**
 
@@ -15,7 +14,7 @@ Usage **overview**
 5. Run a REST command called “run_demo”. This command generates a few traces
 6. Open Metis Web App to review the traces, SQL commands, and insights.
 
-### In more d**etail**
+### In more **detail**
 
 **Step 1 - Open the code sample**
 
@@ -37,12 +36,11 @@ postgresql://user1:password@srv1.eu-central-1.rds.amazonaws.com:5432/flights
 1. Using Docker image
    The image contains PG 15 with the Database.
 
-<aside>
-💡 Detailed instructions on how to run the docker can be found here. Add link to instructions
+:::tip
+Detailed instructions on how to run the docker can be found here. Add link to instructions
+:::
 
-</aside>
-
-       Connection string:
+Connection string:
 
 ```bash
 postgresql://postgres:postgres@localhost:5432/flights

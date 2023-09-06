@@ -17,10 +17,9 @@ Run your code as usual while Metis generates distributed traces and sends them t
 - [Mikro-orm](https://www.npmjs.com/package/mikro-orm)
 - Some other ORM's based on PG library that we haven’t tested should also work.
 
-<aside>
-💡 Check out our SDK example [projects](https://github.com/metis-data/metis-js-collectors/tree/main/examples) that covers most of the ORMs listed above
-
-</aside>
+:::tip
+Check out our SDK example [projects](https://github.com/metis-data/metis-js-collectors/tree/main/examples) that covers most of the ORMs listed above
+:::
 
 **How it works:**
 

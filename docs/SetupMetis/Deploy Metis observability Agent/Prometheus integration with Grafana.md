@@ -6,10 +6,10 @@
 
 Deploy a Prometheus Exporter to send performance counters from an AWS RDS or directly from Postgres.
 
-<aside>
-💡 Assuming you already have a Prometheus Server and Grafana Server.
+:::tip
+Assuming you already have a Prometheus Server and Grafana Server.
 
-</aside>
+:::
 
 **Step 2 - Configure Prometheus**
 
@@ -23,11 +23,9 @@ Download a Grafana Dashboard from the Dashboard marketplace in one click. Config
 
 **Step 1 - Deploy a Prometheus exporter**
 
-<aside>
-💡 The current version only supports AWS RDS. If your production Postgres servers use EC2 or K8S, please contact our support for guidelines on how to deploy a Prometheus server and Grafana Dashboard.
-
-</aside>
-
+:::tip
+The current version only supports AWS RDS. If your production Postgres servers use EC2 or K8S, please contact our support for guidelines on how to deploy a Prometheus server and Grafana Dashboard.
+:::
 **Background**
 
 The implementation of the Prometheus exporter uses [promcat](https://promcat.io/), a resource catalog for enterprise-class Prometheus monitoring. It has a configuration file for [AWS RDS](https://promcat.io/apps/aws-rds).
@@ -95,10 +93,10 @@ You can also deploy the Prometheus Exporter using a **HELM** chart. More detai
 
 **Step 2 - Configure Prometheus**
 
-<aside>
-💡 Make sure the Prometheus server can connect to the Prometheus exporter (IP and ports).
+:::tip
+Make sure the Prometheus server can connect to the Prometheus exporter (IP and ports).
 
-</aside>
+:::
 
 Configure a Metis API Key. The Metis API Key is used by Metis Platform for a deep DB Analysis. Configure the file `tele-metric/rds-prometheus/prometheus.yml` .
 

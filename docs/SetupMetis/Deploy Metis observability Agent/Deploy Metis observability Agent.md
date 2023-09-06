@@ -123,8 +123,8 @@ You should configure the Query Log to collect a sample of the queries and their 
 | log_min_duration_statement         | 10                           | No                  |
 | compute_query_id                   | ‘on’                         | No                  |
 
-<aside>
-💡 The query log might become large quickly in a busy environment. AWS RDS generates a Query Log file every hour (the user can't change that). The size of each log file **should not exceed 150MB**.
+:::tip
+The query log might become large quickly in a busy environment. AWS RDS generates a Query Log file every hour (the user can't change that). The size of each log file **should not exceed 150MB**.
 
 If the log files are larger than 150MB consider:
 
@@ -132,7 +132,7 @@ Increase `auto_explain.log_min_duration` and `log_min_duration_statement`
 
 Sample only a percentage of the logs (by default it logs 100% of the queries that match the min duration).
 
-</aside>
+:::
 
 RDS setup using AWS CLI: If it is the first time of enabling Postgres logs on RDS, a new parameter group should be created with logging_collector=on.
 
