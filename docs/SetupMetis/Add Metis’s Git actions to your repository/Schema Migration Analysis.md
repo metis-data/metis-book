@@ -1,4 +1,4 @@
-# Schema Migration Analysis
+# 📉 Schema Migration Analysis
 
 ### TL;DR
 

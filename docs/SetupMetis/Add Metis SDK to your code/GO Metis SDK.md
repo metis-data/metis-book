@@ -73,34 +73,36 @@ otel.SetTracerProvider(tp)
 
 Wrap your http server with Metis:
 
-- With net/http: (Create tabs)
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="http" label="Net/http">
+
+
+  ```go
+  import (
+    "fmt"
+    "net/http"
+
+    metis "github.com/metis-data/go-interceptor"
+    _ "github.com/lib/pq"
+  )
+
+  // use metis.NewServeMux() instead of http.NewServeMux()
+  mux := metis.NewServeMux()
+  mux.HandleFunc("/api/endpoint", someHandler)
+  ...
+
+  // Wrap the router with the metis handler
+  handler := metis.NewHandler(mux, "my-web-service")
+  err = http.ListenAndServe(fmt.Sprintf(":%s", port), handler)
+  ```
+</TabItem>
+<TabItem value="mux" label="Gorilla/mux">
+ 
 
 ```go
-// net/http
-
-import (
-  "fmt"
-  "net/http"
-
-  metis "github.com/metis-data/go-interceptor"
-  _ "github.com/lib/pq"
-)
-
-// use metis.NewServeMux() instead of http.NewServeMux()
-mux := metis.NewServeMux()
-mux.HandleFunc("/api/endpoint", someHandler)
-...
-
-// Wrap the router with the metis handler
-handler := metis.NewHandler(mux, "my-web-service")
-err = http.ListenAndServe(fmt.Sprintf(":%s", port), handler)
-```
-
-- With Gorilla/mux
-
-```go
-// gorilla/mux
-
 import (
   "fmt"
   "net/http"
@@ -110,87 +112,78 @@ import (
   _ "github.com/lib/pq"
 )
 
-// Create a new gorilla/mux router
-router := mux.NewRouter()
+  // Create a new gorilla/mux router
+  router := mux.NewRouter()
 
-router.HandleFunc("/api/endpoint", someHandler)
-...
+  router.HandleFunc("/api/endpoint", someHandler)
 
-// Wrap the router with the metis handler
-metisRouter, err := metis.WrapGorillaMuxRouter(router)
-if err != nil {
-    log.Fatal(err)
-}
-handler := metis.NewHandler(metisRouter, "web-go-gorm")
-err = http.ListenAndServe(fmt.Sprintf(":%s", port), handler)
+  // Wrap the router with the metis handler
+  metisRouter, err := metis.WrapGorillaMuxRouter(router)
+  if err != nil {
+      log.Fatal(err)
+  }
+  handler := metis.NewHandler(metisRouter, "web-go-gorm")
+  err = http.ListenAndServe(fmt.Sprintf(":%s", port), handler)
+
+  Wrap your database connection with Metis:
+
+  import (
+    "database/sql"
+    "fmt"
+    "log"
+
+    metis "github.com/metis-data/go-interceptor"
+    _ "github.com/lib/pq"
+  )
+
+  dbHost := "postgres"
+  dbPort := 5432
+  dbUser := "postgres"
+  dbPassword := "postgres"
+  dbName := "my_database"
+  dbSchema := "my_schema"
+
+  dataSourceName := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+      dbHost, dbPort, dbUser, dbPassword, dbName)
+
+  var db *sql.DB
+  var err error
+
+  // Open a connection to the database via metis API
+  db, err = metis.OpenDB(dataSourceName)
+  if err != nil {
+      log.Fatal(err)
+  }
+  defer db.Close()
 ```
+</TabItem>  
+<TabItem value="pq" label="lib/pq">
 
-Wrap your database connection with Metis:
+  ```go
+  import (
+    "database/sql"
+    "fmt"
+    "log"
+    "net/http"
+  )
+
+  query := fmt.Sprintf("SELECT id, name FROM %s.my_table", dbSchema)
+
+  var rows *sql.Rows
+  var err error
+
+  // make sure to pass the context here
+  // r *http.Request
+  rows, err = db.QueryContext(r.Context(), query)
+  if err != nil {
+      log.Fatal(err)
+  }
+  defer rows.Close()
+  ```
+</TabItem>
+<TabItem value="gorm" label="lib/gorm">
 
 ```go
-import (
-  "database/sql"
-  "fmt"
-  "log"
-
-  metis "github.com/metis-data/go-interceptor"
-  _ "github.com/lib/pq"
-)
-
-dbHost := "postgres"
-dbPort := 5432
-dbUser := "postgres"
-dbPassword := "postgres"
-dbName := "my_database"
-dbSchema := "my_schema"
-
-dataSourceName := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-    dbHost, dbPort, dbUser, dbPassword, dbName)
-
-var db *sql.DB
-var err error
-
-// Open a connection to the database via metis API
-db, err = metis.OpenDB(dataSourceName)
-if err != nil {
-    log.Fatal(err)
-}
-defer db.Close()
-```
-
-Pass context in queries:
-
-With lib/pq - [code example](https://github.com/metis-data/go-interceptor/blob/main/e2e/web/main.go) (Create tabs)
-
-```go
-// lib/pq
-
-import (
-  "database/sql"
-  "fmt"
-  "log"
-  "net/http"
-)
-
-query := fmt.Sprintf("SELECT id, name FROM %s.my_table", dbSchema)
-
-var rows *sql.Rows
-var err error
-
-// make sure to pass the context here
-// r *http.Request
-rows, err = db.QueryContext(r.Context(), query)
-if err != nil {
-    log.Fatal(err)
-}
-defer rows.Close()
-```
-
-With gorm - [code example](https://github.com/metis-data/go-interceptor/blob/main/e2e/web-gorilla-gorm/main.go)
-
-```go
-// gorm
-
 import (
   "database/sql"
   "fmt"
@@ -219,12 +212,10 @@ gormDB = gormDB.WithContext(r.Context())
 var users []User
 gormDB.Raw(query).Find(&users)
 ```
-
-With ido50/sqlz - [code example](https://github.com/metis-data/go-interceptor/blob/main/e2e/web-gorilla-sqlz/main.go)
+  </TabItem>
+  <TabItem  value="sqlz" label="ido50/sqlz">
 
 ```go
-// ido50/sqlz
-
 import (
   "database/sql"
   "fmt"
@@ -250,3 +241,5 @@ if err != nil {
   panic(err)
 }
 ```
+</TabItem>
+</Tabs>

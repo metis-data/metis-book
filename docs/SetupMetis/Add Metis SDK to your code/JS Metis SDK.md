@@ -60,7 +60,54 @@ npm install --save @opentelemetry/api \
 
 Setup tracer
 
-1. Create `tracer` file and add the following code: (type script) create tabs
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="js" label="JavaScript">
+
+```js
+// tracer.js
+import opentelemetry from '@opentelemetry/api';
+import { registerInstrumentations } from '@opentelemetry/instrumentation';
+import { BasicTracerProvider, BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import { getMetisExporter, MetisHttpInstrumentation, MetisPgInstrumentation, getResource } from '@metis-data/pg-interceptor';
+import { AsyncHooksContextManager } from '@opentelemetry/context-async-hooks';
+
+let tracerProvider;
+const connectionString = process.env.PG_CONNECTION_STRING;
+
+export const startMetisInstrumentation = () => {
+  tracerProvider = new BasicTracerProvider({
+    resource: getResource(process.env.METIS_SERVICE_NAME, 'service-version'),
+  });
+
+  const metisExporter = getMetisExporter(process.env.METIS_API_KEY);
+
+  tracerProvider.addSpanProcessor(new BatchSpanProcessor(metisExporter));
+
+  if (process.env.OTEL_DEBUG) {
+    tracerProvider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
+  }
+
+  const contextManager = new AsyncHooksContextManager();
+
+  contextManager.enable();
+  opentelemetry.context.setGlobalContextManager(contextManager);
+
+  tracerProvider.register();
+
+  // Urls regex to exclude from instrumentation
+  const excludeUrls = [/favicon.ico/];
+  registerInstrumentations({
+    instrumentations: [new MetisPgInstrumentation({ connectionString }), new MetisHttpInstrumentation(excludeUrls)],
+  });
+};
+```
+
+</TabItem>
+<TabItem value="ts" label="Type Script">
 
 ```tsx
 // tracer.ts
@@ -101,46 +148,10 @@ export const startMetisInstrumentation = () => {
 };
 ```
 
-1. Create `tracer` file and add the following code: (Java script)
+</TabItem>
+</Tabs>
 
-```tsx
-// tracer.js
-import opentelemetry from '@opentelemetry/api';
-import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { BasicTracerProvider, BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
-import { getMetisExporter, MetisHttpInstrumentation, MetisPgInstrumentation, getResource } from '@metis-data/pg-interceptor';
-import { AsyncHooksContextManager } from '@opentelemetry/context-async-hooks';
 
-let tracerProvider;
-const connectionString = process.env.PG_CONNECTION_STRING;
-
-export const startMetisInstrumentation = () => {
-  tracerProvider = new BasicTracerProvider({
-    resource: getResource(process.env.METIS_SERVICE_NAME, 'service-version'),
-  });
-
-  const metisExporter = getMetisExporter(process.env.METIS_API_KEY);
-
-  tracerProvider.addSpanProcessor(new BatchSpanProcessor(metisExporter));
-
-  if (process.env.OTEL_DEBUG) {
-    tracerProvider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
-  }
-
-  const contextManager = new AsyncHooksContextManager();
-
-  contextManager.enable();
-  opentelemetry.context.setGlobalContextManager(contextManager);
-
-  tracerProvider.register();
-
-  // Urls regex to exclude from instrumentation
-  const excludeUrls = [/favicon.ico/];
-  registerInstrumentations({
-    instrumentations: [new MetisPgInstrumentation({ connectionString }), new MetisHttpInstrumentation(excludeUrls)],
-  });
-};
-```
 
 **Parameters**
 
