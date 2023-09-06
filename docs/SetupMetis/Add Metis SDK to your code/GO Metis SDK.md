@@ -23,19 +23,19 @@ Postgres:
 
 Metis GO SDK uses OTEL to sends your code REST commands to Metis.
 
-Metis Agent find (using slow query log) SQL commands originating from those REST commands analyze them and combine all this information to create an E2E view of those traces and their analysis.
+Metis Agent find SQL commands originating from those REST commands analyze them and combine all this information to create an E2E view of those traces and their analysis.
 
 **Prerequisite:**
 
-- A Metis account with a valid API key. [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- OTEL - how to configure
-- Metis agent (for now)
+- A Metis account with a valid API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
+- OTEL
+- Metis agent
 
 **Installation:**
 
 Clone the [Metis GO SDK](https://github.com/metis-data/go-interceptor) for Github
 
-Run (more details here)
+Run
 
 ```bash
 go get github.com/metis-data/go-interceptor \
@@ -43,7 +43,7 @@ go get github.com/metis-data/go-interceptor \
   go.opentelemetry.io/otel/sdk/trace
 ```
 
-Set the api key environment variable: `METIS_API_KEY` [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
+Set the api key environment variable: `METIS_API_KEY` [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
 Enable OTEL instrumentation: (more details are needed)
 
@@ -79,28 +79,27 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="http" label="Net/http">
 
+```go
+import (
+  "fmt"
+  "net/http"
 
-  ```go
-  import (
-    "fmt"
-    "net/http"
+  metis "github.com/metis-data/go-interceptor"
+  _ "github.com/lib/pq"
+)
 
-    metis "github.com/metis-data/go-interceptor"
-    _ "github.com/lib/pq"
-  )
+// use metis.NewServeMux() instead of http.NewServeMux()
+mux := metis.NewServeMux()
+mux.HandleFunc("/api/endpoint", someHandler)
+...
 
-  // use metis.NewServeMux() instead of http.NewServeMux()
-  mux := metis.NewServeMux()
-  mux.HandleFunc("/api/endpoint", someHandler)
-  ...
+// Wrap the router with the metis handler
+handler := metis.NewHandler(mux, "my-web-service")
+err = http.ListenAndServe(fmt.Sprintf(":%s", port), handler)
+```
 
-  // Wrap the router with the metis handler
-  handler := metis.NewHandler(mux, "my-web-service")
-  err = http.ListenAndServe(fmt.Sprintf(":%s", port), handler)
-  ```
 </TabItem>
 <TabItem value="mux" label="Gorilla/mux">
- 
 
 ```go
 import (
@@ -156,30 +155,32 @@ import (
   }
   defer db.Close()
 ```
+
 </TabItem>  
 <TabItem value="pq" label="lib/pq">
 
-  ```go
-  import (
-    "database/sql"
-    "fmt"
-    "log"
-    "net/http"
-  )
+```go
+import (
+  "database/sql"
+  "fmt"
+  "log"
+  "net/http"
+)
 
-  query := fmt.Sprintf("SELECT id, name FROM %s.my_table", dbSchema)
+query := fmt.Sprintf("SELECT id, name FROM %s.my_table", dbSchema)
 
-  var rows *sql.Rows
-  var err error
+var rows *sql.Rows
+var err error
 
-  // make sure to pass the context here
-  // r *http.Request
-  rows, err = db.QueryContext(r.Context(), query)
-  if err != nil {
-      log.Fatal(err)
-  }
-  defer rows.Close()
-  ```
+// make sure to pass the context here
+// r *http.Request
+rows, err = db.QueryContext(r.Context(), query)
+if err != nil {
+    log.Fatal(err)
+}
+defer rows.Close()
+```
+
 </TabItem>
 <TabItem value="gorm" label="lib/gorm">
 
@@ -212,6 +213,7 @@ gormDB = gormDB.WithContext(r.Context())
 var users []User
 gormDB.Raw(query).Find(&users)
 ```
+
   </TabItem>
   <TabItem  value="sqlz" label="ido50/sqlz">
 
@@ -241,5 +243,6 @@ if err != nil {
   panic(err)
 }
 ```
+
 </TabItem>
 </Tabs>

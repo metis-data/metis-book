@@ -1,8 +1,6 @@
 # 🥽 Create a project & generate API key
 
-:::tip
 In this page you will learn how to create a Metis project and get an API key
-:::
 
 ## 1. Sign Up
 
@@ -14,7 +12,7 @@ Create a project to manage the DB-related issues in one place. A project manages
 
 Every project has an API Key used by the SDK to send traces and metadata.
 
-## 3. Get the API key - you will need it later on
+## 3. Get the API key - you will need it later
 
 After creating a project, you can view your projects in Metis’s home page, go to the project’s settings by clicking on the project menu button, there you can find and copy the project’s API key
 

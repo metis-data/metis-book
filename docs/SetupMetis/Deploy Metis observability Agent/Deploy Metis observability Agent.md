@@ -1,4 +1,4 @@
-# Deploy Metis observability Agent
+# 🤵🏻‍♂️ Deploy Metis Agent
 
 what an agent can do
 

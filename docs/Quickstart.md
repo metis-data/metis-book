@@ -1,5 +1,5 @@
 ---
-sidebar_label: '⏱️ Quickstart'
+sidebar_label: '⏱️ Quickstart!'
 sidebar_position: 2
 ---
 
@@ -75,37 +75,7 @@ You will be able to understand the query details and see how it works behind the
 
 Let’s start by integrating your application with Metis.
 
-### How it works
-
-In order to provide you with all the details, we need to do the following:
-
-1. Capture signals about what network API your application exposes and how it’s being called;
-2. Capture execution plans of the SQL queries your application sends to the database;
-3. Deliver the execution plans to the Metis platform.
-
-### Capture signals about your network API
-
-To capture the signals about the network API your application exposes (point one from the above), we provide an SDK that integrates with your [Open Telemetry](https://opentelemetry.io/) configuration and emits [traces](https://opentelemetry.io/docs/concepts/signals/traces/) to the Metis platform. These traces capture the details of the network requests your application processes, and SQL queries your application sends to the database. We do not extract any confidential data nor personal information. We only capture the metadata about the latency, executed query, execution plan, and metrics from the database.
-
-**Open Telemetry**
-
-Open Telemetry is common nowadays. Just like we have a logging library integrated with our frameworks, libraries, and business code, the telemetry is now available out of the box. Your web framework or database driver is most likely already integrated with it. Therefore, we don’t add anything new in terms of the dependencies. We only configure a new [Exporter](https://opentelemetry.io/docs/instrumentation/js/exporters/) for the Open Telemetry signals that will deliver the signals to Metis platform. It’s like adding a new log file to your application.
-
-### Capture execution plans of the SQL queries
-
-To capture the execution plans of the SQL queries your application sends to the database (point two from the above), we use the [EXPLAIN](https://www.postgresql.org/current/sql-explain.html) command. The command takes your query and emits an execution plan that describes all the physical operations the database server needs to execute. We can run the EXPLAIN command in one of the many ways:
-
-- Instrument your application code with our SDK to send the EXPLAIN query whenever your application sends a regular SQL query;
-- Use [pg_store_plans](https://ossc-db.github.io/pg_store_plans/) extension directly in the database to automatically store the execution plans for each query;
-- Use [auto_explain](https://www.postgresql.org/current/auto-explain.html) extension directly in the database to automatically explain the queries and store the execution plans in the logs.
-
-### Deliver the execution plans to the Metis platform
-
-To deliver the execution plans to the Metis platform (point three from the above) we again have a number of ways, depending on how we obtained the execution plan. If we instrumented the application code with our SDK, then the SDK will deliver the plans automatically. If we used one of the extensions for the database, then we need to use the Metis Agent (**TODO LINK**) to extract the plans from the logs by using either [file_fdw](https://www.postgresql.org/current/file-fdw.html) extension or [log_fdw](https://github.com/aws/postgresql-logfdw) extension.
-
-Once we have all the signals delivered to the platform, everything will work automatically.
-
-## Integrating Metis
+### Integrating Metis
 
 To do that, follow the documentation for the technology stack you have in the [Setup Metis](SetupMetis/SetupMetis.md) section. The steps you need to take come down to:
 
@@ -128,7 +98,7 @@ Once you click on it, you will see the list of your endpoints with all the execu
 
 You can see the HTTP code returned by the network call (1), the duration (2), and the number of insights with their severities (3). Once you click on any of the calls, you will see the insights page:
 
-## Insights page
+### Insights page
 
 ![Untitled](Quickstart/Untitled%208.png)
 
@@ -161,7 +131,7 @@ This shows the tables, number of extracted rows, which indexes were used, and ot
 
 This way you can learn all the details about the query, reason about its performance, see how to improve it, and apply corrective actions.
 
-# **Prevention -** DURING **the deployment:**
+## **Prevention - DURING the deployment:**
 
 At the end of this section you’ll be able to see the SQL commands running in your CI/CD pipeline, get insights about the schema migrations, and understand if it’s safe to deploy changes to production.
 
@@ -176,21 +146,6 @@ You’ll also get the insights for the SQL migrations:
 Each migration will be automatically analyzed and details will be provided:
 
 ![Untitled](Quickstart/Untitled%2014.png)
-
-### How it works
-
-Metis can analyze changes in your pull request in the CI/CD pipeline the same way as with queries running in your local environment. To do that, we need to do the following:
-
-1. Submit code changes with schema migrations;
-2. Execute end-to-end tests in the CI/CD pipeline;
-3. Capture signals from the execution in the CI/CD pipeline;
-4. Analyze the schema migrations with Metis and correlate the execution with a particular pull request.
-
-Points 1 and 2 are outside of Metis. You need to configure them **\*\***\*\*\***\*\***the regular way**\*\***\*\*\***\*\*** depending on your CI/CD platform. For instance, you can use [GitHub Actions.](https://github.com/features/actions)
-
-To achieve point 3, you need to do the same things as in the previous section **Integrating Metis.** Depending on your technology stack, you may need to use the Metis Agent.
-
-To achieve point 4, follow [Add Metis’s Git actions to your repository ](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
 ### GitHub Actions Integration with Metis
 
@@ -224,7 +179,7 @@ You can also go to the Metis project page and see the list of pull requests:
 
 You can now dive deep into each migration or test and see how it performed.
 
-# **Monitor & troubleshoot - AFTER deployment**
+## **Monitor & troubleshoot - AFTER deployment**
 
 At the end of this section you will be able to:
 
@@ -235,15 +190,9 @@ At the end of this section you will be able to:
 - See insights for queries executed in your database;
 - Find unused indexes.
 
-### How it works
+### Integrate Metis Agent
 
-Metis integrates with your database and extracts metrics, logs, and runtime configuration. All that is done by the [Metis Metadata Collector](https://github.com/metis-data/metadata-collector/tree/main). It’s a tiny Docker container that you can run alongside your database to get all the benefits. You can run it locally (on-premise) or in the cloud.
-
-MMC is open-source and you can verify how it works. It spins up periodic tasks (CRON-like) that connect to your database, extract logs, statistics, metrics, and then posts them to the Metis platform. No confidential information is extracted.
-
-### Integrate Metis Agent (MMC)
-
-To run Metis agent, follow the [**Deploy** Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the MMC:
+To run Metis agent, follow the [🤵🏻‍♂️ Deploy Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Agent:
 
 ![Untitled](Quickstart/Untitled%2022.png)
 
@@ -321,10 +270,10 @@ This quickstart was used to teach you about Metis core components and how they w
 
 **Next steps**
 
-Add team members to Metis and you can
+Add [🤘 team members to Metis](/docs/BuildingYourTeam.md)
 
-Dive deeper on Metis capabilities
+Dive deeper on Metis capabilities at:
 
-[Prevent Database incidents](/docs/Prevent%20Database%20Incidents.md)
+- [🚨 Prevent Database incidents](/docs/Prevent%20Database%20Incidents.md)
 
-[Monitor and troubleshoot databases](/docs/Monitor%20and%20troubleshoot%20databases.md)
+- [ 📊 Monitor and troubleshoot databases](/docs/Monitor%20and%20troubleshoot%20databases.md)

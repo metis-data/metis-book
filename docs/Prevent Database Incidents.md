@@ -142,7 +142,7 @@ Points 1 and 2 are outside of Metis. You need to configure them **\*\***\*\*\***
 
 To achieve point 3, you need to do the same things as in the previous section **Integrating Metis.** Depending on your technology stack, you may need to use the Metis Agent.
 
-To achieve point 4, follow [Add Metis’s Git actions to your repository ](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
+To achieve point 4, follow [🎬 Add Metis’s Git actions to your repository ](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
 ### GitHub Actions Integration with Metis
 
