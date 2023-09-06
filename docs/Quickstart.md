@@ -85,11 +85,11 @@ In order to provide you with all the details, we need to do the following:
 
 ### Capture signals about your network API
 
-To capture the signals about the network API your application exposes (point one from the above), we provide an SDK that integrates with your [Open Telemetry](https://opentelemetry.io/) configuration and emits [traces](https://opentelemetry.io/concepts/signals/traces/) to the Metis platform. These traces capture the details of the network requests your application processes, and SQL queries your application sends to the database. We do not extract any confidential data nor personal information. We only capture the metadata about the latency, executed query, execution plan, and metrics from the database.
+To capture the signals about the network API your application exposes (point one from the above), we provide an SDK that integrates with your [Open Telemetry](https://opentelemetry.io/) configuration and emits [traces](https://opentelemetry.io/docs/concepts/signals/traces/) to the Metis platform. These traces capture the details of the network requests your application processes, and SQL queries your application sends to the database. We do not extract any confidential data nor personal information. We only capture the metadata about the latency, executed query, execution plan, and metrics from the database.
 
 **Open Telemetry**
 
-Open Telemetry is common nowadays. Just like we have a logging library integrated with our frameworks, libraries, and business code, the telemetry is now available out of the box. Your web framework or database driver is most likely already integrated with it. Therefore, we don’t add anything new in terms of the dependencies. We only configure a new [Exporter](https://opentelemetry.io/instrumentation/js/exporters/) for the Open Telemetry signals that will deliver the signals to Metis platform. It’s like adding a new log file to your application.
+Open Telemetry is common nowadays. Just like we have a logging library integrated with our frameworks, libraries, and business code, the telemetry is now available out of the box. Your web framework or database driver is most likely already integrated with it. Therefore, we don’t add anything new in terms of the dependencies. We only configure a new [Exporter](https://opentelemetry.io/docs/instrumentation/js/exporters/) for the Open Telemetry signals that will deliver the signals to Metis platform. It’s like adding a new log file to your application.
 
 ### Capture execution plans of the SQL queries
 
