@@ -9,23 +9,9 @@ See it in action on your machine with quick
 [🖥️ SDK Sample Demo Project](SDK%20Sample%20Demo%20Project.md)
 :::
 
-<!--
-// TODO add Tabs example
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-<Tabs groupId="operating-systems">
-<TabItem value="win" label="Windows">Use Ctrl + C to copy.</TabItem>
-<TabItem value="mac" label="macOS">Use Command + C to copy.</TabItem>
-</Tabs>
-
-<Tabs groupId="operating-systems">
-  <TabItem value="win" label="Windows">Use Ctrl + V to paste.</TabItem>
-  <TabItem value="mac" label="macOS">Use Command + V to paste.</TabItem>
-</Tabs> -->
-
 Metis SDK is available on those coding languages
 
-[GO Metis SDK](GO%20Metis%20SDK.md)
+[🐲 GO Metis SDK](GO%20Metis%20SDK.md)
 
 [🥷 JS Metis SDK](JS%20Metis%20SDK/JS%20Metis%20SDK.md)
 

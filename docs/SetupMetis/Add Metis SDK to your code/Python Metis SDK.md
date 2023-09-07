@@ -35,15 +35,40 @@ It sends those sets to Metis, which analyze the queries and combine all this inf
 
 Install our Python SDK using [pip](https://pip.pypa.io/en/stable/)
 
-//TODO: add tabs 3 as in doc https://docs.metisdata.io/metis/getting-started/sdk-integration/python-sqlalchemy
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="py-installation">
+<TabItem value="flask" label="Flask">
 
 ```bash
 pip install sqlalchemycollector
 ```
 
+</TabItem>
+
+<TabItem value="FastAPIs" label="FastAPI (Sync)">
+
+```bash
+pip install fastapialchemycollector
+```
+
+</TabItem>
+<TabItem value="FastAPIa" label="FastAPI (Async)">
+
+```bash
+pip install fastapialchemycollector
+```
+
+</TabItem>
+</Tabs>
+
 Open your app's `main.py` and add the following code:
 
-```python
+<Tabs groupId="py-installation">
+<TabItem value="flask" label="Flask">
+
+```py
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemycollector import setup, MetisInstrumentor, PlanCollectType
@@ -65,6 +90,61 @@ def home():
     return "Hello, Flask!"
 ```
 
+</TabItem>
+
+<TabItem value="FastAPIs" label="FastAPI (Sync)">
+
+```py
+from fastapi import FastAPI, APIRouter
+from fastapialchemycollector import setup, MetisInstrumentor, PlanCollectType
+from database.connection import engine
+
+app = FastAPI()
+api_router = APIRouter()
+app.include_router(api_router)
+
+DATABASE_URL = "postgresql://user_name:user_password@host_name:port/db_name"
+engine = create_engine(DATABASE_URL)
+
+instrumentation: MetisInstrumentor = setup(
+    service_name='<SERVICE_NAME>',
+    api_key='<API_KEY>',
+    service_version='<SERVICE_VERSION>'
+)
+instrumentation.instrument_app(app, engine)
+
+@api_router.get("/hello", status_code=200)
+def helloWorld():
+    return "Hello World!"
+```
+
+</TabItem>
+<TabItem value="FastAPIa" label="FastAPI (Async)">
+
+```py
+from fastapi import FastAPI, APIRouter
+from sqlalchemy.ext.asyncio import create_async_engine
+from fastapialchemycollector import setup, MetisInstrumentor, PlanCollectType
+
+app = FastAPI()
+api_router = APIRouter()
+app.include_router(api_router)
+
+DATABASE_URL = "postgresql+asyncpg://user_name:user_password@host_name:port/db_name"
+async_engine = create_async_engine(DATABASE_URL, echo=True)
+
+instrumentation: MetisInstrumentor = setup(
+    service_name='<SERVICE_NAME>',
+    api_key='<API_KEY>',
+    service_version='<SERVICE_VERSION>',
+)
+
+instrumentation.instrument_app(app, async_engine)
+```
+
+</TabItem>
+</Tabs>
+
 ### Parameters
 
 `service_name` - (optional) Gives ability to distinguish between services. Useful when working with Micro Services.
@@ -79,3 +159,7 @@ def home():
 | METIS_ENVIRONMENT  | `String`  | Text used to identify the source that sends the instrumentation data.                                                                                                                      |
 | METIS_DISABLED     | `Boolean` | If True Metis Instrumentation is fully disabled. We strongly advise to disable the instrumentation when in production to prevent sensitive data from leaving your organization's database. |
 | METIS_SERVICE_NAME | `String`  | Gives ability to distinguish between services. Useful when working with Micro Services.                                                                                                    |
+
+```
+
+```

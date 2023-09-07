@@ -160,7 +160,7 @@ import (
 
 </Tabs>
 
-### Wrap your database connection with metis
+### Wrap your database connection with Metis
 
 <Tabs>
 <TabItem value="pq" label="lib/pq">
