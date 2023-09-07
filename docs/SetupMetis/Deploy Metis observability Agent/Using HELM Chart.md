@@ -1,4 +1,8 @@
-# Using HELM Chart
+---
+sidebar_position: 3
+---
+
+# ⚙️ Using HELM Chart
 
 To deploy an Metis agent using [HELM charts](https://helm.sh), follow the instructions in the [GitHub Repository](https://github.com/metis-data/helm-charts).
 
@@ -21,11 +25,13 @@ helm repo add metis-data https://metis-data.github.io/helm-charts/
 helm repo update
 ```
 
+:::note
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
+:::
 
+:::tip
 You can then run `helm search repo teletrace` to see the charts.
-
-1. Create helm chart connection on your relevant namespace and install Metis agent
+::: 2. Create helm chart connection on your relevant namespace and install Metis agent
 
 ```bash
 helm install metis-mmc metis-data/metis-md-collector \
@@ -35,12 +41,14 @@ helm install metis-mmc metis-data/metis-md-collector \
 
 Environment parameters:
 
-- `METIS_API_KEY` - the Metis API key [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- `DB_CONNECTION_STRINGS` - your database connection details e.g 'postgres://user:password@host:port/database’
+- `METIS_API_KEY` - the Metis API key [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
+- `DB_CONNECTION_STRINGS` - your database connection details e.g `postgres://user:password@host:port/database`
 
 **Customize installation**
 
-(Optional) Customize Metis agent installation by modifying the values in the Helm chart. You can modify the values in the Helm chart by creating a YAML file with your custom values and using the --values option. For example:
+Customize Metis agent installation by modifying the values in the Helm chart. You can modify the values in the Helm chart by creating a YAML file with your custom values and using the `--values` option.
+
+For example:
 
 ```bash
 helm install metis-mmc metis-data/metis-md-collector -f my-values.yml --namespace metis --create-namespace

@@ -57,7 +57,7 @@ Your new project is now created and you should see the dashboard. You can click 
 
 We’ll use the API key later to integrate with our application.
 
-## **Prevention -** **BEFORE the deployment:**
+## Prevention - BEFORE the deployment
 
 At the end of this section you’ll be able to see the SQL commands running in your environments, get insights about the performance and potential errors, and understand if it’s safe to deploy changes to production.
 
@@ -131,7 +131,7 @@ This shows the tables, number of extracted rows, which indexes were used, and ot
 
 This way you can learn all the details about the query, reason about its performance, see how to improve it, and apply corrective actions.
 
-## **Prevention - DURING the deployment:**
+## Prevention - DURING the deployment
 
 At the end of this section you’ll be able to see the SQL commands running in your CI/CD pipeline, get insights about the schema migrations, and understand if it’s safe to deploy changes to production.
 
@@ -179,7 +179,7 @@ You can also go to the Metis project page and see the list of pull requests:
 
 You can now dive deep into each migration or test and see how it performed.
 
-## **Monitor & troubleshoot - AFTER deployment**
+## Monitor & troubleshoot - AFTER deployment
 
 At the end of this section you will be able to:
 

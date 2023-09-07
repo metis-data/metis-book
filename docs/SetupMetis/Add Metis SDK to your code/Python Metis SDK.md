@@ -26,14 +26,16 @@ Metis Python SDK listens to SQL commands on your code, it receiving their execut
 
 It sends those sets to Metis, which analyze the queries and combine all this information to create an E2E view of those traces and their analysis.
 
-### **Prerequisite**
+## **Prerequisite**
 
-- A Metis account with a valid API key. [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- OTEL - how to configure
+- A Metis account with a valid API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
+- OTEL
 
-### **Installation:** (Add FASTAPI code)
+## **Installation**
 
-Install our Python SDK using `[pip](https://pip.pypa.io/en/stable/)`
+Install our Python SDK using [pip](https://pip.pypa.io/en/stable/)
+
+//TODO: add tabs 3 as in doc https://docs.metisdata.io/metis/getting-started/sdk-integration/python-sqlalchemy
 
 ```bash
 pip install sqlalchemycollector
@@ -63,17 +65,17 @@ def home():
     return "Hello, Flask!"
 ```
 
-### **Parameters** (no connection string?)
+### Parameters
 
 `service_name` - (optional) Gives ability to distinguish between services. Useful when working with Micro Services.
-`api_key`- Metis Api Key [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-`service_version` - a metadata tag used for better control on the traces sent by each server.
+`service_version` - a metadata tag used for better control on the traces sent by each server.  
+`api_key`- Metis Api Key [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
-**Environment Variables:**
+### Environment Variables
 
-| Variable Name      | Type    | Description                                                                                                                                                                                |
-| ------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| METIS_API_KEY      | String  | API Key to use                                                                                                                                                                             |
-| METIS_ENVIRONMENT  | String  | Text used to identify the source that sends the instrumentation data.                                                                                                                      |
-| METIS_DISABLED     | Boolean | If True Metis Instrumentation is fully disabled. We strongly advise to disable the instrumentation when in production to prevent sensitive data from leaving your organization's database. |
-| METIS_SERVICE_NAME | String  | Gives ability to distinguish between services. Useful when working with Micro Services.                                                                                                    |
+| Variable Name      | Type      | Description                                                                                                                                                                                |
+| ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| METIS_API_KEY      | `String`  | API Key to use                                                                                                                                                                             |
+| METIS_ENVIRONMENT  | `String`  | Text used to identify the source that sends the instrumentation data.                                                                                                                      |
+| METIS_DISABLED     | `Boolean` | If True Metis Instrumentation is fully disabled. We strongly advise to disable the instrumentation when in production to prevent sensitive data from leaving your organization's database. |
+| METIS_SERVICE_NAME | `String`  | Gives ability to distinguish between services. Useful when working with Micro Services.                                                                                                    |

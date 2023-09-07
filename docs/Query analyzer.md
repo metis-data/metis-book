@@ -13,9 +13,14 @@ The query analyzer requires only a query and its executions plan in order to pro
 
 The query analyzer uses the same Metis engine to get comprehensive information about a given query.
 
-## How to use it
+:::tip
+Login is not required for using the Query Analyzer
 
-1. Go to the query analyzer [page](https://app.metisdata.io/query-analysis) - login is not required
+:::
+
+### How to use it
+
+1. Go to the query analyzer [page](https://demo.metisdata.io/query-analysis) - login is not required
 2. Paste your query in the text box on the left side of the page
 3. Paste the queries execution plan in the text box on the right side of the page
 4. Click on “Analyze”

@@ -1,10 +1,8 @@
-# JS Metis SDK installation with ESM
+# JS Metis SDK - With ESM
 
 The ECMAScript modules (in short ES modules) is a JavaScript modules format which is the official standard format to package JavaScript code for reuse. The ES modules format generally offers an easier route to writing isomorphic JavaScript, which can run in the browser or on a server.
 
-**Installation:**
-
-Clone the [Metis JS SDK](https://docs.metisdata.io/metis/getting-started/sdk-integration/node.js-pg) for Github
+### **Installation**
 
 For Node.JS <= 12.2.0
 
@@ -18,7 +16,7 @@ otherwise
 npm install @metis-data/pg-interceptor cross-dirname -S
 ```
 
-**Configuration:**
+### **Configuration**
 
 Create a `tracer.js` file
 
@@ -72,7 +70,9 @@ startMetisInstrumentation();
 java;
 ```
 
-Add the following to your `.env` file (we need to add parameters here)
+### **Parameters**
+
+Add the following to your `.env` file
 
 ```jsx
 PG_CONNECTION_STRING=
@@ -80,7 +80,12 @@ METIS_API_KEY=
 METIS_SERVICE_NAME=
 ```
 
-**Usage:**
+`PG_CONNECTION_STRING` - A valid connection string is required: `postgres://user:password@host:port/database`
+
+`METIS_SERVICE_NAME` - Gives ability to distinguish between services. Useful when working with Micro Services.
+`METIS_API_KEY`- Metis Api Key :goggles: Create a project & generate API key
+
+### **Usage**
 
 Change the `start` script on your `package.json` file
 

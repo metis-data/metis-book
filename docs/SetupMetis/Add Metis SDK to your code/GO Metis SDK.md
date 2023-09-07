@@ -1,4 +1,4 @@
-# GO Metis SDK
+# 🐲 GO Metis SDK
 
 ## **General**
 

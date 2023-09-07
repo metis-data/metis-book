@@ -1,4 +1,8 @@
-# AWS ECS
+---
+sidebar_position: 2
+---
+
+# 💠 AWS ECS
 
 Deploy to ECS using CloudFormation
 

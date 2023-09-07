@@ -1,12 +1,8 @@
 # 🤵🏻‍♂️ Deploy Metis Agent
 
-what an agent can do
+## Data Flow
 
-what is it for
-
-## **Data Flow**
-
-\***\*Step 1 - Configure Metis observability agent\*\***
+**Step 1 - Configure Metis observability agent**
 
 The Metis agent sends metadata to the Metis platform every X minutes. One Agent can monitor multiple Postgres servers and databases.
 
@@ -18,7 +14,7 @@ The backend processes the raw data into well-defined data sets. It also calculat
 
 Open the web app to view the analyzed data. The dashboard provides useful information about: - The PG Server: performance and configuration - PG Databases: size, performance, and activity - Tables and indexes: size, scheme analysis, activity - Queries: statistics and performance analysis
 
-MMC - data sources
+## MMC - data sources
 
 The Metis agent collects many Data Sets from 3 source types:
 
@@ -38,9 +34,9 @@ When configuring the agent, you would need to give Metis the desired implementat
 
 **Monitored performance counters source:** Metis currently supports reading from CloudWatch or Postgres deployed on top of docker or K8s.
 
-**Destination (Metis Platform):** The Metis agent sends the data to the Metis Platform using a Metis API key. you can consume performance metrics of your database using our Prometheus exporter. (rewrite)
+**Destination (Metis Platform):** The Metis agent sends the data to the Metis Platform using a Metis API key. You can also consume performance metrics of your database using our Prometheus exporter.
 
-## prerequisites
+## Prerequisites
 
 **Prepare Postgres to be monitored by installing PG extensions:**
 
@@ -53,9 +49,9 @@ On RDS:
 On others:
 
 - (Required) [pg_store_plans](https://ossc-db.github.io/pg_store_plans/) -  provides a means for tracking execution plan statistics of all SQL statements executed by a server.
-- (Required) file_fdw -
+- (Required) file_fdw - Enable reads from the query log to analyze the queries and their execution plan.
 
-**Create a monitoring user:**
+## Create a monitoring user
 
 The Metis agent must have permission to query the system catalog and read the DB schema
 
@@ -101,7 +97,7 @@ To read the performance counters the AWS user used by the Metis agent must have 
 }
 ```
 
-**Configure Query Log (on RDS)**
+## Configure Query Log (on RDS)
 
 You should configure the Query Log to collect a sample of the queries and their execution plan. more information can be found on [Metis Slow Query Log](https://www.npmjs.com/package/@metis-data/slow-query-log).
 
@@ -134,7 +130,7 @@ Sample only a percentage of the logs (by default it logs 100% of the queries tha
 
 :::
 
-RDS setup using AWS CLI: If it is the first time of enabling Postgres logs on RDS, a new parameter group should be created with logging_collector=on.
+RDS setup using AWS CLI: If it is the first time of enabling Postgres logs on RDS, a new parameter group should be created with `logging_collector=on`.
 
 After enabling slow query log in your RDS, the rest of Postgres variables can be set with AWS CLI:
 
@@ -162,16 +158,14 @@ aws rds modify-db-parameter-group \
 aws rds reboot-db-instance --db-instance-identifier your-db-instance-id
 ```
 
-In the near future add slow query log on docker/local database setup
+## Deploy methods
 
-## **Deploy methods**
+[🐳 Docker](Docker.md)
 
-[Docker](Docker.md)
+[💠 AWS ECS](AWS%20ECS.md)
 
-[AWS ECS](AWS%20ECS.md)
-
-[Using HELM Chart](Using%20HELM%20Chart.md)
+[⚙️ Using HELM Chart](Using%20HELM%20Chart.md)
 
 **Integrations**
 
-[Prometheus integration with Grafana](Prometheus%20integration%20with%20Grafana.md)
+[🌀 Prometheus integration with Grafana](Prometheus%20integration%20with%20Grafana.md)

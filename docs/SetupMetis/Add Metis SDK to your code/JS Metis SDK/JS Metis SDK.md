@@ -152,7 +152,7 @@ export const startMetisInstrumentation = () => {
 </TabItem>
 </Tabs>
 
-### **Parameters**
+### Parameters
 
 Edit the required parameter `connectionString` - A valid connection string is required: `postgres://user:password@host:port/database`
 
@@ -167,7 +167,7 @@ setPgConnection(connectionString);
 
 - `excludeUrls`- An array of URLs that you wish to exclude from being instrumented, in the code the `/favicon.ico/` will be ignored
 
-### **Usage**
+### Usage
 
 After creating the tracer it should be called from application root where the bootstrap happens:
 
@@ -182,12 +182,11 @@ startMetisInstrumentation();
 
 Environment Variables
 
-| Variable Name                                                                  | Type    | Description                                                                                                                                                                                |
-| ------------------------------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| METIS_API_KEY                                                                  | String  | API Key to use                                                                                                                                                                             |
-| METIS_ENVIRONMENT                                                              | String  | Text used to identify the source that sends the instrumentation data.                                                                                                                      |
-| METIS_PLAN_MODE                                                                | String  | Can be set to one of                                                                                                                                                                       |
-| [none, actual, estimated] to choose which query plan to fetch, default actual. |
-| METIS_DISABLED                                                                 | Boolean | If True Metis Instrumentation is fully disabled. We strongly advise to disable the instrumentation when in production to prevent sensitive data from leaving your organization's database. |
-| METIS_SERVICE_NAME                                                             | String  | Gives ability to distinguish between services. Useful when working with Micro Services.                                                                                                    |
-| OTEL_DEBUG                                                                     | Boolean | If True, console exporter is added to print incoming spans to console.                                                                                                                     |
+| Variable Name      | Type      | Description                                                                                                                                                                                |
+| ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| METIS_API_KEY      | `String`  | API Key to use.                                                                                                                                                                            |
+| METIS_ENVIRONMENT  | `String`  | Text used to identify the source that sends the instrumentation data.                                                                                                                      |
+| METIS_PLAN_MODE    | `String`  | Can be set to one of [none, actual, estimated] to choose which query plan to fetch, the default is actual.                                                                                 |
+| METIS_DISABLED     | `Boolean` | If True Metis Instrumentation is fully disabled. We strongly advise to disable the instrumentation when in production to prevent sensitive data from leaving your organization's database. |
+| METIS_SERVICE_NAME | `String`  | Gives ability to distinguish between services. Useful when working with Micro Services.                                                                                                    |
+| OTEL_DEBUG         | `Boolean` | If True, console exporter is added to print incoming spans to console.                                                                                                                     |

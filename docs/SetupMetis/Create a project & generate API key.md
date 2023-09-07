@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # 🥽 Create a project & generate API key
 
 In this page you will learn how to create a Metis project and get an API key
@@ -6,7 +10,7 @@ In this page you will learn how to create a Metis project and get an API key
 
 Sign up **[here](https://app.metisdata.io/). It's free.**
 
-## 2. **Create a Project**
+## 2. Create a Project
 
 Create a project to manage the DB-related issues in one place. A project manages the Production and Staging environments and DB-related software development lifecycle.
 

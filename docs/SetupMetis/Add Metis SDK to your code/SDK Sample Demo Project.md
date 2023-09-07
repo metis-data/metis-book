@@ -5,7 +5,7 @@ The sample demo project is a good way to quickly see the Metis SDK in action and
 This sample project works with SQLAlchemy + Flask
 :::
 
-Usage **overview**
+### Usage overview
 
 1. Download the sample code repository
 2. Configure a connection to the PG Server. You can use a connection string to a sample cloud DB or spin up a Docker image, that we also provide.
@@ -14,41 +14,31 @@ Usage **overview**
 5. Run a REST command called “run_demo”. This command generates a few traces
 6. Open Metis Web App to review the traces, SQL commands, and insights.
 
-### In more **detail**
-
-**Step 1 - Open the code sample**
+### Step 1 - Open the code sample
 
 Open the project’s GitHub Repository [here](https://github.com/metis-data/sdk-examples/tree/main/python/flask-sqlalchemy-example).
 
 Download the Metis SDK for SQLAlcehmy from [PyPi](https://pypi.org/project/sqlalchemycollector/).
 
-**Step 2 - Configure the Connection String**
+### Step 2 - Configure the Connection String
 
 The server connects to a PG database called "flights". You can connect to the databases in one of the following options:
 
-1. Using an existing PG server connecting using a connection string
-   Connection string:
+1. Using an existing PG server connecting using a connection string:
 
-```bash
-postgresql://user1:password@srv1.eu-central-1.rds.amazonaws.com:5432/flights
-```
+   ```bash
+   postgresql://user1:password@srv1.eu-central-1.rds.amazonaws.com:5432/flights
+   ```
 
-1. Using Docker image
-   The image contains PG 15 with the Database.
+2. Using Docker image. The image contains PG 15 with the Database.
 
-:::tip
-Detailed instructions on how to run the docker can be found here. Add link to instructions
-:::
+   ```python
+   postgresql://postgres:postgres@localhost:5432/flights
+   ```
 
-Connection string:
+3. Download the DB yourself from [here](https://postgrespro.com/community/demodb).
 
-```bash
-postgresql://postgres:postgres@localhost:5432/flights
-```
-
-1. Download the DB yourself from [here](https://www.notion.so/Slack-community-43dbf9c61a0d45bdbf352b37c3714166?pvs=21). what is the connection string in this case
-
-In the app.py file edit the code to use a valid connection string
+In the `app.py` file edit the code to use a valid connection string
 
 ```python
 from flask import Flask, request
@@ -65,27 +55,28 @@ with app.app_context():
     migrate = Migrate(app, db)
 ```
 
-**Step 3 - Metis Instrumentation**
+### Step 3 - Metis Instrumentation
 
 The code uses simple instrumentation to configure: replace with edit the code to
 
-**Metis API Key (Mandatory)** - [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
+`api_key` (Mandatory) - [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
-**Service Name (Optional)** - A metadata tag used to identify all the traces sent by this Flask Server.
+`service_name` (Optional) - A metadata tag used to identify all the traces sent by this Flask Server.
 
-**Service Version (Optional)** - a metadata tag used for better control on the traces sent by each Flask server. For example, it can help detect problems in the new version of the service "flights"
+`service_version` (Optional) - a metadata tag used for better control on the traces sent by each Flask server.
 
-```python
+For example, it can help detect problems in the new version of the service "flights"
+
+```py
 instrumentation: MetisInstrumentor = setup('flights',
-                        api_key='Sc0123456789abcdefgABCDEFG',
-												service_name='my demo project',
-                        service_version='1.1'
-                                            )
-
-    instrumentation.instrument_app(app, db.get_engine())
+   api_key='Sc0123456789abcdefgABCDEFG',
+   service_name='my demo project',
+   service_version='1.1'
+   )
+instrumentation.instrument_app(app, db.get_engine())
 ```
 
-**Step 4 - Run the Flask Server**
+### Step 4 - Run the Flask Server
 
 Run the Flask server from the terminal with the command:
 
@@ -93,16 +84,12 @@ Run the Flask server from the terminal with the command:
 ./env/bin/flask run
 ```
 
-**Step 5 - Call the REST Methods**
+### Step 5 - Call the REST Methods
 
 Open the browser with the IP provided by the terminal. By default it is `http://127.0.0.1:5000`.
 
 Run the REST command `http://127.0.0.1:5000/run_demo`. It generates a few traces
 
-add image of the result server page
-
-\***\*Step 6 - View the Traces in Metis Web App\*\***
+### Step 6 - View the Traces in Metis Web App
 
 Open the Recent Activity of the project. You must use the project that is mapped to the API key you provided in Step 3.
-
-add image of the results

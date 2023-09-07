@@ -3,9 +3,9 @@ sidebar_label: '🚨 Prevent Database Incidents'
 sidebar_position: 4
 ---
 
-# Prevent Database Incidents
+# 🚨 Prevent Database Incidents
 
-## **BEFORE the deployment:**
+## BEFORE the deployment
 
 Metis let you to see the SQL commands running in your environments, get insights about the performance and potential errors, and understand if it’s safe to deploy changes to production.
 
@@ -49,13 +49,14 @@ To capture the execution plans of the SQL queries your application sends to the 
 
 ### Deliver the execution plans to the Metis platform
 
-To deliver the execution plans to the Metis platform (point three from the above) we again have a number of ways, depending on how we obtained the execution plan. If we instrumented the application code with our SDK, then the SDK will deliver the plans automatically. If we used one of the extensions for the database, then we need to use the Metis Agent (**TODO LINK**) to extract the plans from the logs by using either [file_fdw](https://www.postgresql.org/current/file-fdw.html) extension or [log_fdw](https://github.com/aws/postgresql-logfdw) extension.
+To deliver the execution plans to the Metis platform (point three from the above) we again have a number of ways, depending on how we obtained the execution plan. If we instrumented the application code with our SDK, then the SDK will deliver the plans automatically. If we used one of the extensions for the database, then we need to use the Metis Agent [🤵🏻‍♂️ Deploy Metis Agent](<SetupMetis/Deploy Metis observability Agent/Deploy Metis observability Agent.md>)
+to extract the plans from the logs by using either [file_fdw](https://www.postgresql.org/current/file-fdw.html) extension or [log_fdw](https://github.com/aws/postgresql-logfdw) extension.
 
 Once we have all the signals delivered to the platform, everything will work automatically.
 
-## Integrating Metis
+### Integrating Metis
 
-To do that, follow the documentation for the technology stack you have in the [Setup Metis](SetupMetis/SetupMetis.md) section. The steps you need to take come down to:
+To do that, follow the documentation for the technology stack you have in the [🔧 Setup Metis](SetupMetis/SetupMetis.md) section. The steps you need to take come down to:
 
 - Add Open Telemetry dependencies if you don’t have them in your project already;
 - Add new Exporter to Open Telemetry to capture signals about REST requests (using our SDK);
@@ -76,7 +77,7 @@ Once you click on it, you will see the list of your endpoints with all the execu
 
 You can see the HTTP code returned by the network call (1), the duration (2), and the number of insights with their severities (3). Once you click on any of the calls, you will see the insights page:
 
-## Insights page
+### Insights page
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3AUILbgbmsA?si=P9U3xEFH3ckkn1CJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -113,7 +114,7 @@ This shows the tables, number of extracted rows, which indexes were used, and ot
 
 This way you can learn all the details about the query, reason about its performance, see how to improve it, and apply corrective actions.
 
-# DURING **the deployment:**
+## DURING the deployment
 
 At the end of this section you’ll be able to see the SQL commands running in your CI/CD pipeline, get insights about the schema migrations, and understand if it’s safe to deploy changes to production.
 
@@ -138,7 +139,7 @@ Metis can analyze changes in your pull request in the CI/CD pipeline the same wa
 3. Capture signals from the execution in the CI/CD pipeline;
 4. Analyze the schema migrations with Metis and correlate the execution with a particular pull request.
 
-Points 1 and 2 are outside of Metis. You need to configure them **\*\***\*\*\***\*\***the regular way**\*\***\*\*\***\*\*** depending on your CI/CD platform. For instance, you can use [GitHub Actions.](https://github.com/features/actions)
+Points 1 and 2 are outside of Metis. You need to configure them _the regular way_ depending on your CI/CD platform. For instance, you can [🎬 Add Metis’s Git actions to your repository](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
 To achieve point 3, you need to do the same things as in the previous section **Integrating Metis.** Depending on your technology stack, you may need to use the Metis Agent.
 

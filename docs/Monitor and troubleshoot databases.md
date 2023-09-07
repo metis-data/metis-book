@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # Monitor and troubleshoot databases
 
-# **Monitor & troubleshoot - AFTER deployment**
+## Monitor & troubleshoot - AFTER deployment
 
 At the end of this section you will be able to:
 
@@ -18,13 +18,13 @@ At the end of this section you will be able to:
 
 ### How it works
 
-Metis integrates with your database and extracts metrics, logs, and runtime configuration. All that is done by the [Metis Metadata Collector](https://github.com/metis-data/metadata-collector/tree/main). It’s a tiny Docker container that you can run alongside your database to get all the benefits. You can run it locally (on-premise) or in the cloud.
+Metis integrates with your database and extracts metrics, logs, and runtime configuration. All that is done by the [Metis Agent](https://github.com/metis-data/metadata-collector/tree/main). It’s a tiny Docker container that you can run alongside your database to get all the benefits. You can run it locally (on-premise) or in the cloud.
 
-MMC is open-source and you can verify how it works. It spins up periodic tasks (CRON-like) that connect to your database, extract logs, statistics, metrics, and then posts them to the Metis platform. No confidential information is extracted.
+Metis Agent is open-source and you can verify how it works. It spins up periodic tasks (CRON-like) that connect to your database, extract logs, statistics, metrics, and then posts them to the Metis platform. No confidential information is extracted.
 
-### Integrate Metis Agent (MMC)
+### Integrate Metis Agent
 
-To run Metis agent, follow the [**Deploy** Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the MMC:
+To run Metis agent, follow the [🤵🏻‍♂️ Deploy Metis Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Metis Agent:
 
 ![Untitled](Quickstart/Untitled%2022.png)
 
@@ -33,6 +33,8 @@ To run Metis agent, follow the [**Deploy** Metis observability Agent](/docs/Setu
 </center>
 
 Once you click on the server, you get the **Server Observability Dashboard**.
+
+## Server Observability Dashboard
 
 ![Untitled](Quickstart/Untitled%2023.png)
 

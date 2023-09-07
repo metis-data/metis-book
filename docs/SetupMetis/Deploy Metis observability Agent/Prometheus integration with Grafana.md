@@ -1,4 +1,4 @@
-# Prometheus integration with Grafana
+# 🌀 Prometheus integration with Grafana
 
 ### Flow overview
 
@@ -23,10 +23,11 @@ Download a Grafana Dashboard from the Dashboard marketplace in one click. Config
 
 **Step 1 - Deploy a Prometheus exporter**
 
-:::tip
+:::info
 The current version only supports AWS RDS. If your production Postgres servers use EC2 or K8S, please contact our support for guidelines on how to deploy a Prometheus server and Grafana Dashboard.
 :::
-**Background**
+
+### Background
 
 The implementation of the Prometheus exporter uses [promcat](https://promcat.io/), a resource catalog for enterprise-class Prometheus monitoring. It has a configuration file for [AWS RDS](https://promcat.io/apps/aws-rds).
 
@@ -36,7 +37,7 @@ The configuration of the exporter requires:
 2. A list of relevant performance counters. Don't worry about this step, we provide the configuration.
 3. Metis API Key - to link the Grafana Dashboard with the detailed DB metadata and analysis, collected by the Metis Metadata Collector.
 
-**AWS Credentials**
+### AWS Credentials
 
 There are many ways to store and manage AWS credentials.
 
@@ -54,7 +55,7 @@ aws_access_key_id = ABBBBCCCCDDDDEEEEXXXXX
 aws_secret_access_key = gXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-**AWS Permissions**
+### AWS Permissions
 
 The credentials created in the previous step require permission to read the performance counters.
 
@@ -78,27 +79,27 @@ The credentials created in the previous step require permission to read the perf
 }
 ```
 
-**Step 1 - Deploy the Prometheus Exporter**
+### Step 1 - Deploy the Prometheus Exporter
 
 The Prometheus Exporter uses [YACE](https://github.com/nerdswords/yet-another-cloudwatch-exporter/tree/master) (yet-another-cloudwatch-exporter).
 
-1. 1.Clone the Repository [https://github.com/metis-data/metadata-collector.git](https://github.com/metis-data/metadata-collector.git)
-2. 2.Move to folder: `cd tele-metric`.
-3. 3.Set execution permission: `chmod +x ./start_exporter.sh`
-4. 4.Run the execution file `./start_exporter.sh` . The script doesn't ask for AWS credentials.
+1. Clone the Repository [https://github.com/metis-data/metadata-collector.git](https://github.com/metis-data/metadata-collector.git)
+2. Move to folder: `cd tele-metric`.
+3. Set execution permission: `chmod +x ./start_exporter.sh`
+4. Run the execution file `./start_exporter.sh` . The script doesn't ask for AWS credentials.
 
 ![image-4.png](Prometheus%20integration%20with%20Grafana/image-4.png)
 
 You can also deploy the Prometheus Exporter using a **HELM** chart. More details [here](https://artifacthub.io/packages/helm/mogaal/prometheus-yace-exporter).
 
-**Step 2 - Configure Prometheus**
+### Step 2 - Configure Prometheus
 
-:::tip
+:::caution
 Make sure the Prometheus server can connect to the Prometheus exporter (IP and ports).
 
 :::
 
-Configure a Metis API Key. The Metis API Key is used by Metis Platform for a deep DB Analysis. Configure the file `tele-metric/rds-prometheus/prometheus.yml` .
+Configure the file `tele-metric/rds-prometheus/prometheus.yml` by adding a Metis API Key [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
 ```json
 global:
@@ -113,9 +114,9 @@ scrape_configs:
         apikey: '<API_KEY_HERE>'
 ```
 
-**Step 3 - Create a Grafana Dashabord**
+### Step 3 - Create a Grafana Dashabord
 
-Import the Metis AWS RDS [dashboard](https://grafana.com/grafana/dashboards/19252) from the Grafana Dashboards Marketplace.
+Import the Metis AWS RDS [dashboard](https://grafana.com/grafana/dashboards/19253-metis-rds/) from the Grafana Dashboards Marketplace.
 
 The Dashboards look similar to this:
 
