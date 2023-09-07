@@ -18,7 +18,7 @@ Open the web app to view the analyzed data. The dashboard provides useful inform
 
 The Metis agent collects many Data Sets from 3 source types:
 
-**SQL Queries:** the agnet uses a connection string and a set of predefined SQL commands to collect Data Sets such as existing Databases, their size, DB activity, the schema of each DB, table size, index usage, and configuration... These Data Sets are collected from any Postgres server: AWS RDS, AWS Aurora, SQL on K8S, GCS SQL, Azure RDS etc.
+**SQL Queries:** the agent uses a connection string and a set of predefined SQL commands to collect Data Sets such as existing Databases, their size, DB activity, the schema of each DB, table size, index usage, and configuration... These Data Sets are collected from any Postgres server: AWS RDS, AWS Aurora, SQL on K8S, Google Cloud SQL for PostgreSQL, Azure Database for PostgreSQL etc.
 
 **Performance Counters:** the agent also collects the main performance counters such as CPU, free memory, IO Throughput, and Avg Active Sessions. Current version support only AWS CloudWatch and Prometheus.
 

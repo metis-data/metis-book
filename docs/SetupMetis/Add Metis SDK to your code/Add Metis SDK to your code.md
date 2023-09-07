@@ -16,5 +16,3 @@ Metis SDK is available on those coding languages
 [🥷 Metis JS SDK](JS%20Metis%20SDK/JS%20Metis%20SDK.md)
 
 [🐍 Metis Python SDK](Python%20Metis%20SDK.md)
-
-In the future - New SDK instructions (OpenTelemetry + query log)
