@@ -63,7 +63,7 @@ const config = {
       image: 'img/logoDark.svg',
       baseUrl: '/docs/MetisOverview',
       navbar: {
-        title: 'Metis Doc',
+        title: 'Metis Documentation',
         logo: {
           alt: 'Metis Doc Logo',
           src: 'img/logo.svg',
