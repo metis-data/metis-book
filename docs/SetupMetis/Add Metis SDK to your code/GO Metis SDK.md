@@ -28,7 +28,7 @@ Metis Agent find SQL commands originating from those REST commands analyze them 
 ## **Prerequisite**
 
 - A Metis account with a valid API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- OpenTelemetry
+- [OpenTelemetry](https://opentelemetry.io)
 - Metis agent
 
 ## **Installation**

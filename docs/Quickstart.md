@@ -161,7 +161,7 @@ Configure GitHub Action variables and secrets in your repository to include the 
 
 ![Untitled](Quickstart/Untitled%2018.png)
 
-Next, run [Metis Test Action](https://github.com/marketplace/actions/metis-test-suite) in your CI/CD:
+Next, run [Metis Test Action](https://github.com/marketplace/actions/metis-test-suite) in your CI/CD, for example:
 
 ```json
 name: E2E-TEST-EXAMPLE
@@ -200,7 +200,7 @@ jobs:
         run: npm ci  &&  npm run test-sql-queries
 ```
 
-Similarly, run the [action to analyze schema migrations](https://github.com/marketplace/actions/analyze-migrations):
+Similarly, run the [action to analyze schema migrations](https://github.com/marketplace/actions/analyze-migrations), for example:
 
 ```json
 on:
