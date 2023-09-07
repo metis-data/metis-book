@@ -1,12 +1,12 @@
 # GO Metis SDK
 
-**General:**
+## **General**
 
 Metis GO SDK allows you have insights about your SQL commands originated from your code.
 
 Run your code as usual while Metis generates distributed traces and sends them to our servers for further analysis, then you will be able to view crucial insights about your queries.
 
-**Supported GO packages:**
+## **Supported GO packages**
 
 HTTP:
 
@@ -19,19 +19,19 @@ Postgres:
 2. gorm
 3. ido50/sqlz
 
-**How it works:**
+## **How it works**
 
 Metis GO SDK uses OTEL to sends your code REST commands to Metis.
 
 Metis Agent find SQL commands originating from those REST commands analyze them and combine all this information to create an E2E view of those traces and their analysis.
 
-**Prerequisite:**
+## **Prerequisite**
 
 - A Metis account with a valid API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 - OTEL
 - Metis agent
 
-**Installation:**
+## **Installation**
 
 Clone the [Metis GO SDK](https://github.com/metis-data/go-interceptor) for Github
 
@@ -45,9 +45,9 @@ go get github.com/metis-data/go-interceptor \
 
 Set the api key environment variable: `METIS_API_KEY` [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
-Enable OTEL instrumentation: (more details are needed)
+Enable OTEL instrumentation:
 
-Set up Tracer:
+### Set up Tracer
 
 ```go
 import (
@@ -71,7 +71,7 @@ defer func() {
 otel.SetTracerProvider(tp)
 ```
 
-Wrap your http server with Metis:
+### Wrap your http server with Metis
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -156,7 +156,13 @@ import (
   defer db.Close()
 ```
 
-</TabItem>  
+</TabItem>
+
+</Tabs>
+
+### Wrap your database connection with metis
+
+<Tabs>
 <TabItem value="pq" label="lib/pq">
 
 ```go

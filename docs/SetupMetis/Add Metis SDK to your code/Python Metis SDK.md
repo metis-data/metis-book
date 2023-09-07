@@ -1,12 +1,12 @@
-# Python Metis SDK
+# 🐍 Python Metis SDK
 
-**General:**
+## **General**
 
 Metis JS SDK allows you have insights about your SQL commands originated from your code.
 
 Run your code as usual while Metis generates distributed traces and sends them to our servers for further analysis, then you will be able to view crucial insights about your queries.
 
-**Supported ORMs:**
+## **Supported ORMs**
 
 - [SQLAlchemy](https://www.sqlalchemy.org) with FastAPI or Flask
 
@@ -19,18 +19,19 @@ Run your code as usual while Metis generates distributed traces and sends them t
 Check out our SDK example [projects](https://github.com/metis-data/sdk-examples/tree/main/python) that covers most of the ORMs listed above
 
 :::
-**How it works:**
+
+## **How it works**
 
 Metis Python SDK listens to SQL commands on your code, it receiving their execution plans from the PG server and combine them with their REST commands.
 
 It sends those sets to Metis, which analyze the queries and combine all this information to create an E2E view of those traces and their analysis.
 
-**Prerequisite:**
+### **Prerequisite**
 
 - A Metis account with a valid API key. [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 - OTEL - how to configure
 
-**Installation: (Add FASTAPI code)**
+### **Installation:** (Add FASTAPI code)
 
 Install our Python SDK using `[pip](https://pip.pypa.io/en/stable/)`
 
@@ -62,7 +63,7 @@ def home():
     return "Hello, Flask!"
 ```
 
-**Parameters:** (no connection string?)
+### **Parameters** (no connection string?)
 
 `service_name` - (optional) Gives ability to distinguish between services. Useful when working with Micro Services.
 `api_key`- Metis Api Key [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)

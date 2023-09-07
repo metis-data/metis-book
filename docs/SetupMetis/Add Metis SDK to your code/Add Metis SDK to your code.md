@@ -27,8 +27,8 @@ Metis SDK is available on those coding languages
 
 [GO Metis SDK](GO%20Metis%20SDK.md)
 
-[JS Metis SDK](JS%20Metis%20SDK.md)
+[🥷 JS Metis SDK](JS%20Metis%20SDK/JS%20Metis%20SDK.md)
 
-[Python Metis SDK](Python%20Metis%20SDK.md)
+[🐍 Python Metis SDK](Python%20Metis%20SDK.md)
 
 In the future - New SDK instructions (OTEL + query log)

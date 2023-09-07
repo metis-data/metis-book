@@ -1,12 +1,12 @@
-# JS Metis SDK
+# 🥷 JS Metis SDK
 
-**General:**
+## **General**
 
 Metis JS SDK allows you have insights about your SQL commands originated from your code.
 
 Run your code as usual while Metis generates distributed traces and sends them to our servers for further analysis, then you will be able to view crucial insights about your queries.
 
-**Supported ORMs:**
+## **Supported ORMs**
 
 - [Native pg Client](https://www.npmjs.com/package/pg)
 - [Sequelize](https://www.npmjs.com/package/sequelize)
@@ -21,34 +21,30 @@ Run your code as usual while Metis generates distributed traces and sends them t
 Check out our SDK example [projects](https://github.com/metis-data/metis-js-collectors/tree/main/examples) that covers most of the ORMs listed above
 :::
 
-**How it works:**
+## **How it works**
 
 Metis JS SDK listens to SQL commands on your code, it receiving their execution plans from the PG server and combine them with their REST commands.
 
 It sends those sets to Metis, which analyze the queries and combine all this information to create an E2E view of those traces and their analysis.
 
-**Prerequisite:**
+## **Prerequisite**
 
-- A Metis account with a valid API key. [Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- OTEL - how to configure
+- A Metis account with a valid API key. [Create a project & generate API key](../../Create%20a%20project%20&%20generate%20API%20key.md)
+- OTEL
 
-**Installation:**
+## **Installation**
 
-If you are using ESM continue to the ESM installation page
+If you are using ESM continue to the ESM installation page [JS Metis SDK installation with ESM](JS%20Metis%20SDK%20installation%20with%20ESM.md)
 
-[JS Metis SDK installation with ESM](./JS%20Metis%20SDK%20installation%20with%20ESM.md)
+Run the following command to install the **SDK** and PG if it is not already installed:
 
-Clone the [Metis JS SDK](https://docs.metisdata.io/metis/getting-started/sdk-integration/node.js-pg) for Github
-
-Run the following command to install the **SDK** and PG if it is not installed:
-
-```go
+```js
 npm install --save pg @metis-data/pg-interceptor
 ```
 
 Install Opentelemetry packages that are required:
 
-```go
+```js
 npm install --save @opentelemetry/api \
                    @opentelemetry/context-async-hooks \
                    @opentelemetry/instrumentation \
@@ -58,8 +54,13 @@ npm install --save @opentelemetry/api \
                    @opentelemetry/semantic-conventions
 ```
 
-Setup tracer
+### Setup tracer
 
+:::note
+In opentelemetry, tracing should be set before application bootstrap.
+:::
+
+Create `tracer` file and add the following code:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -151,13 +152,9 @@ export const startMetisInstrumentation = () => {
 </TabItem>
 </Tabs>
 
+### **Parameters**
 
-
-**Parameters**
-
-Edit the required parameter (check connection string in the code seems that its getting it from env file)
-
-- `connectionString` - A valid connection string is required: `postgres://user:password@host:port/database`
+Edit the required parameter `connectionString` - A valid connection string is required: `postgres://user:password@host:port/database`
 
 If for any reason (like dynamic address) the connection string is not available during the tracer setup, you can define it later with the following code:
 
@@ -170,9 +167,9 @@ setPgConnection(connectionString);
 
 - `excludeUrls`- An array of URLs that you wish to exclude from being instrumented, in the code the `/favicon.ico/` will be ignored
 
-Usage
+### **Usage**
 
-After creating the tracer it should be called from application root where the bootstrap happens: (add JS code as well)
+After creating the tracer it should be called from application root where the bootstrap happens:
 
 ```tsx
 // main.ts
