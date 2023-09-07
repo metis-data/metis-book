@@ -14,7 +14,7 @@ The backend processes the raw data into well-defined data sets. It also calculat
 
 Open the web app to view the analyzed data. The dashboard provides useful information about: - The PG Server: performance and configuration - PG Databases: size, performance, and activity - Tables and indexes: size, scheme analysis, activity - Queries: statistics and performance analysis
 
-## MMC - data sources
+## Metis agent - data sources
 
 The Metis agent collects many Data Sets from 3 source types:
 

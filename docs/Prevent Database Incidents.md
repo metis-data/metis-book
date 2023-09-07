@@ -1,9 +1,9 @@
 ---
-sidebar_label: '🚨 Prevent Database Incidents'
+sidebar_label: '🚨 Prevent issues on your database'
 sidebar_position: 4
 ---
 
-# 🚨 Prevent Database Incidents
+# 🚨 Prevent issues on your database
 
 ## BEFORE the deployment
 

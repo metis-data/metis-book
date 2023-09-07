@@ -1,4 +1,4 @@
-# 🥷 JS Metis SDK
+# 🥷 Metis JS SDK
 
 ## **General**
 
@@ -30,11 +30,11 @@ It sends those sets to Metis, which analyze the queries and combine all this inf
 ## **Prerequisite**
 
 - A Metis account with a valid API key. [Create a project & generate API key](../../Create%20a%20project%20&%20generate%20API%20key.md)
-- OTEL
+- OpenTelemetry
 
 ## **Installation**
 
-If you are using ESM continue to the ESM installation page [JS Metis SDK installation with ESM](JS%20Metis%20SDK%20installation%20with%20ESM.md)
+If you are using ESM continue to the ESM installation page [Metis JS SDK - With ESM](JS%20Metis%20SDK%20installation%20with%20ESM.md)
 
 Run the following command to install the **SDK** and PG if it is not already installed:
 

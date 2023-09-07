@@ -60,8 +60,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/logoDark.svg',
+      image: 'img/metisLogo.png',
       baseUrl: '/docs/MetisOverview',
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         title: 'Metis Documentation',
         logo: {

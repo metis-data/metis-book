@@ -163,11 +163,67 @@ Configure GitHub Action variables and secrets in your repository to include the 
 
 Next, run [Metis Test Action](https://github.com/marketplace/actions/metis-test-suite) in your CI/CD:
 
-![Untitled](Quickstart/Untitled%2019.png)
+```json
+name: E2E-TEST-EXAMPLE
+
+on:
+ # Run workflow every 6 hours
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: set TAG PR Value step
+        id: tag_pr
+        uses: metis-data/test-queries-analyzer@v1
+        with:
+          metis_api_key: ${{ secrets.METIS_API_KEY}}
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: test
+        env:
+          METIS_TAG_PR: ${{ steps.tag_pr.outputs.pr_tag  }}
+          METIS_API_KEY: ${{ secrets.METIS_API_KEY}}  #Optional
+          DATABASE_URL: ${{ secrets.METIS_E2E_DB_CONNECTION }} #Optional
+        # Run your e2e test
+        run: npm ci  &&  npm run test-sql-queries
+```
 
 Similarly, run the [action to analyze schema migrations](https://github.com/marketplace/actions/analyze-migrations):
 
-![Untitled](Quickstart/Untitled%2020.png)
+```json
+on:
+      pull_request:
+        types: [opened, reopened, edited, synchronize, ready_for_review]
+
+    jobs:
+      migrations:
+        name: Analyze new migrations
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
+          - name: Compare migrations
+            uses: metis-data/sql-migrations-validator@v1
+            with:
+              from: ${{ github.event.pull_request.base.sha }}
+              to: ${{ github.event.pull_request.head.sha }}
+              github_token: ${{ github.token }}
+              metis_api_key: <Your Api Key>
+```
 
 Once you submit a pull request, you should get comments from Metis:
 
@@ -274,6 +330,6 @@ Add [🤘 team members to Metis](/docs/BuildingYourTeam.md)
 
 Dive deeper on Metis capabilities at:
 
-- [🚨 Prevent Database incidents](/docs/Prevent%20Database%20Incidents.md)
+- [🚨 Prevent issues on your database](/docs/Prevent%20Database%20Incidents.md)
 
 - [ 📊 Monitor and troubleshoot databases](/docs/Monitor%20and%20troubleshoot%20databases.md)

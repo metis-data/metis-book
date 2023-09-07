@@ -1,4 +1,4 @@
-# 🐍 Python Metis SDK
+# 🐍 Metis Python SDK
 
 ## **General**
 
@@ -29,7 +29,7 @@ It sends those sets to Metis, which analyze the queries and combine all this inf
 ## **Prerequisite**
 
 - A Metis account with a valid API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- OTEL
+- OpenTelemetry
 
 ## **Installation**
 

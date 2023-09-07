@@ -11,10 +11,10 @@ See it in action on your machine with quick
 
 Metis SDK is available on those coding languages
 
-[🐲 GO Metis SDK](GO%20Metis%20SDK.md)
+[🐲 Metis GO SDK](GO%20Metis%20SDK.md)
 
-[🥷 JS Metis SDK](JS%20Metis%20SDK/JS%20Metis%20SDK.md)
+[🥷 Metis JS SDK](JS%20Metis%20SDK/JS%20Metis%20SDK.md)
 
-[🐍 Python Metis SDK](Python%20Metis%20SDK.md)
+[🐍 Metis Python SDK](Python%20Metis%20SDK.md)
 
-In the future - New SDK instructions (OTEL + query log)
+In the future - New SDK instructions (OpenTelemetry + query log)

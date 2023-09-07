@@ -1,4 +1,4 @@
-# 🐲 GO Metis SDK
+# 🐲 Metis GO SDK
 
 ## **General**
 
@@ -21,14 +21,14 @@ Postgres:
 
 ## **How it works**
 
-Metis GO SDK uses OTEL to sends your code REST commands to Metis.
+Metis GO SDK uses OpenTelemetry to sends your code REST commands to Metis.
 
 Metis Agent find SQL commands originating from those REST commands analyze them and combine all this information to create an E2E view of those traces and their analysis.
 
 ## **Prerequisite**
 
 - A Metis account with a valid API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
-- OTEL
+- OpenTelemetry
 - Metis agent
 
 ## **Installation**
@@ -45,7 +45,7 @@ go get github.com/metis-data/go-interceptor \
 
 Set the api key environment variable: `METIS_API_KEY` [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
-Enable OTEL instrumentation:
+Enable OpenTelemetry instrumentation:
 
 ### Set up Tracer
 
