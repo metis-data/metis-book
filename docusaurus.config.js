@@ -53,6 +53,19 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        gtag: {
+          trackingID: 'G-9FV7PMQBG1',
+          anonymizeIP: true,
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
+        segment: {
+          apiKey: 'Pxcvor9qodCToJBXUbEjfydFQCKyg7k7',
+        },
       },
     ],
   ],
@@ -140,7 +153,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Metis Built with ❤️`,
+        copyright: `Copyright © ${new Date().getFullYear()} Metis built with ❤️`,
       },
       prism: {
         theme: lightCodeTheme,
