@@ -8,11 +8,11 @@ slug: /
 
 ## What is Metis
 
-Metis collects database performance data, analyzes it, **tells you what's wrong** and **how to fix it**.
+Today’s developers and devops teams need better tooling and self-service guardrails in order to move fast with confidence. Those tools needs to integrate with the modern workflow, allow quick troubleshooting and provide rich context.
 
-Metis is a database guardrails solution. Metis empowers developers and teams to **own their databases,** No matter their expertise.
+Metis is a database guardrails solution. Metis empowers developers and teams to own their databases, No matter their expertise.
 
-With Metis you can **prevent** issues from reaching production, **proactively monitor** your DB and **troubleshoot** with context when needed
+With Metis you can prevent issues from reaching production, proactively monitor your DB and troubleshoot with context when needed.
 
 ![spaces%2F-MiqIHa1G-OhMZ7Fui__%2Fuploads%2FhYF0qECd50t9OyEqNSk0%2Fimage.webp](Quickstart/HowItWorksDiagram.png)
 

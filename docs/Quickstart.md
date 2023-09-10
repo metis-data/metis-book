@@ -14,7 +14,7 @@ in seconds. Never worry about your database again.
 
 ![spaces%2F-MiqIHa1G-OhMZ7Fui__%2Fuploads%2FljU9ZO6HotxQrUaOryp6%2FBuild%20with%20confidence.webp](Quickstart/spaces2F-MiqIHa1G-OhMZ7Fui__2Fuploads2FljU9ZO6HotxQrUaOryp62FBuild20with20confidence.webp)
 
-Metis works with you across the software development lifecycle. We provide a wide range of solutions for every aspect of database-related development.
+Metis natively integrates to the modern (GitOps) SDLC. Metis provides a holistic solution for every aspect of the database-related development, observability and troubleshooting.
 
 ## Metis helps you to:
 
@@ -41,7 +41,7 @@ This guide will give you a foundation to start preventing issues originating fro
 
 ## Creating a project
 
-Metis captures everything under an umbrella called Project. It consists of three parts: recent activity, CI/CD, and monitoring dashboard.
+Metis captures everything under an umbrella called Project. It consists of three parts: recent activity, CI/CD, and observability dashboard.
 
 Let’s start by creating a new project. Go to [Projects](https://app.metisdata.io/projects) and click on **_Create New Project_**:
 
@@ -244,9 +244,9 @@ At the end of this section you will be able to:
 - Get insights for the schema configuration;
 - See the extensions and runtime configuration insights;
 - See insights for queries executed in your database;
-- Find unused indexes.
+- Optimize your databases index structure;
 
-### Integrate Metis Agent
+### Deploy Metis Agent
 
 To run Metis agent, follow the [🤵🏻‍♂️ Deploy Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Agent:
 

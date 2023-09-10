@@ -83,6 +83,9 @@ You can see the HTTP code returned by the network call (1), the duration (2), an
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3AUILbgbmsA?si=P9U3xEFH3ckkn1CJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
 
+<br/>
+<br/>
+
 ![Untitled](Quickstart/Untitled%208.png)
 
 The main page of the call shows the following parts (see the screenshot above):
