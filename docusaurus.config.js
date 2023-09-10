@@ -60,8 +60,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/logoDark.svg',
+      image: 'img/metisLogo.png',
       baseUrl: '/docs/MetisOverview',
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         title: 'Metis Documentation',
         logo: {
@@ -163,6 +168,10 @@ const config = {
         },
         {
           name: 'og:image',
+          content: 'https://uploads-ssl.webflow.com/62d69ddf7813e9ad935e731f/63233be643cb042586cd7e13_Metis%20OpenGraph.png',
+        },
+        {
+          name: 'twitter:image',
           content: 'https://uploads-ssl.webflow.com/62d69ddf7813e9ad935e731f/63233be643cb042586cd7e13_Metis%20OpenGraph.png',
         },
       ],

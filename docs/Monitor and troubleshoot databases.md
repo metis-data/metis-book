@@ -1,9 +1,9 @@
 ---
-sidebar_label: '📊 Monitor & Troubleshoot Databases'
+sidebar_label: '📊 Monitor & troubleshoot your databases'
 sidebar_position: 5
 ---
 
-# Monitor and troubleshoot databases
+# 📊 Monitor & troubleshoot your databases
 
 ## Monitor & troubleshoot - AFTER deployment
 
