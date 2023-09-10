@@ -31,7 +31,12 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  scripts: [
+    {
+      src: '/js/segment.js',
+      async: false,
+    },
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -62,9 +67,6 @@ const config = {
           priority: 0.5,
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
-        },
-        segment: {
-          apiKey: 'Pxcvor9qodCToJBXUbEjfydFQCKyg7k7',
         },
       },
     ],
