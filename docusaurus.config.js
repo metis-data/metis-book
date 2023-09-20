@@ -58,7 +58,10 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-
+        gtag: {
+          trackingID: 'G-9FV7PMQBG1',
+          anonymizeIP: true,
+        },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
@@ -79,6 +82,7 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
+
       navbar: {
         title: 'Metis Documentation',
         logo: {

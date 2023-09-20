@@ -1,4 +1,4 @@
-# 🎬 Add Metis’s Git actions to your repository
+# 🎬 Add Metis’s GitHub actions to your repository
 
 We built Metis to seamlessly integrate with your pull requests, requiring minimal changes from the developer's perspective.
 

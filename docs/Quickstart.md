@@ -248,7 +248,7 @@ At the end of this section you will be able to:
 
 ### Deploy Metis Agent
 
-To run Metis agent, follow the [🤵🏻‍♂️ Deploy Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Agent:
+To run Metis agent, follow the [🤖 Deploy Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Agent:
 
 ![Untitled](Quickstart/Untitled%2022.png)
 

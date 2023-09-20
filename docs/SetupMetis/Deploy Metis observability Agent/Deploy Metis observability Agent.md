@@ -1,4 +1,4 @@
-# 🤵🏻‍♂️ Deploy Metis Agent
+# 🤖 Deploy Metis Agent
 
 ## Data Flow
 

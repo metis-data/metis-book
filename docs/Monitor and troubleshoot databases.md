@@ -24,7 +24,7 @@ Metis Agent is open-source and you can verify how it works. It spins up periodic
 
 ### Integrate Metis Agent
 
-To run Metis agent, follow the [🤵🏻‍♂️ Deploy Metis Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Metis Agent:
+To run Metis agent, follow the [🤖 Deploy Metis Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Metis Agent:
 
 ![Untitled](Quickstart/Untitled%2022.png)
 
