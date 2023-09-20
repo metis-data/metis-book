@@ -37,6 +37,7 @@ const config = {
       async: false,
     },
   ],
+  plugins: [require.resolve('docusaurus-plugin-image-zoom')],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -191,6 +192,16 @@ const config = {
           content: 'https://uploads-ssl.webflow.com/62d69ddf7813e9ad935e731f/63233be643cb042586cd7e13_Metis%20OpenGraph.png',
         },
       ],
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)',
+          },
+        },
+      },
     }),
 };
 
