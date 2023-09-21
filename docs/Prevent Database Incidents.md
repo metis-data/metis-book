@@ -49,7 +49,7 @@ To capture the execution plans of the SQL queries your application sends to the 
 
 ### Deliver the execution plans to the Metis platform
 
-To deliver the execution plans to the Metis platform (point three from the above) we again have a number of ways, depending on how we obtained the execution plan. If we instrumented the application code with our SDK, then the SDK will deliver the plans automatically. If we used one of the extensions for the database, then we need to use the Metis Agent [🤵🏻‍♂️ Deploy Metis Agent](<SetupMetis/Deploy Metis observability Agent/Deploy Metis observability Agent.md>)
+To deliver the execution plans to the Metis platform (point three from the above) we again have a number of ways, depending on how we obtained the execution plan. If we instrumented the application code with our SDK, then the SDK will deliver the plans automatically. If we used one of the extensions for the database, then we need to use the Metis Agent [🤖 Deploy Metis Agent](<SetupMetis/Deploy Metis observability Agent/Deploy Metis observability Agent.md>)
 to extract the plans from the logs by using either [file_fdw](https://www.postgresql.org/current/file-fdw.html) extension or [log_fdw](https://github.com/aws/postgresql-logfdw) extension.
 
 Once we have all the signals delivered to the platform, everything will work automatically.
@@ -142,11 +142,11 @@ Metis can analyze changes in your pull request in the CI/CD pipeline the same wa
 3. Capture signals from the execution in the CI/CD pipeline;
 4. Analyze the schema migrations with Metis and correlate the execution with a particular pull request.
 
-Points 1 and 2 are outside of Metis. You need to configure them _the regular way_ depending on your CI/CD platform. For instance, you can [🎬 Add Metis’s Git actions to your repository](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
+Points 1 and 2 are outside of Metis. You need to configure them _the regular way_ depending on your CI/CD platform. For instance, you can [🎬 Add Metis’s GitHub actions to your repository](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
 To achieve point 3, you need to do the same things as in the previous section **Integrating Metis.** Depending on your technology stack, you may need to use the Metis Agent.
 
-To achieve point 4, follow [🎬 Add Metis’s Git actions to your repository ](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
+To achieve point 4, follow [🎬 Add Metis’s GitHub actions to your repository ](<SetupMetis/Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
 ### GitHub Actions Integration with Metis
 

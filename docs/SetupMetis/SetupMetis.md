@@ -13,8 +13,8 @@ This is a guide to get up and running with **Metis**.
 
 [📦 Add Metis SDK to your code](<Add Metis SDK to your code/Add Metis SDK to your code.md>)
 
-[🎬 Add Metis’s Git actions to your repository ](<Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
+[🎬 Add Metis’s GitHub actions to your repository ](<Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
 **Monitoring & troubleshoot:**
 
-[🤵🏻‍♂️ Deploy Metis Agent](<Deploy Metis observability Agent/Deploy Metis observability Agent.md>)
+[🤖 Deploy Metis Agent](<Deploy Metis observability Agent/Deploy Metis observability Agent.md>)

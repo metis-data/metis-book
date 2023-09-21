@@ -37,6 +37,7 @@ const config = {
       async: false,
     },
   ],
+  plugins: [require.resolve('docusaurus-plugin-image-zoom')],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -58,7 +59,10 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-
+        gtag: {
+          trackingID: 'G-9FV7PMQBG1',
+          anonymizeIP: true,
+        },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
@@ -78,6 +82,11 @@ const config = {
         defaultMode: 'dark',
         disableSwitch: false,
         respectPrefersColorScheme: true,
+      },
+      algolia: {
+        indexName: '72ZSVD4RI2',
+        appId: '72ZSVD4RI2',
+        apiKey: '0d509bc7b53e5870d1d128f05a558841',
       },
       navbar: {
         title: 'Metis Documentation',
@@ -187,6 +196,16 @@ const config = {
           content: 'https://uploads-ssl.webflow.com/62d69ddf7813e9ad935e731f/63233be643cb042586cd7e13_Metis%20OpenGraph.png',
         },
       ],
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)',
+          },
+        },
+      },
     }),
 };
 
