@@ -49,7 +49,6 @@ const config = {
           //   // Please change this to your repo.
           //   // Remove this to remove the "edit this page" links.
           //   editUrl: 'https://github.com/metis-data',
-          exclude: ['/SetupMetis/Deploy Metis observability Agent/AWS ECS.md'],
         },
         blog: false,
         //   showReadingTime: true,
@@ -60,10 +59,10 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        // gtag: {
-        //   trackingID: 'G-9FV7PMQBG1',
-        //   anonymizeIP: true,
-        // },
+        gtag: {
+          trackingID: 'G-9FV7PMQBG1',
+          anonymizeIP: true,
+        },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
