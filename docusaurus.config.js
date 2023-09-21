@@ -49,6 +49,7 @@ const config = {
           //   // Please change this to your repo.
           //   // Remove this to remove the "edit this page" links.
           //   editUrl: 'https://github.com/metis-data',
+          exclude: ['/SetupMetis/Deploy Metis observability Agent/AWS ECS.md'],
         },
         blog: false,
         //   showReadingTime: true,
@@ -59,10 +60,10 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        gtag: {
-          trackingID: 'G-9FV7PMQBG1',
-          anonymizeIP: true,
-        },
+        // gtag: {
+        //   trackingID: 'G-9FV7PMQBG1',
+        //   anonymizeIP: true,
+        // },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
@@ -84,9 +85,16 @@ const config = {
         respectPrefersColorScheme: true,
       },
       algolia: {
-        indexName: '72ZSVD4RI2',
+        indexName: 'metisdata',
         appId: '72ZSVD4RI2',
         apiKey: '79bf3cc2d9a1b341e49efb833b9e584d',
+        // Optional: see doc section below
+        contextualSearch: true,
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+
+        container: 'div',
       },
       navbar: {
         title: 'Metis Documentation',
