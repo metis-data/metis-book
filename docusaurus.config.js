@@ -83,7 +83,11 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
-
+      algolia: {
+        indexName: '72ZSVD4RI2',
+        appId: '72ZSVD4RI2',
+        apiKey: '0d509bc7b53e5870d1d128f05a558841',
+      },
       navbar: {
         title: 'Metis Documentation',
         logo: {
