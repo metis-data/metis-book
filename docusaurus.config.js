@@ -91,7 +91,7 @@ const config = {
         contextualSearch: true,
 
         // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
+        searchPagePath: 'docs',
 
         container: 'div',
       },
