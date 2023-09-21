@@ -86,7 +86,7 @@ const config = {
       algolia: {
         indexName: '72ZSVD4RI2',
         appId: '72ZSVD4RI2',
-        apiKey: '0d509bc7b53e5870d1d128f05a558841',
+        apiKey: '79bf3cc2d9a1b341e49efb833b9e584d',
       },
       navbar: {
         title: 'Metis Documentation',
