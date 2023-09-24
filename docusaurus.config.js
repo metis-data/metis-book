@@ -36,6 +36,10 @@ const config = {
       src: '/js/segment.js',
       async: false,
     },
+    {
+      src: '/js/posthog.js',
+      async: false,
+    },
   ],
   plugins: [require.resolve('docusaurus-plugin-image-zoom')],
   presets: [
