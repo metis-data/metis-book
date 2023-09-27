@@ -88,9 +88,9 @@ const config = {
         respectPrefersColorScheme: true,
       },
       algolia: {
-        indexName: 'metisdata',
-        appId: '72ZSVD4RI2',
-        apiKey: '79bf3cc2d9a1b341e49efb833b9e584d',
+        indexName: 'metis-doc',
+        appId: 'VETEG1WAIE',
+        apiKey: '151460c121728a1543c236722d97a230',
         // Optional: see doc section below
         contextualSearch: true,
 
