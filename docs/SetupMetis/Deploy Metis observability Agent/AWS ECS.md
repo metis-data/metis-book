@@ -42,7 +42,7 @@ Parameters allow you to input values that will configure the agent to operate on
 
 Metis agent can monitor multiple databases, to do that add connection string for every database you would like to monitor, separated by semicolon `;` .
 
-**MetisAPIKey** - a valid Metis API key. (LINK to CREATE PAGE)
+**MetisAPIKey** - a valid Metis API key. [🥽 Create a project & generate API key](../Create%20a%20project%20&%20generate%20API%20key.md)
 
 **MetisEnvironment** - the environment (Cloud/On-premise) in which the agent is going to be deployed to. Select “cloud”
 
