@@ -28,9 +28,9 @@ The first section shows the template URL and description
 
 Parameters allow you to input values that will configure the agent to operate on your database.
 
-**AgentEnvironment** - which environment the agent is going to be deployed to, this parameter will determine if Slow-query-log will be activated. \*\*\*\*
+**AgentEnvironment** - which environment the agent is going to be deployed to, this parameter will determine if Slow-query-log will be activated.
 
-**AwsAccessKeyId** - \***\*the AWS access key, used to retrieve information form [CloudWatch](https://aws.amazon.com/cloudwatch/). \*\***
+**AwsAccessKeyId** - the AWS access key, used to retrieve information form [CloudWatch](https://aws.amazon.com/cloudwatch/).
 
 **AwsRegion -** the AWS region the agent is going to be deployed in. such as “eu-central-1”.
 
