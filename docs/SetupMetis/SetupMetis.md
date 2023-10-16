@@ -15,6 +15,6 @@ This is a guide to get up and running with **Metis**.
 
 [🎬 Add Metis’s GitHub actions to your repository ](<Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
 
-**Monitoring & troubleshoot:**
+**Monitoring & Troubleshoot:**
 
 [🤖 Deploy Metis Agent](<Deploy Metis observability Agent/Deploy Metis observability Agent.md>)
