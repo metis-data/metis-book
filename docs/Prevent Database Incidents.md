@@ -67,13 +67,13 @@ To do that, follow the documentation for the technology stack you have in the [�
 You can also see **[How To Seamlessly Integrate Sequelize with Node.js and JavaScript for Database Monitoring](https://www.metisdata.io/blog/how-to-seamlessly-integrate-sequelize-with-node-js-and-javascript-for-database-monitoring)** blog post taking you step by step through the integration of Sequelize ORM library with Metis platform.
 
 :::
-Once you do that, you will see **_Recent Activity_** card in your main project page:
+Once you do that, you will see **Staging** card in your main project page:
 
-![Untitled](Quickstart/Untitled%206.png)
+![Untitled](Quickstart/staging.png)
 
 Once you click on it, you will see the list of your endpoints with all the executions captured by Metis:
 
-![Untitled](Quickstart/Untitled%207.png)
+![Untitled](Quickstart/recent.png)
 
 You can see the HTTP code returned by the network call (1), the duration (2), and the number of insights with their severities (3). Once you click on any of the calls, you will see the insights page:
 
@@ -123,11 +123,11 @@ At the end of this section you’ll be able to see the SQL commands running in y
 
 You’ll get the list of performance insights and schema migration insights for each pull request:
 
-![Untitled](Quickstart/Untitled%2012.png)
+![Untitled](Quickstart/CI.png)
 
 You’ll also get the insights for the SQL migrations:
 
-![Untitled](Quickstart/Untitled%2013.png)
+![Untitled](Quickstart/mig.png)
 
 Each migration will be automatically analyzed and details will be provided:
 
@@ -176,6 +176,6 @@ Once you submit a pull request, you should get comments from Metis:
 
 You can also go to the Metis project page and see the list of pull requests:
 
-![Untitled](Quickstart/Untitled%2012.png)
+![Untitled](Quickstart/CI.png)
 
 You can now dive deep into each migration or test and see how it performed.

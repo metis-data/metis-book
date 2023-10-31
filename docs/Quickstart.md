@@ -45,7 +45,7 @@ Metis captures everything under an umbrella called Project. It consists of three
 
 Let’s start by creating a new project. Go to [Projects](https://app.metisdata.io/projects) and click on **_Create New Project_**:
 
-![Untitled](Quickstart/create project.png)
+![Untitled](Quickstart/create%20project.png)
 
 Enter a project name and click **_Create_**:
 
@@ -57,9 +57,9 @@ Your new project is now created and you should see the main project page.
 
 Go back to the projects page and click on the dot menu of the project, click on Settings and you will be able to view the project's **_API Key_**
 
-![Untitled](Quickstart/project settings.png)
+![Untitled](Quickstart/project%20settings.png)
 
-![Untitled](Quickstart/project edit.png)
+![Untitled](Quickstart/project%20edit.png)
 
 We’ll use the project's API key later to integrate with our application, 
 
@@ -94,13 +94,13 @@ To do that, follow the documentation for the technology stack you have in the [S
 You can also see **[How To Seamlessly Integrate Sequelize with Node.js and JavaScript for Database Monitoring](https://www.metisdata.io/blog/how-to-seamlessly-integrate-sequelize-with-node-js-and-javascript-for-database-monitoring)** blog post taking you step by step through the integration of Sequelize ORM library with Metis platform.
 :::
 
-Once you do that, you will see **Staging_** card in your main project page:
+Once you do that, you will see **Staging** card in your main project page:
 
 ![Untitled](Quickstart/staging.png)
 
 Once you click on it, you will see the list of your endpoints with all the executions captured by Metis:
 
-![Untitled](Quickstart/staging.png)
+![Untitled](Quickstart/recent.png)
 
 You can see the HTTP code returned by the network call (1), the duration (2), and the number of insights with their severities (3). Once you click on any of the calls, you will see the insights page:
 
