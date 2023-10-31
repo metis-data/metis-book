@@ -26,7 +26,7 @@ Metis Agent is open-source and you can verify how it works. It spins up periodic
 
 To run Metis agent, follow the [🤖 Deploy Metis Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Metis Agent:
 
-![Untitled](Quickstart/Untitled%2022.png)
+![Untitled](Quickstart/production.png)
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kTHiobuZGo0?si=6WapRtczr8Fn2PGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -36,9 +36,9 @@ Once you click on the server, you get the **Server Observability Dashboard**.
 
 ## Server Observability Dashboard
 
-![Untitled](Quickstart/Untitled%2023.png)
+![Untitled](Quickstart/host%20dash.png)
 
-The dashboard shows multiple charts: CPU (1), memory (2), throughput (3), active sessions (4), and connections (5). You can also see insights about extensions (6), configuration (7), and details for a specific database.
+The dashboard shows multiple charts: CPU (1), memory (2), throughput (3), active sessions (4), and connections (5). You can also see insights about Configurations (6), and details for a specific database (7).
 
 You can zoom in each chart by clicking on it. You can also modify the time range by dragging the slider:
 
@@ -62,11 +62,11 @@ Each insight is presented in a similar manner:
 
 ![Untitled](Quickstart/Untitled%2028.png)
 
-When you go to a database view, you get the database-oriented dashboard:
+When you go to a database view, you get the **database-oriented** dashboard:
 
-![Untitled](Quickstart/Untitled%2029.png)
+![Untitled](Quickstart/DB%20dash.png)
 
-You can see the transactions (1), rows (2), temporary files (3), cache hits (4). You can also examine table sizes (5), schema insights (6), indexes (7), and queries (8).
+You can see the transactions (1), rows (2), temporary files (3), cache hits (4). You can also examine table sizes (5), schema insights (6), indexes (7),queries (8) and Extensions (9).
 
 After clicking on the **Table Sizes**, you can see the details of each table:
 
@@ -88,7 +88,7 @@ You can see the index name and other details (1), automated insights (2), and th
 
 ![Untitled](Quickstart/Untitled%2034.png)
 
-You can also go to the **Queries:**
+You can go to the **Queries:**
 
 ![Untitled](Quickstart/Untitled%2035.png)
 
@@ -99,5 +99,13 @@ The screen shows the query texts (1), number of calls (2), average duration (3),
 You can see the query text (1), the average duration over time (2), and the number of hourly calls (3). You can also click on **Insights** to get automated recommendations:
 
 ![Untitled](Quickstart/Untitled%2037.png)
+
+You can also go to the **Extensions**:
+
+![Untitled](Quickstart/Untitled%2025.png)
+
+You can see the list of installed extensions and insights for each one of them requiring attention. When you click on the extension, you get:
+
+![Untitled](Quickstart/Untitled%2026.png)
 
 #
