@@ -45,17 +45,23 @@ Metis captures everything under an umbrella called Project. It consists of three
 
 Let’s start by creating a new project. Go to [Projects](https://app.metisdata.io/projects) and click on **_Create New Project_**:
 
-![Untitled](Quickstart/Untitled.png)
+![Untitled](Quickstart/create%20project.png)
 
 Enter a project name and click **_Create_**:
 
 ![Untitled](Quickstart/Untitled%201.png)
 
-Your new project is now created and you should see the dashboard. You can click on the **_API Key_** button to copy the key.
+Your new project is now created and you should see the main project page.
 
-![Untitled](Quickstart/Untitled%202.png)
 
-We’ll use the API key later to integrate with our application.
+
+Go back to the projects page and click on the dot menu of the project, click on Settings and you will be able to view the project's **_API Key_**
+
+![Untitled](Quickstart/project%20settings.png)
+
+![Untitled](Quickstart/project%20edit.png)
+
+We’ll use the project's API key later to integrate with our application, 
 
 ## Prevention - BEFORE the deployment
 
@@ -88,13 +94,13 @@ To do that, follow the documentation for the technology stack you have in the [S
 You can also see **[How To Seamlessly Integrate Sequelize with Node.js and JavaScript for Database Monitoring](https://www.metisdata.io/blog/how-to-seamlessly-integrate-sequelize-with-node-js-and-javascript-for-database-monitoring)** blog post taking you step by step through the integration of Sequelize ORM library with Metis platform.
 :::
 
-Once you do that, you will see **_Recent Activity_** card in your main project page:
+Once you do that, you will see **Staging** card in your main project page:
 
-![Untitled](Quickstart/Untitled%206.png)
+![Untitled](Quickstart/staging.png)
 
 Once you click on it, you will see the list of your endpoints with all the executions captured by Metis:
 
-![Untitled](Quickstart/Untitled%207.png)
+![Untitled](Quickstart/recent.png)
 
 You can see the HTTP code returned by the network call (1), the duration (2), and the number of insights with their severities (3). Once you click on any of the calls, you will see the insights page:
 
@@ -137,11 +143,11 @@ At the end of this section you’ll be able to see the SQL commands running in y
 
 You’ll get the list of performance insights and schema migration insights for each pull request:
 
-![Untitled](Quickstart/Untitled%2012.png)
+![Untitled](Quickstart/CI.png)
 
 You’ll also get the insights for the SQL migrations:
 
-![Untitled](Quickstart/Untitled%2013.png)
+![Untitled](Quickstart/mig.png)
 
 Each migration will be automatically analyzed and details will be provided:
 
@@ -231,7 +237,7 @@ Once you submit a pull request, you should get comments from Metis:
 
 You can also go to the Metis project page and see the list of pull requests:
 
-![Untitled](Quickstart/Untitled%2012.png)
+![Untitled](Quickstart/CI.png)
 
 You can now dive deep into each migration or test and see how it performed.
 
@@ -248,31 +254,23 @@ At the end of this section you will be able to:
 
 ### Deploy Metis Agent
 
-To run Metis agent, follow the [🤖 Deploy Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Agent:
+To run Metis agent, follow the [🤖 Deploy Metis observability Agent](/docs/SetupMetis/Deploy%20Metis%20observability%20Agent/Deploy%20Metis%20observability%20Agent.md) guide. Once you do that, you should see the list of the servers monitored by the Agent in the production section of the project:
 
-![Untitled](Quickstart/Untitled%2022.png)
+![Untitled](Quickstart/production.png)
 
 Once you click on the server, you get the **Server Observability Dashboard**.
 
-![Untitled](Quickstart/Untitled%2023.png)
+![Untitled](Quickstart/host%20dash.png)
 
-The dashboard shows multiple charts: CPU (1), memory (2), throughput (3), active sessions (4), and connections (5). You can also see insights about extensions (6), configuration (7), and details for a specific database.
+The dashboard shows multiple charts: CPU (1), memory (2), throughput (3), active sessions (4), and connections (5). You can also see insights about configurations (6),  and details for a specific database (7).
 
 You can zoom in each chart by clicking on it. You can also modify the time range by dragging the slider:
 
 ![Untitled](Quickstart/Untitled%2024.png)
 
-Once you click on the extensions, you get this:
-
-![Untitled](Quickstart/Untitled%2025.png)
-
-You can see the list of installed extensions and insights for each one of them requiring attention. When you click on the extension, you get:
-
-![Untitled](Quickstart/Untitled%2026.png)
-
 You can see the list of insights (1), the impact of each insight (2), and the instruction how to fix that (3).
 
-When you go to configuration, you get a very similar list of configuration keys and insights:
+When you go to configuration, You can see the list of configuration keys and insights:
 
 ![Untitled](Quickstart/Untitled%2027.png)
 
@@ -280,17 +278,17 @@ Each insight is presented in a similar manner:
 
 ![Untitled](Quickstart/Untitled%2028.png)
 
-When you go to a database view, you get the database-oriented dashboard:
+When you go to a database view, you get the **database-oriented** dashboard:
 
-![Untitled](Quickstart/Untitled%2029.png)
+![Untitled](Quickstart/DB%20dash.png)
 
-You can see the transactions (1), rows (2), temporary files (3), cache hits (4). You can also examine table sizes (5), schema insights (6), indexes (7), and queries (8).
+You can see the transactions (1), rows (2), temporary files (3), cache hits (4). You can also examine table sizes (5), schema insights (6), indexes (7), queries (8) and extensions (9).
 
 After clicking on the **Table Sizes**, you can see the details of each table:
 
 ![Untitled](Quickstart/Untitled%2030.png)
 
-Similarly, you can check your schemas:
+Similarly, you can check your **Schemas**:
 
 ![Untitled](Quickstart/Untitled%2031.png)
 
@@ -298,7 +296,7 @@ Each schema has insights. Once you click on it, you go to a screen that shows th
 
 ![Untitled](Quickstart/Untitled%2032.png)
 
-When you go to indexes, you can see the following:
+When you go to **Indexes**, you can see the following:
 
 ![Untitled](Quickstart/Untitled%2033.png)
 
@@ -306,7 +304,7 @@ You can see the index name and other details (1), automated insights (2), and th
 
 ![Untitled](Quickstart/Untitled%2034.png)
 
-You can also go to the **Queries:**
+You can go to the **Queries:**
 
 ![Untitled](Quickstart/Untitled%2035.png)
 
@@ -317,6 +315,15 @@ The screen shows the query texts (1), number of calls (2), average duration (3),
 You can see the query text (1), the average duration over time (2), and the number of hourly calls (3). You can also click on **Insights** to get automated recommendations:
 
 ![Untitled](Quickstart/Untitled%2037.png)
+
+You can also go to the **Extensions**:
+
+![Untitled](Quickstart/Untitled%2025.png)
+
+You can see the list of installed extensions and insights for each one of them requiring attention. When you click on the extension, you get:
+
+![Untitled](Quickstart/Untitled%2026.png)
+
 
 # What now?
 
