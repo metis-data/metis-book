@@ -260,7 +260,7 @@ To run Metis agent, follow the [🤖 Deploy Metis observability Agent](/docs/Set
 
 Once you click on the server, you get the **Server Observability Dashboard**.
 
-![Untitled](Quickstart/host dash.png)
+![Untitled](Quickstart/host%20dash.png)
 
 The dashboard shows multiple charts: CPU (1), memory (2), throughput (3), active sessions (4), and connections (5). You can also see insights about configurations (6),  and details for a specific database (7).
 
@@ -280,7 +280,7 @@ Each insight is presented in a similar manner:
 
 When you go to a database view, you get the **database-oriented** dashboard:
 
-![Untitled](Quickstart/DB dash.png)
+![Untitled](Quickstart/DB%20dash.png)
 
 You can see the transactions (1), rows (2), temporary files (3), cache hits (4). You can also examine table sizes (5), schema insights (6), indexes (7), queries (8) and extensions (9).
 
