@@ -11,7 +11,6 @@ With the query analyzer module you can analyze and get insights about your queri
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Hlah3Gvjf_E?si=GKXX535UjOwswY7t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
 
-
 The query analyzer requires only a query and its executions plan in order to provide valuable insight about it.
 
 The query analyzer uses the same Metis engine to get comprehensive information about a given query.
@@ -28,7 +27,7 @@ Login is not required for using the Query Analyzer
 3. Paste the queries execution plan in the text box on the right side of the page
 4. Click on “Analyze”
 
-![Screenshot 2023-08-29 at 18.42.12.png](Query%20analyzer/analyzer.png)
+![“Analyze”](Query%20analyzer/analyzer_full.png)
 
 ### How to create an execution plan
 
@@ -55,7 +54,7 @@ The result will be an execution plan, in a JSON format which we will copy to the
 
 After inserting a query and its execution plan the Query analyzer will look like this:
 
-![Screenshot 2023-08-29 at 18.50.57.png](Query%20analyzer/analyzer_full.png)
+![“Analyze”](Query%20analyzer/analyzer_full.png)
 
 After clicking on “Analyze” you will get an analyzed query result with insights
 
