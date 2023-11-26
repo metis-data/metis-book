@@ -8,7 +8,7 @@ sidebar_position: 6
 With the query analyzer module you can analyze and get insights about your queries without integrating Metis in your application.
 
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Hlah3Gvjf_E?si=zd6mDCGZxkk`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zd6mDCGZxkk?si=Xkg5_hMp1iIDFgKX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
 
 The query analyzer requires only a query and its executions plan in order to provide valuable insight about it.
