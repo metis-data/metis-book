@@ -29,7 +29,7 @@ Login is not required for using the Query Analyzer
 
 ![“Analyze”](Query%20analyzer/analyzer_full.png)
 
-### How to create an execution plan
+### How to create an Execution Plan
 
 Execution plan is the instruction set for the DB on how to execute a given query, and it holds a valuable information on how the BD will behave and what the impact on the DB will be.
 
