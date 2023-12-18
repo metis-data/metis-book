@@ -4,7 +4,7 @@
 
 ### General
 
-Metis agent collect information from your hosts and send it to Metis to analyze and extract valuable insights and detect issues about your databases.
+Metis **** agent collect information from your hosts and send it to Metis to analyze and extract valuable insights and detect issues about your databases.
 
 You can view your hosts and databases information and metrics from the Monitoring section in the webapp.
 
