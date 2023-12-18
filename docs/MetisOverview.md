@@ -24,13 +24,13 @@ Metis platform is built on 3 pillars:
 
 Prevent your database code from breaking production by detecting DB-related problems during the development and CI/CD, before the new code is deployed to the production environment.
 
-[Link to Live Demo](https://demo.metisdata.io/projects/5KauFohR2zaOxXLN2EimDmZEHRBTwKX4DG8E1wR5)
+[Link to Live Demo](https://demo.metisdata.io/projects/)
 
 ### Monitoring
 
 Advanced monitoring of the production environment. Collect and organize information about performance, schema, and configuration. The users can view the data in dashboards.
 
-[Link to Live Demo](https://demo.metisdata.io/projects/5KauFohR2zaOxXLN2EimDmZEHRBTwKX4DG8E1wR5/dashboard/ede5792f-2311-620e-f4d8-5c37e8f51915/database-2.cofhrj7zmyn4.eu-central-1.rds.amazonaws.com/host)
+[Link to Live Demo](https://demo.metisdata.io/monitoring)
 
 ### Troubleshooting
 
