@@ -1,55 +1,40 @@
 # 🤖 Deploy Metis Agent
 
-## Data Flow
+# Agent deployment flow
 
-**Step 1 - Configure Metis observability agent**
+### General
 
-The Metis agent sends metadata to the Metis platform every X minutes. One Agent can monitor multiple Postgres servers and databases.
+Metis agent collect information from your hosts and send it to Metis to analyze and extract valuable insights and detect issues about your databases.
 
-**Step 2 - Data Processing**
+You can view your hosts and databases information and metrics from the Monitoring section in the webapp.
 
-The backend processes the raw data into well-defined data sets. It also calculates insights to help focus on problems and how to solve them.
+In addition, Metis Projects are representation of your team’s dev projects with DB issues and insights digested in such a way your dev team can consume and make use of.
 
-**Step 3 - View the data in the Observability Dashboard**
+## Deployment process
 
-Open the web app to view the analyzed data. The dashboard provides useful information about: - The PG Server: performance and configuration - PG Databases: size, performance, and activity - Tables and indexes: size, scheme analysis, activity - Queries: statistics and performance analysis
+Metis has created a fast and simple wizard to deploy new agent to your hosts.
 
-## Metis agent - data sources
+It has 4 steps
 
-The Metis agent collects many Data Sets from 3 source types:
+1. **Vendor & Environment Selection**
+2. **Host Connection Information**
+3. **Configurations**
+4. **Deployment**
 
-**SQL Queries:** the agent uses a connection string and a set of predefined SQL commands to collect Data Sets such as existing Databases, their size, DB activity, the schema of each DB, table size, index usage, and configuration... These Data Sets are collected from any Postgres server: AWS RDS, AWS Aurora, SQL on K8S, Google Cloud SQL for PostgreSQL, Azure Database for PostgreSQL etc.
+### **Vendor & Environment Selection**
 
-**Performance Counters:** the agent also collects the main performance counters such as CPU, free memory, IO Throughput, and Avg Active Sessions. Current version support only AWS CloudWatch and Prometheus.
+![deployment 1.png](Deploy%20Metis%20Agent/dep_1.png)
 
-**Query Log:** The SQL commands (all or a sample of them) and their execution plan.
+Selecting your hosts’ vendor and their environment (production/development)
 
-## Configuration Overview
+The vendor type is being used to collect more information about your DBs, features and metrics support may very between vendors.
 
-When configuring the agent, you would need to give Metis the desired implementation of the Agent. meaning how you want to install the agent and where to send the data to.
+:::tip
+If you are planing to add multiple hosts make sure they are all on the same vendor an environment otherwise you need to complete the flow separately
+:::
 
-**Agent’s Host:** Metis Agent can be deployed to Docker container deployed to [Amazon Elastic Container Service](https://aws.amazon.com/ecs/) or K8s.
 
-**Monitored Postgres servers and databases:** A connection string to the PostgreSQL server the Metis agent should monitor.
-
-**Monitored performance counters source:** Metis currently supports reading from CloudWatch or Postgres deployed on top of docker or K8s.
-
-**Destination (Metis Platform):** The Metis agent sends the data to the Metis Platform using a Metis API key. You can also consume performance metrics of your database using our Prometheus exporter.
-
-## Prerequisites
-
-**Prepare Postgres to be monitored by installing PG extensions:**
-
-- (Required)  [pg_stat_statements](https://www.postgresql.org/current/pgstatstatements.html) - the `pg_stat_statements` module provides a means for tracking the planning and execution statistics of all SQL statements executed by a server.
-
-On RDS:
-
-- (Required) [log_fdw](https://github.com/aws/postgresql-logfdw) - enable reads from the query log to analyze the queries and their execution plan. Follow the instructions below on how to configure it. more details can be found in [AWS documentation](https://github.com/aws/postgresql-logfdw).
-
-On others:
-
-- (Required) [pg_store_plans](https://ossc-db.github.io/pg_store_plans/) -  provides a means for tracking execution plan statistics of all SQL statements executed by a server.
-- (Required) file_fdw - Enable reads from the query log to analyze the queries and their execution plan.
+Selecting you host’s environment will be used to differentiate your DB’s enviornments  in your projects.
 
 ## Create a monitoring user
 
@@ -66,15 +51,33 @@ GRANT pg_monitor TO metis;
 
 --Grant access to EVERY database the Metis agent should monitor.
 GRANT CONNECT ON DATABASE <DATABASE NAME> TO metis;
+
 ```
 
-**RDS user permissions (on RDS)**
+### **Host Connection Information**
+
+![deployment 2.png](Deploy%20Metis%20Agent/dep_2.png)
+
+Enter a connection string to connect to your host’s Postgress DBs.
+The connection string’s format is: `postgresql://postgres:password@rds_name:port`
+
+**On AWS:**
+
+Metis collects data from AWS CloudWatch, in order to do that enter the following:
+
+- Instance ID - The DB identifier in AWS
+- AWS region - The host’s region on AWS
+- Permission method for AWS - there are two options:
+    1. Assume role - provide ARN
+    2. Access key - provide access key and secret access key
+
+**RDS user permissions**
 
 AWS RDS requires credentials and permissions
 
-First, create a new user with `Access_Key` and `Secret_Key`.
+First, create a new user with `Access_Key` and `Secret_Key`.
 
-To read the performance counters the AWS user used by the Metis agent must have the **[GetMetricStatistics](https:/.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)** policy.
+To read the performance counters the AWS user used by the Metis agent must have the **[GetMetricStatistics](https://www.docs.metisdata.io/.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)** policy.
 
 ```json
 {
@@ -95,77 +98,61 @@ To read the performance counters the AWS user used by the Metis agent must have 
     }
   ]
 }
+
 ```
 
-## Configure Query Log (on RDS)
+### **Configurations**
 
-You should configure the Query Log to collect a sample of the queries and their execution plan. more information can be found on [Metis Slow Query Log](https://www.npmjs.com/package/@metis-data/slow-query-log).
+**Prepare Postgres to be monitored by installing PG extensions - required on each data base**
 
-| Parameter                          | Value                        | DB restart required |
-| ---------------------------------- | ---------------------------- | ------------------- |
-| session_preload_libraries          | auto_explain                 | Yes                 |
-| logging_collector                  | ‘on’                         | Yes (locally)       |
-| log_destination                    | ‘csvlog’                     | Yes (locally)       |
-| log_filename                       | ‘postgresql.log.%Y-%m-%d-%H’ | Yes (locally)       |
-| log_rotation_age                   | 60                           | Yes (locally)       |
-| auto_explain.log_min_duration      | 10                           | No                  |
-| auto_explain.log_format            | ‘json’                       | No                  |
-| auto_explain.log_analyze           | True                         | No                  |
-| auto_explain.log_buffers           | True                         | No                  |
-| auto_explain.log_timing            | True                         | No                  |
-| auto_explain.log_verbose           | True                         | No                  |
-| auto_explain.log_nested_statements | True                         | No                  |
-| log_statement                      | ‘mod’                        | No                  |
-| log_min_duration_statement         | 10                           | No                  |
-| compute_query_id                   | ‘on’                         | No                  |
+- (Required) [pg_stat_statements](https://www.postgresql.org/current/pgstatstatements.html) - the `pg_stat_statements` module provides a means for tracking the planning and execution statistics of all SQL statements executed by a server.
+In every database run the following:
+    
+    `CREATE EXTENSION IF NOT EXISTS pg_stat_statements;`
+    
 
-:::tip
-The query log might become large quickly in a busy environment. AWS RDS generates a Query Log file every hour (the user can't change that). The size of each log file **should not exceed 150MB**.
+### Deploy
+![deployment 3.png](Deploy%20Metis%20Agent/dep_3.png)
 
-If the log files are larger than 150MB consider:
+Choose your deployment method Docker or Helm
 
-Increase `auto_explain.log_min_duration` and `log_min_duration_statement`
+Copy the command and run on your host’s environment 
 
-Sample only a percentage of the logs (by default it logs 100% of the queries that match the min duration).
+# More details about Metis Agent and how it works
 
-:::
+## Data Flow
 
-RDS setup using AWS CLI: If it is the first time of enabling Postgres logs on RDS, a new parameter group should be created with `logging_collector=on`.
+**Step 1 - Configure Metis observability agent**
 
-After enabling slow query log in your RDS, the rest of Postgres variables can be set with AWS CLI:
+The Metis agent sends metadata to the Metis platform every X minutes. One Agent can monitor multiple Postgres servers and databases.
 
-```bash
-aws rds modify-db-parameter-group \
-  --db-parameter-group-name your-parameter-group-name \
-  --parameters \
-    "ParameterName=shared_preload_libraries,ParameterValue=auto_explain,ApplyMethod=pending-reboot" \
-    "ParameterName=log_destination,ParameterValue=csvlog,ApplyMethod=immediate" \
-    "ParameterName=log_filename,ParameterValue=postgresql.log.%Y-%m-%d-%H,ApplyMethod=immediate" \
-    "ParameterName=log_rotation_age,ParameterValue=60,ApplyMethod=immediate" \
-    "ParameterName=log_statement,ParameterValue=mod,ApplyMethod=immediate" \
-    "ParameterName=log_min_duration_statement,ParameterValue=0,ApplyMethod=immediate" \
-    "ParameterName=compute_query_id,ParameterValue=on,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_format,ParameterValue=json,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_min_duration,ParameterValue=0,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_analyze,ParameterValue=true,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_buffers,ParameterValue=true,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_timing,ParameterValue=true,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_verbose,ParameterValue=true,ApplyMethod=immediate" \
-    "ParameterName=auto_explain.log_nested_statements,ParameterValue=true,ApplyMethod=immediate"
+**Step 2 - Data Processing**
 
-# reboot to apply shared_preload_libraries, this set will override an exists values
-# so if another library is needed make sure to add it to the string command
-aws rds reboot-db-instance --db-instance-identifier your-db-instance-id
-```
+The backend processes the raw data into well-defined data sets. It also calculates insights to help focus on problems and how to solve them.
 
-## Deploy methods
+**Step 3 - View the data in the Observability Dashboard**
 
-[🐳 Docker](Docker.md)
+Open the web app to view the analyzed data. The dashboard provides useful information about: - The PG Server: performance and configuration - PG Databases: size, performance, and activity - Tables and indexes: size, scheme analysis, activity - Queries: statistics and performance analysis
 
-[💠 AWS ECS](<AWS ECS.md>)
+## Metis agent - data sources
 
-[⚙️ Using HELM Chart](Using%20HELM%20Chart.md)
+The Metis agent collects many Data Sets from 3 source types:
 
-**Integrations**
+**SQL Queries:** the agent uses a connection string and a set of predefined SQL commands to collect Data Sets such as existing Databases, their size, DB activity, the schema of each DB, table size, index usage, and configuration... 
+These Data Sets are collected from any Postgres server: AWS RDS, AWS Aurora, SQL on K8S, Google Cloud SQL for PostgreSQL, Azure Database for PostgreSQL etc.
 
-[🌀 Prometheus integration with Grafana](Prometheus%20integration%20with%20Grafana.md)
+**Performance Counters:** the agent also collects the main performance counters such as CPU, free memory, IO Throughput, and Avg Active Sessions. Current version support only AWS CloudWatch and Prometheus.
+
+**Query Log:** The SQL commands (all or a sample of them) and their execution plan.
+
+## Configuration Overview
+
+When configuring the agent, you would need to give Metis the desired implementation of the Agent. meaning how you want to install the agent and where to send the data to.
+
+**Agent’s Host:** Metis Agent can be deployed to Docker container deployed to [Amazon Elastic Container Service](https://aws.amazon.com/ecs/) or K8s.
+
+**Monitored Postgres servers and databases:** A connection string to the PostgreSQL server the Metis agent should monitor.
+
+**Monitored performance counters source:** Metis currently supports reading from CloudWatch or Postgres deployed on top of docker or K8s.
+
+**Destination (Metis Platform):** The Metis agent sends the data to the Metis Platform using a Metis API key. You can also consume performance metrics of your database using our Prometheus exporter.
