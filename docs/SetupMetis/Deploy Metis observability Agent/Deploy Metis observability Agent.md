@@ -29,9 +29,7 @@ Selecting your hosts’ vendor and their environment (production/development)
 
 The vendor type is being used to collect more information about your DBs, features and metrics support may very between vendors.
 
-
 If you are planing to add multiple hosts make sure they are all on the same vendor an environment otherwise you need to complete the flow separately
-
 
 
 Selecting you host’s environment will be used to differentiate your DB’s enviornments  in your projects.
@@ -55,6 +53,7 @@ GRANT CONNECT ON DATABASE <DATABASE NAME> TO metis;
 ```
 
 ### **Host Connection Information**
+
 
 ![deployment 2.png](Deploy%20Metis%20Agent/dep_2.png)
 
@@ -156,3 +155,4 @@ When configuring the agent, you would need to give Metis the desired implementat
 **Monitored performance counters source:** Metis currently supports reading from CloudWatch or Postgres deployed on top of docker or K8s.
 
 **Destination (Metis Platform):** The Metis agent sends the data to the Metis Platform using a Metis API key. You can also consume performance metrics of your database using our Prometheus exporter.
+

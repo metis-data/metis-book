@@ -40,6 +40,10 @@ const config = {
       src: '/js/posthog.js',
       async: false,
     },
+    {
+      src: '/js/customerly.js',
+      async: false,
+    },
   ],
   plugins: [require.resolve('docusaurus-plugin-image-zoom')],
   presets: [
