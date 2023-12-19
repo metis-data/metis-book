@@ -29,10 +29,11 @@ Selecting your hosts’ vendor and their environment (production/development)
 
 The vendor type is being used to collect more information about your DBs, features and metrics support may very between vendors.
 
+:::tip
 If you are planing to add multiple hosts make sure they are all on the same vendor an environment otherwise you need to complete the flow separately
+:::
 
-
-Selecting you host’s environment will be used to differentiate your DB’s enviornments  in your projects.
+Selecting you host’s environment will be used to differentiate your DB’s enviornments in your projects.
 
 ## Create a monitoring user
 
@@ -54,7 +55,6 @@ GRANT CONNECT ON DATABASE <DATABASE NAME> TO metis;
 
 ### **Host Connection Information**
 
-
 ![deployment 2.png](Deploy%20Metis%20Agent/dep_2.png)
 
 Enter a connection string to connect to your host’s Postgress DBs.
@@ -67,8 +67,8 @@ Metis collects data from AWS CloudWatch, in order to do that enter the following
 - Instance ID - The DB identifier in AWS
 - AWS region - The host’s region on AWS
 - Permission method for AWS - there are two options:
-    1. Assume role - provide ARN
-    2. Access key - provide access key and secret access key
+  1. Assume role - provide ARN
+  2. Access key - provide access key and secret access key
 
 **RDS user permissions**
 
@@ -97,7 +97,6 @@ To read the performance counters the AWS user used by the Metis agent must have 
     }
   ]
 }
-
 ```
 
 ### **Configurations**
@@ -105,17 +104,16 @@ To read the performance counters the AWS user used by the Metis agent must have 
 **Prepare Postgres to be monitored by installing PG extensions - required on each data base**
 
 - (Required) [pg_stat_statements](https://www.postgresql.org/current/pgstatstatements.html) - the `pg_stat_statements` module provides a means for tracking the planning and execution statistics of all SQL statements executed by a server.
-In every database run the following:
-    
-    `CREATE EXTENSION IF NOT EXISTS pg_stat_statements;`
-    
+  In every database run the following:
+      `CREATE EXTENSION IF NOT EXISTS pg_stat_statements;`
 
 ### Deploy
+
 ![deployment 3.png](Deploy%20Metis%20Agent/dep_3.png)
 
 Choose your deployment method Docker or Helm
 
-Copy the command and run on your host’s environment 
+Copy the command and run on your host’s environment
 
 # More details about Metis Agent and how it works
 
@@ -137,7 +135,7 @@ Open the web app to view the analyzed data. The dashboard provides useful inform
 
 The Metis agent collects many Data Sets from 3 source types:
 
-**SQL Queries:** the agent uses a connection string and a set of predefined SQL commands to collect Data Sets such as existing Databases, their size, DB activity, the schema of each DB, table size, index usage, and configuration... 
+**SQL Queries:** the agent uses a connection string and a set of predefined SQL commands to collect Data Sets such as existing Databases, their size, DB activity, the schema of each DB, table size, index usage, and configuration...
 These Data Sets are collected from any Postgres server: AWS RDS, AWS Aurora, SQL on K8S, Google Cloud SQL for PostgreSQL, Azure Database for PostgreSQL etc.
 
 **Performance Counters:** the agent also collects the main performance counters such as CPU, free memory, IO Throughput, and Avg Active Sessions. Current version support only AWS CloudWatch and Prometheus.
@@ -155,4 +153,3 @@ When configuring the agent, you would need to give Metis the desired implementat
 **Monitored performance counters source:** Metis currently supports reading from CloudWatch or Postgres deployed on top of docker or K8s.
 
 **Destination (Metis Platform):** The Metis agent sends the data to the Metis Platform using a Metis API key. You can also consume performance metrics of your database using our Prometheus exporter.
-
