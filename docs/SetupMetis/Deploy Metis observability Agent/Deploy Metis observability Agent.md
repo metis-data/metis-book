@@ -29,9 +29,9 @@ Selecting your hosts’ vendor and their environment (production/development)
 
 The vendor type is being used to collect more information about your DBs, features and metrics support may very between vendors.
 
-:::tip
+
 If you are planing to add multiple hosts make sure they are all on the same vendor an environment otherwise you need to complete the flow separately
-:::
+
 
 
 Selecting you host’s environment will be used to differentiate your DB’s enviornments  in your projects.
