@@ -24,19 +24,31 @@ Metis platform is built on 3 pillars:
 
 Prevent your database code from breaking production by detecting DB-related problems during the development and CI/CD, before the new code is deployed to the production environment.
 
-[Link to Live Demo](https://demo.metisdata.io/projects/)
-
 ### Monitoring
 
 Advanced monitoring of the production environment. Collect and organize information about performance, schema, and configuration. The users can view the data in dashboards.
 
-[Link to Live Demo](https://demo.metisdata.io/monitoring)
-
 ### Troubleshooting
 
-Get clear insights about the root cause and all the relevant context for quickly solving the problems.
+Get clear insights about the root cause and all the relevant context for quickly solving the problems.   
 
-[Link to Live Demo](https://demo.metisdata.io/projects/5KauFohR2zaOxXLN2EimDmZEHRBTwKX4DG8E1wR5/activities/1ab47d9b-cc12-4122-affb-8b8d6aa4c728)
+
+## Live Demo
+Visit our [Live Demo](https://demo.metisdata.io/projects/) to see Metis in action. 
+
+## Real-World Examples
+- A query is inefficient, it scans large tables. The IO is a bottleneck that affects the system.
+
+- A new version of the app changed the schema and accidentally deleted an index, which caused many queries to perform slowly.
+
+- A query used to work fine for a long time. But as the amount of data in the db grows, the query becomes slower.
+
+- Many temp files are created when the queries sort the data, which makes the IO a bottleneck.
+
+- The allocated amount of memory is simply not enough to support the workloads.
+
+- The statistics of the tables aren’t up to date. As a result, the query optimizer generates suboptimal plans.
+
 
 ## Quick start
 
