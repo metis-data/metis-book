@@ -5,39 +5,11 @@ sidebar_position: 2
 
 # Quickstart!
 
----
+Welcome to Metis! In this quick tutorial, we will go over the basic steps of setting up your account with Metis and monitor a PostgreSQL server using Metis Agent. 
+Let’s get started!
 
-# About Metis solution
-
-Metis covers all your database needs, from development to production. Prevent slow queries, outages and data loss right from dev or staging environments. Troubleshoot and optimize your production database
-in seconds. Never worry about your database again.
-
-![spaces%2F-MiqIHa1G-OhMZ7Fui__%2Fuploads%2FljU9ZO6HotxQrUaOryp6%2FBuild%20with%20confidence.webp](Quickstart/spaces2F-MiqIHa1G-OhMZ7Fui__2Fuploads2FljU9ZO6HotxQrUaOryp62FBuild20with20confidence.webp)
-
-Metis natively integrates to the modern (GitOps) SDLC. Metis provides a holistic solution for every aspect of the database-related development, observability and troubleshooting.
-
-## Metis helps you to:
-
-- Prevent the bad code from reaching your production environments;
-- Monitor all your databases and environments;
-- Improve the performance, stability, and reliability of your systems;
-- Troubleshoot and find the root causes.
-
-Metis focuses on integration with your developer ecosystem, monitoring your databases, and automatically analyzing all the interactions.
-
-![Untitled](Quickstart/Image_16.png)
-
-## The goal of this tutorial
-
-At the end of this tutorial you will:
-
-- Understand Metis's core components and how they improve your application;
-- Know how to interact with Metis;
-- Learn how to integrate Metis with your application;
-- Get automated insights for your code changes;
-- Configure monitoring for your databases.
-
-This guide will give you a foundation to start preventing issues originating from your databases and monitor your databases, and, lastly how to troubleshoot them.
+## Create a Metis account
+The first step is creating an account. This account will be used to generate API Keys and store the traces, metrics and other data sent to the platform. 
 
 ## Creating a project
 
