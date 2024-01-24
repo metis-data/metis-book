@@ -4,27 +4,19 @@ sidebar_position: 2
 ---
 
 # Quickstart!
-
 Welcome to Metis! In this quick tutorial, we will go over the basic steps of setting up your account with Metis and monitor a PostgreSQL server using Metis Agent. 
 Let’s get started!
 
-## Create a Metis account
+## Create a New Metis account
 The first step is creating an account. This account will be used to generate API Keys and store the traces, metrics and other data sent to the platform. 
+![Untitled](Quickstart/metis_login_page.png) 
 
-## Creating a project
+## Configure a Metis Agent
+First, you will need to configure a Metis Agent, a tool that helps collect important information from PostgreSQL and MySQL servers. It keeps an eye on things like what the database is doing, any changes to its structure, its settings, and the size of its tables. By tracking these details, Metis Agent gives administrators and users useful data to understand and improve the performance of their databases. 
 
-Metis captures everything under an umbrella called Project. It consists of three parts: recent activity, CI/CD, and observability dashboard.
+The easiest way to configure an Agent is using a **Wizard**. To learn how to use the wizard watch this [video](https://youtu.be/K8yMuhfBGfU) or follow the steps below. 
 
-Let’s start by creating a new project. Go to [Projects](https://app.metisdata.io/projects) and click on **_Create New Project_**:
-
-![Untitled](Quickstart/create%20project.png)
-
-Enter a project name and click **_Create_**:
-
-![Untitled](Quickstart/Untitled%201.png)
-
-Your new project is now created and you should see the main project page.
-
+Go to the page [Monitoring](https://app.metisdata.io/monitoring). Click on the button “Deploy” to open the configuration Wizard.
 
 
 Go back to the projects page and click on the dot menu of the project, click on Settings and you will be able to view the project's **_API Key_**
