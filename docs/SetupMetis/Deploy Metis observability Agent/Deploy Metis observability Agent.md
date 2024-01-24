@@ -11,9 +11,8 @@ You can view your hosts and databases information and metrics from the Monitorin
 In addition, Metis Projects are representation of your team’s dev projects with DB issues and insights digested in such a way your dev team can consume and make use of.
 
 ## Deployment process
-
-Metis has created a fast and simple wizard to deploy new agent to your hosts.
-
+ 
+Metis has created a fast and simple wizard to deploy a new agent to your hosts. To learn how to use the wizard, watch this [video](https://youtu.be/K8yMuhfBGfU) or follow the steps below.
 It has 4 steps
 
 1. **Vendor & Environment Selection**
