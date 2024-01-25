@@ -32,6 +32,13 @@ Copy and run the generated Docker command to start monitoring the DB server.
 ![Untitled](Quickstart/New_PG_Wizard_Docker_Run.png)
 
 
+Notice the wizard created automatically and API Key. 
+
+<aside>
+❗ It might take 2-3 minutes to see the data.
+</aside>  
+  
+  Go back to the page **Monitoring**. The new monitored PostgreSQL server can be found there.
 
 
 
@@ -40,19 +47,7 @@ Copy and run the generated Docker command to start monitoring the DB server.
 
 
 
-Go back to the projects page and click on the dot menu of the project, click on Settings and you will be able to view the project's **_API Key_**
 
-![Untitled](Quickstart/project%20settings.png)
-
-![Untitled](Quickstart/project%20edit.png)
-
-We’ll use the project's API key later to integrate with our application, 
-
-## Prevention - BEFORE the deployment
-
-At the end of this section you’ll be able to see the SQL commands running in your environments, get insights about the performance and potential errors, and understand if it’s safe to deploy changes to production.
-
-You will be able to see SQL commands running on your developer environment:
 
 ![Untitled](Quickstart/Untitled%203.png)
 
