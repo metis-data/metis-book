@@ -1,5 +1,5 @@
 ---
-sidebar_label: '🚨 Prevent issues on your database'
+sidebar_label: '🚨 Prevention'
 sidebar_position: 4
 ---
 

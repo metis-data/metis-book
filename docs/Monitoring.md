@@ -1,5 +1,5 @@
 ---
-sidebar_label: '📊 Monitor & troubleshoot your databases'
+sidebar_label: '📊 Monitoring'
 sidebar_position: 3
 ---
 
