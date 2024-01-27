@@ -1,3 +1,7 @@
+---
+sidebar_label: '📊 Deploy Metis Agent' 
+sidebar_position: 4
+---
 # 🤖 Deploy Metis Agent
 
 # Agent deployment flow
