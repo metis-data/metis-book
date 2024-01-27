@@ -3,7 +3,7 @@ sidebar_label: '🚨 Preventing Performance Problems'
 sidebar_position: 5
 ---
 
-# 🚨 Prevent performance related DB problems
+# 🚨 Prevent performance related problems
 
 Metis allows you to view the SQL commands running in your environments, gain insights into performance and potential errors, and determine the safety of deploying changes to production.
 
