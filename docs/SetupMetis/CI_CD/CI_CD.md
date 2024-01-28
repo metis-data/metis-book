@@ -1,5 +1,6 @@
-# 🎬 Add Metis’s GitHub actions to your repository
+# 🎬 CI/CD Integration
 
+# Add Metis’s GitHub actions to your repository
 We built Metis to seamlessly integrate with your pull requests, requiring minimal changes from the developer's perspective.
 
 Metis offers 2 GitHub action:
