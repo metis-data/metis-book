@@ -8,17 +8,6 @@ Metis can scan your pull requests for changes in your database schema, analyze t
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-ZwQGF5L3xQ?si=MOEg0Rsrxo2MhTiz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
 
-## General
-
-In some cases, adding new features to the application require changes in the schema of the database too. Changing the schema of the DB is also called "**Schema Migration**".
-
-Changing the schema might cause one of the following problems:
-
-- Data Loss
-- Application Errors
-- Performance problems
-- Data Quality
-- Security risks
 
 ## How it works
 
