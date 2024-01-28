@@ -17,4 +17,4 @@ This is a guide to get up and running with **Metis**.
 
 **Monitoring & Troubleshoot:**
 
-[🤖 Deploy Metis Agent](<Deploy Metis observability Agent/Deploy Metis observability Agent.md>)
+<!-- [🤖 Deploy Metis Agent](<Deploy Metis observability Agent/Deploy Metis observability Agent.md>) -->
