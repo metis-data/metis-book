@@ -11,6 +11,6 @@ This is a guide to get up and running with **Metis**.
 
 **Prevention:**
 
-[📦 Add Metis SDK to your code](<Add Metis SDK to your code/Add Metis SDK to your code.md>)
+[📦 CI / CD](<Add Metis SDK to your code/Add Metis SDK to your code.md>)
 
 [🎬 Add Metis’s GitHub actions to your repository ](<Add Metis’s Git actions to your repository/Add Metis’s Git actions to your repository.md>)
