@@ -1,5 +1,5 @@
 ---
-sidebar_label: ' OpenTelemetry Collector'
+sidebar_label: 'OpenTelemetry Collector'
 sidebar_position: 5
 ---
 
