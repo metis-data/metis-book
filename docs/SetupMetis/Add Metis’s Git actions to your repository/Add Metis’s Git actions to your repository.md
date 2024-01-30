@@ -1,4 +1,4 @@
-# 🎬 Add Metis’s GitHub actions to your repository
+# 📦 CI / CD
 
 # Add Metis’s GitHub actions to your repository
 
