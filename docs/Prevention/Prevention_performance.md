@@ -9,9 +9,11 @@ Metis allows you to view the SQL commands running in your environments, gain ins
 
 ## Workflow
 
-**Step 1:** Instrument your app to send the traces to an [Open Telemetry Collector](https://opentelemetry.io/docs/collector/). 
+To prevent the performance problems, Metis needs to understand how your application interacts with the database and how the database executes the query. Conceptually, you need to do the following:
 
-**Step 2:** Deploy Metis Collector. It generates Execution Plans of the SQL commands and send them to Metis platform. 
+**Step 1:** Instrument your application to send the REST and SQL traces to an [Open Telemetry Collector](https://opentelemetry.io/docs/collector/).
+
+**Step 2:** Deploy Metis Collector. It generates the Execution Plans of the SQL commands and sends them to the Metis platform. 
 
 **Step 3:** Open Metis web app to view the monitored activity and insights. 
 
@@ -27,7 +29,7 @@ Metis needs to understand what happened in your application and in your database
 
 Metis uses OpenTelemetry to receive details about your application’s activity. OpenTelemetry is an open industry standard for capturing signals like traces, metrics, and logs. It’s very similar to your logging library and your application (or libraries like web server or SQL driver) most likely supports OpenTelemetry even now. Metis doesn’t own or develop OpenTelemetry. We just use it as a standard medium of communication. You can learn more about OpenTelemetry in [their documentation](https://opentelemetry.io/docs/what-is-opentelemetry/).
 
-Your application needs to generate REST and SQL traces, and send them to Metis Collector. REST traces are used to capture the application activity within a workflow (like “checkout” API). SQL traces are used to extract the SQL statements that were sent to the database so Metis can analyze their performance. You need to enable traces in your web server (like Express.js or ASP.NET) and in your SQL driver (like pg or JDBC). Metis can capture other traces (like filesystem, infrastructure, or hardware) but will ignore them.
+Your application needs to generate REST and SQL traces, and send them to Metis Collector using JSON or gRPC. REST traces are used to capture the application activity within a workflow (like “checkout” API). SQL traces are used to extract the SQL statements that were sent to the database so Metis can analyze their performance. You need to enable traces in your web server (like Express.js or ASP.NET) and in your SQL driver (like pg or JDBC). You can send other traces (like filesystem, infrastructure, or hardware) to Metis Collector but they will be ignored.
 
 Below, we cover how you can instrument your application.
 
@@ -43,7 +45,7 @@ This option is supported in various languages like:
 - [Java / Kotlin / Scala / JVM](https://opentelemetry.io/docs/languages/java/automatic/)
 - [PHP](https://opentelemetry.io/docs/languages/php/automatic/)
 
-Let’s take [JavaScript](https://opentelemetry.io/docs/languages/js/automatic/) as an example. You need to install dependencies to OpenTelemetry packages, and then set environment variables like `OTEL_TRACES_EXPORTER`. You don’t need to modify your application code at all.
+Let’s take [JavaScript](https://opentelemetry.io/docs/languages/js/automatic/) as an example. You need to install dependencies to OpenTelemetry packages, and then set environment variables like `OTEL_TRACES_EXPORTER`. You don’t need to modify your application code at all. You can see [the example in our repository](https://github.com/metis-data/node-express-postgresql-sequelize/blob/master/build-and-run.sh).
 
 This is the recommended solution. If your application (namely your web server library and your SQL driver library) supports out-of-process auto-instrumentation, go this way.
 
@@ -55,7 +57,7 @@ Technologies that use this approach:
 
 - [Ruby](https://opentelemetry.io/docs/languages/ruby/libraries/)
 
-Conceptually, you just need to enable OpenTelemetry in your application code right after your application starts, trigger the auto-instrumentation and then all the libraries supporting auto-instrumentation will be enabled. If your web server library and SQL library support auto-instrumentation, then you’re done.
+Conceptually, you just need to enable OpenTelemetry in your application code right after your application starts, trigger the auto-instrumentation and then all the libraries supporting auto-instrumentation will be enabled. If your web server library and SQL library support auto-instrumentation, then you’re done. You can see [the example in our repository](https://github.com/metis-data/node-express-postgresql-sequelize/blob/master/src/tracer.js) or [in another repository](https://github.com/metis-data/dotnet-webapi-postgresql-entityframeworkcore/blob/master/tests/CustomWebApplicationFactory.cs#L37-L47).
 
 ### Option 3: Instrumenting Your Application Manually From Inside Of Your Application
 
@@ -65,7 +67,7 @@ Examples:
 
 - [Gorm](https://github.com/go-gorm/opentelemetry) or [http.Handler](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp) in GO
 
-Conceptually, you need to modify your application code to enable OpenTelemetry right after your application starts. You need to manually configure and trigger instrumentation libraries to enable instrumentation of REST and SQL.
+Conceptually, you need to modify your application code to enable OpenTelemetry right after your application starts. You need to manually configure and trigger instrumentation libraries to enable instrumentation of REST and SQL. You can see [the example in our repository](https://github.com/metis-data/go-mux-postgresql-gorm/blob/main/src/main.go#L82-L83).
 
 ### Option 4: Generating Traces Manually From Inside Of Your Application
 
@@ -89,12 +91,13 @@ If you need to instrument your application this way, do the following:
 2. Manually build traces using the “hooks” mechanisms your libraries provide
 
 Keep in mind that you may want to mix approaches. If your web server library supports auto-instrumentation but your SQL driver doesn’t support OpenTelemetry at all, you can use auto-instrumentation to generate REST traces and only manually instrument your SQL driver.
- 
+
 ### Option 5: Sending Traces Manually Outside Of Your Application
 
 You don’t need to send traces from inside of your application. You may do it offline as there is nothing specific in OpenTelemetry we require. As long as you send us the correct payload, we will analyze it correctly.
 
 For instance, you can scrape your logs, extract web calls and SQL statements, and then send them to the collector with CURL like this:
+
 ```
 python3 -c "$(cat <<'EOF'
 import time;
@@ -123,7 +126,7 @@ payload=inspect.cleandoc('''
                         "attributes" : [{
                                 "key" : "http.route",
                                 "value" : {
-                                    "stringValue" : "/console"
+                                    "stringValue" : "/YOUR_HTTP_ROUTE"
                                 }
                             }, {
                                 "key" : "http.status_code",
@@ -161,8 +164,8 @@ print(payload);
 EOF
 )" | curl -H "Content-Type: application/json" -X POST http://localhost:4318/v1/traces -d @-
 ```
-Conceptually, you can send such a request with whatever technology you want.
 
+Conceptually, you can send such a request with whatever technology you want as long as the payload is correct.
 
 ## Step 2: Deploying Metis Collector
 
@@ -174,13 +177,13 @@ Metis OpenTelemetry Collector is distributed as a Docker container. It does the 
 
 You need to deploy the collector somewhere where you’re able to do the following:
 
-- Your application must be able to connect to the Collector to send the OpenTelemetry traces
-- The Collector must be able to connect to your database to send EXPLAIN query
-- The Collector must be able to connect to Metis public API over Internet
+- Your application must be able to connect to Metis Collector to send the OpenTelemetry traces
+- Metis Collector must be able to connect to your database to send the EXPLAIN query
+- Metis Collector must be able to connect to Metis public API over the Internet
 
-You can host the Collector anywhere (locally, in your infrastructure, in your cloud, etc.) as long as you have the required network connectivity to achieve the above. OpenTelemetry recommends running the container near the instrumented application. By default it is configured to send traces to `http://localhost:4318` .
+You can host Metis Collector anywhere (locally, in your infrastructure, in your cloud, etc.) as long as you have the required network connectivity to achieve the above. OpenTelemetry recommends running the container near the instrumented application. By default the applications send traces to `[http://localhost:4318](http://localhost:4318)` and assume that the collector runs on the same host.
 
-Read the [documentation](https://docs.metisdata.io/SetupMetis/Deploy_OpenTelemetry_Collector) to learn how to start the Collector.
+Read the [documentation](https://docs.metisdata.io/SetupMetis/Deploy_OpenTelemetry_Collector) to learn how to start using Metis Collector.
 
 ## Step 3: Using Metis
 
