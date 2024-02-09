@@ -1,9 +1,9 @@
 ---
-sidebar_label: '🚨 Preventing Performance Problems'
+sidebar_label: '⚙️ Preventing Performance Problems'
 sidebar_position: 5
 ---
 
-# 🚨 Prevent performance related problems
+# ⚙️ Prevent performance related problems
 
 Metis allows you to view the SQL commands running in your environments, gain insights into performance and potential errors, and determine the safety of deploying changes to production.
 
@@ -13,7 +13,7 @@ To prevent the performance problems, Metis needs to understand how your applicat
 
 **Step 1:** Instrument your application to send the REST and SQL traces to an [Open Telemetry Collector](https://opentelemetry.io/docs/collector/).
 
-**Step 2:** Deploy Metis Collector. It generates the Execution Plans of the SQL commands and sends them to the Metis platform. 
+**Step 2:** Deploy Metis Telemetry Collector. It generates the Execution Plans of the SQL commands and sends them to the Metis platform. 
 
 **Step 3:** Open Metis web app to view the monitored activity and insights. 
 
@@ -27,9 +27,9 @@ Let’s examine each step in details.
 
 Metis needs to understand what happened in your application and in your database. To do that, your application needs to inform Metis about the interaction details and what queries were sent to the database.
 
-Metis uses OpenTelemetry to receive details about your application’s activity. OpenTelemetry is an open industry standard for capturing signals like traces, metrics, and logs. It’s very similar to your logging library and your application (or libraries like web server or SQL driver) most likely supports OpenTelemetry even now. Metis doesn’t own or develop OpenTelemetry. We just use it as a standard medium of communication. You can learn more about OpenTelemetry in [their documentation](https://opentelemetry.io/docs/what-is-opentelemetry/).
+Metis uses OpenTelemetry to receive details about your application’s activity. OpenTelemetry is an open industry standard for capturing signals like traces, metrics, and logs. It’s very similar to your logging library and your application (or libraries like web server or SQL driver) most likely supports OpenTelemetry even now. Metis doesn’t own or develop OpenTelemetry. We just use it as a standard medium of communication. You don't need to use OpenTelemetry SDKs and you can just generate the correct payloads in different way. You can learn more about OpenTelemetry in [their documentation](https://opentelemetry.io/docs/what-is-opentelemetry/).
 
-Your application needs to generate REST and SQL traces, and send them to Metis Collector using JSON or gRPC. REST traces are used to capture the application activity within a workflow (like “checkout” API). SQL traces are used to extract the SQL statements that were sent to the database so Metis can analyze their performance. You need to enable traces in your web server (like Express.js or ASP.NET) and in your SQL driver (like pg or JDBC). You can send other traces (like filesystem, infrastructure, or hardware) to Metis Collector but they will be ignored.
+Your application needs to generate REST and SQL traces, and send them to Metis Telemetry Collector using JSON or gRPC. REST traces are used to capture the application activity within a workflow (like “checkout” API). SQL traces are used to extract the SQL statements that were sent to the database so Metis can analyze their performance. You need to enable traces in your web server (like Express.js or ASP.NET) and in your SQL driver (like pg or JDBC). You can send other traces (like filesystem, infrastructure, or hardware) to Metis Telemetry Collector but they will be ignored.
 
 Below, we cover how you can instrument your application.
 
@@ -91,6 +91,11 @@ If you need to instrument your application this way, do the following:
 2. Manually build traces using the “hooks” mechanisms your libraries provide
 
 Keep in mind that you may want to mix approaches. If your web server library supports auto-instrumentation but your SQL driver doesn’t support OpenTelemetry at all, you can use auto-instrumentation to generate REST traces and only manually instrument your SQL driver.
+
+Examples:
+
+- [Hibernate instrumentation]([https://github.com/go-gorm/opentelemetry](https://github.com/metis-data/java-spring-postgresql-hibernate/blob/master/src/io/metisdata/demo/configuration/DataSourceConfiguration.java#L52-L84))
+
 
 ### Option 5: Sending Traces Manually Outside Of Your Application
 
@@ -167,9 +172,9 @@ EOF
 
 Conceptually, you can send such a request with whatever technology you want as long as the payload is correct.
 
-## Step 2: Deploying Metis Collector
+## Step 2: Deploying Metis Telemetry Collector
 
-Metis OpenTelemetry Collector is distributed as a Docker container. It does the following:
+Metis Telemetry Collector is distributed as a Docker container. It does the following:
 
 - Receives OpenTelemetry traces
 - Connects to the database to get the execution plans
@@ -177,16 +182,50 @@ Metis OpenTelemetry Collector is distributed as a Docker container. It does the 
 
 You need to deploy the collector somewhere where you’re able to do the following:
 
-- Your application must be able to connect to Metis Collector to send the OpenTelemetry traces
-- Metis Collector must be able to connect to your database to send the EXPLAIN query
-- Metis Collector must be able to connect to Metis public API over the Internet
+- Your application must be able to connect to Metis Telemetry Collector to send the OpenTelemetry traces
+- Metis Telemetry Collector must be able to connect to your database to send the EXPLAIN query
+- Metis Telemetry Collector must be able to connect to Metis public API over the Internet
 
-You can host Metis Collector anywhere (locally, in your infrastructure, in your cloud, etc.) as long as you have the required network connectivity to achieve the above. OpenTelemetry recommends running the container near the instrumented application. By default the applications send traces to `[http://localhost:4318](http://localhost:4318)` and assume that the collector runs on the same host.
+You can host Metis Telemetry Collector anywhere (locally, in your infrastructure, in your cloud, etc.) as long as you have the required network connectivity to achieve the above. OpenTelemetry recommends running the container near the instrumented application. By default the applications send traces to `[http://localhost:4318](http://localhost:4318)` and assume that the collector runs on the same host.
 
-Read the [documentation](https://docs.metisdata.io/SetupMetis/Deploy_OpenTelemetry_Collector) to learn how to start using Metis Collector.
+Read the [documentation](https://docs.metisdata.io/SetupMetis/Deploy_OpenTelemetry_Collector) to learn how to start using Metis Telemetry Collector.
 
 ## Step 3: Using Metis
 
 At this point you can use Metis to analyze the performance of your application and how it interacts with the database. 
 
 You may also consider integrating your CI/CD with Metis or your production databases for better monitoring.
+
+## Frequently Asked Questions
+
+### Do you support X?
+
+We support anything that can deliver proper REST and SQL spans. Sometimes you need to add more code around the libraries you use to extract the details (like SQL query parameters) and send them to Metis Telemetry Collector.
+
+### My library doesn't integrate with OpenTelemetry. What should I do?
+
+You need to build the OpenTelemetry spans manually. To do that, you need to learn how to extract details from your library. Typically, there are mechanisms like hooks, events, callbacks, middleware, or annotations.
+
+Conceptually, you want to register for an even from your library that explains what happened. In the event handler, you would extract the details (like REST path or SQL query with parameters), and send them to Metis.
+
+### Do I have to use OpenTelemetry?
+
+No, you do not. Metis Telemetry Collector uses OpenTelemetry standard for defining the payload shape. However, you can send the payload using any technology that can send JSON or gRPC.
+
+### I don't use OpenTelemetry inside my application. What should I do?
+
+The first solution is to install the OpenTelemetry libraries and enable the instrumentation.
+
+The second solution is to capture events from your application manually (via hooks, callbacks, middleware, events, or other mechanism that your libraries support), and send them to Metis Telemetry Collector with JSON or gRPC.
+
+### I don't know how to instrument my library. Can you help me with that?
+
+Obviously. Contact us and we will be able to help. We constructed many examples in languages like JavaScript, TypeScript, GO, Java, Kotlin, C#, and Python.
+
+### How do I enable OpenTelemetry in low-code/no-code solutions?
+
+Depending on your solution, you may need to extract activities' details manually and send them to Metis.
+
+### I have logs from my application. Can I use them with Metis?
+
+Yes, as long as they contain all the details we need. You can process your logs offline and send them to Metis even with CURL.
