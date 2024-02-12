@@ -1,9 +1,9 @@
 ---
-sidebar_label: '🚨 Preventing Schema Migration Problems'
+sidebar_label: '🗃️ Preventing Schema Migration Problems'
 sidebar_position: 6
 ---
 
-# 🚨 Prevent Schema Migration Related Problems
+# 🗃️ Prevent Schema Migration Related Problems
 The term "Schema Migration" is used to describe the act of altering the schema of the database. This involves making changes to the organization of tables, relationships, constraints, and other elements within the database to align with the evolving requirements of the application. The goal is to maintain consistency between the application's logic and the database structure, ensuring that both components work harmoniously.
 
 Changing the schema might cause one of the following problems:
