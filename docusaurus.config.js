@@ -55,6 +55,8 @@ const config = {
           routeBasePath: '/',
           breadcrumbs: true,
           editUrl: 'https://github.com/metis-data/metis-book/tree/main/',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: false,
         //   showReadingTime: true,
