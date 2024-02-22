@@ -1,6 +1,7 @@
---- 
+---
 sidebar_position: 1
 ---
+
 # 🤖 Deploying Metis Metadata Collector
 
 ## General
@@ -10,7 +11,7 @@ Metis Metadata Collector (MMC) collects information from your hosts and sends it
 You can use the **Monitoring** page to see the collected information about your hosts, databases, and metrics.
 
 ## Deployment process
- 
+
 You can use the wizard to deploy the Metis Metadata Collector instance to your hosts. To learn how to use the wizard, watch this [video](https://youtu.be/K8yMuhfBGfU) or follow the steps below:
 
 1. **Vendor & Environment Selection**
@@ -22,7 +23,7 @@ You can use the wizard to deploy the Metis Metadata Collector instance to your h
 
 Go to the page [Monitoring](https://app.metisdata.io/monitoring). Click on the button **Deploy** to open the configuration Wizard.
 
-![Untitled](Quickstart/New_PG_Wizard_Select_vendor.png)
+![Untitled](../Quickstart/New_PG_Wizard_Select_vendor.png)
 
 Select your hosting infrastructure and click **Next**.
 
@@ -186,6 +187,3 @@ The backend processes the raw data into well-defined data sets. It also calculat
 #### Step 3 - Data Presentation
 
 Open the web app to view the analyzed data. The dashboard provides useful information about: - The PG Server: performance and configuration - PG Databases: size, performance, and activity - Tables and indexes: size, scheme analysis, activity - Queries: statistics and performance analysis
-
-
-
