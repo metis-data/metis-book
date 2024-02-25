@@ -44,8 +44,8 @@ Click **Next**.
 
 Copy and run the generated Docker command to start monitoring the database server. The data will start flowing right away.
 
-<aside>
+:::note
 ❗ It might take 2-3 minutes to see the data.
-</aside>
+:::
   
 Go back to the page [Monitoring](https://app.metisdata.io/monitoring). The new monitored database server can be found there.
