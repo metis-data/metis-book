@@ -201,6 +201,14 @@ You may also consider integrating your CI/CD with Metis or your production datab
 
 We support anything that can deliver proper REST and SQL spans. Sometimes you need to add more code around the libraries you use to extract the details (like SQL query parameters) and send them to Metis Telemetry Collector.
 
+### Does it work in testing scenarios? Does it work with unit tests?
+
+Yes. However, some testing frameworks do not propagate REST traces properly when you test your API endpoints. They may run your tests outside of OTel context or not capture the details properly. You may need to create spans manually in such a case. This depends on the testing framework you use and how well it integrates with testing your web server library.
+
+### Do I need to have the REST span?
+
+At this point, yes. We use the REST span to group SQL statements and present them in the UI. If you are in a scenario where you can't have the REST span, let us know! 
+
 ### My library doesn't integrate with OpenTelemetry. What should I do?
 
 You need to build the OpenTelemetry spans manually. To do that, you need to learn how to extract details from your library. Typically, there are mechanisms like hooks, events, callbacks, middleware, or annotations.
