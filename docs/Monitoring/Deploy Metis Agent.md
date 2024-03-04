@@ -124,7 +124,9 @@ To read the performance counters the AWS user used by Metis Metadata Collector m
         "cloudwatch:ListTagsForResource",
         "cloudwatch:GetMetricStatistics",
         "cloudwatch:GetMetricData",
-        "cloudwatch:ListMetrics"
+        "cloudwatch:ListMetrics",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceTypes"
       ],
       "Resource": "*"
     }
