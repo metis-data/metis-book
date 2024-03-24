@@ -14,14 +14,13 @@ Alerts are essential for enhancing the reliability of database environments and 
 The platform generates rules automatically, reflecting real-world use cases. Users have the flexibility to modify default settings or craft entirely new rules. These rules can range from simple, single-condition criteria to more complex configurations involving multiple conditions.
 
 In the web application, users can view the alert history spanning the last 24 hours. The severity of alerts is displayed on a minute-by-minute basis, providing insights into the frequency and intensity of issues.
-
+![Untitled](../Monitoring_Images/metis_alerts.png)
 
 ## Notifications
 
-You can configure the platform to notify you once an alert is triggered. Currently, it supports integration with Slack and Jira, with additional integrations planned for future updates.
+You can configure the platform to notify you once an alert is triggered. 
 ![Untitled](../Monitoring_Images/metis_alerts_slack_notification.png)
 
 
-To avoid "alert fatigue," the system refrains from sending the same alert within the following 5 minutes after it's triggered. Upcoming versions will provide enhanced control over when to send alerts that have been recently fired.
 
 
