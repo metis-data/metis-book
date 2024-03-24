@@ -19,6 +19,13 @@ The configuration of the Notification is done in two steps:
 :::
 
 ## Configure the Notifications Integrations 
-Open the page [app.metisdata.io/integrations](http://app.metisdata.io/integrations). Select the integration and follow the instructions. 
+Open the page [app.metisdata.io/integrations](http://app.metisdata.io/integrations). Select the integration and follow the instructions. This step done only once. 
 
 ![Untitled](../Monitoring_Images/metis_alerts_integrations.png)
+
+## Send a Notification
+Each rule within Metis configures its own notifications.
+- Slack: configure the channel
+- Jira: configure the workspace, project and assignee. 
+
+To stop people from getting too many alerts, the system won't send the same alert again. If the rule's status returns to OK and the alert fires again, a new notification will be sent. For example, if the "High CPU" alert fired at 10:00 and then again at 10:01, 10:02, ..., until 10:15, only one notification will be sent. The "Alerts" page logs the status evaluated every minute. On this page, you can observe how many times the alert has been triggered.
