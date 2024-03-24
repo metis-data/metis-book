@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-#  Alerts and notifications
+# 🚨 Alerts and notifications
 
 ## Alerts in Database Observability
 
