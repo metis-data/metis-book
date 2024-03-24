@@ -18,7 +18,7 @@ In the web application, users can view the alert history spanning the last 24 ho
 ## Notifications
 
 You can configure the platform to notify you once an alert is triggered. Currently, it supports integration with Slack and Jira, with additional integrations planned for future updates.
-![Untitled](Monitoring_images/metis_alerts_slack_notification.png)
+![Untitled](../Monitoring_images/metis_alerts_slack_notification.png)
 
 To avoid "alert fatigue," the system refrains from sending the same alert within the following 5 minutes after it's triggered. Upcoming versions will provide enhanced control over when to send alerts that have been recently fired.
 
