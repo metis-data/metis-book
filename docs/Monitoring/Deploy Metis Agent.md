@@ -50,6 +50,13 @@ GRANT pg_monitor TO metis;
 
 --Grant access to EVERY database the Metis agent should monitor.
 GRANT CONNECT ON DATABASE <DATABASE NAME> TO metis;
+
+-- Instead of manually granting the CONNECT permissions to every database in case of a large number of databases, utilize the following SQL query to generate SQL commands for all databases.
+SELECT STRING_AGG(cmd, ' ') AS concatenated_string
+FROM (
+select 'GRANT CONNECT ON database ' || datname  ||  ' TO metis; ' as cmd
+from pg_database 
+)as T1;
 ```
 
 ### Configuring Database Server
