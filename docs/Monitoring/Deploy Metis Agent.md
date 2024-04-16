@@ -146,6 +146,16 @@ Copy the command and run it on your host’s environment.
 
 This section explains what Metis Metadata Collector does.
 
+### Selecting the monitored database
+By default the agent monitors the largest 100 databases. To select specific databases, add the parameters ```"monitored_databases":["db1", "db2", "db3"]```. The wizard doesn't support this option, therefore it should be done manually. 
+
+```[{ "uri":"postgresql://monitored:pass123@mysql-for-test.abcdefg.eu-central-1.rds.amazonaws.com:5432", "host_vendor":"aws","monitored_databases":["employees", "db2", "db3"] ,"vendor_metadata":{ "region":"eu-central-1", "instanceId":"pg-for-test", "accessKeyId":"AK1234", "secretAccessKey":"KO1234"}}]```
+
+### The Output
+The wizard generates a Docker Run command or a HELM chart command. The command is similar to this. 
+```[{ "uri":"postgresql://monitored:pass123@mysql-for-test.abcdefg.eu-central-1.rds.amazonaws.com:5432", "host_vendor":"aws","monitored_databases":["employees", "db2", "db3"] ,"vendor_metadata":{ "region":"eu-central-1", "instanceId":"pg-for-test", "accessKeyId":"AK1234", "secretAccessKey":"KO1234"}}]```
+
+
 ### Data Flow
 
 #### Step 1 - Data Extraction
