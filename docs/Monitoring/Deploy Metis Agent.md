@@ -133,6 +133,33 @@ To read the performance counters the AWS user used by Metis Metadata Collector m
   ]
 }
 ```
+**Selecting the monitored database**
+By default the agent monitors the largest 100 databases. To select specific databases, add the parameters ```"monitored_databases":["db1", "db2", "db3"]```. The wizard doesn't support this option, therefore it should be done manually. 
+For example, a full Docker Run command, with specific 3 monitored databases. 
+```[{ "uri":"postgresql://monitored:pass123@mysql-for-test.abcdefg.eu-central-1.rds.amazonaws.com:5432", "host_vendor":"aws","monitored_databases":["employees", "db2", "db3"] ,"vendor_metadata":{ "region":"eu-central-1", "instanceId":"pg-for-test", "accessKeyId":"AK1234", "secretAccessKey":"KO1234"}}]```
+
+If you want to create a list of the monitored DB use this python script to generate a string of the db names. 
+``` import psycopg2
+
+conn_params = {
+    "host": "host-name",
+    "user": "postgres",
+    "password": "password",
+    "port": "5432"
+}
+conn = psycopg2.connect(**conn_params)
+cur = conn.cursor()
+cur.execute("""
+    SELECT ARRAY(SELECT  '"' || datname || '"' as name
+    FROM pg_database 
+    WHERE datistemplate = false)
+""")
+db_names_array = cur.fetchone()[0]
+cur.close()
+conn.close()
+db_names_string = ','.join(db_names_array)
+print(db_names_string)
+```
 
 ### Deployment
 
@@ -146,14 +173,6 @@ Copy the command and run it on your host’s environment.
 
 This section explains what Metis Metadata Collector does.
 
-### Selecting the monitored database
-By default the agent monitors the largest 100 databases. To select specific databases, add the parameters ```"monitored_databases":["db1", "db2", "db3"]```. The wizard doesn't support this option, therefore it should be done manually. 
-
-```[{ "uri":"postgresql://monitored:pass123@mysql-for-test.abcdefg.eu-central-1.rds.amazonaws.com:5432", "host_vendor":"aws","monitored_databases":["employees", "db2", "db3"] ,"vendor_metadata":{ "region":"eu-central-1", "instanceId":"pg-for-test", "accessKeyId":"AK1234", "secretAccessKey":"KO1234"}}]```
-
-### The Output
-The wizard generates a Docker Run command or a HELM chart command. The command is similar to this. 
-```[{ "uri":"postgresql://monitored:pass123@mysql-for-test.abcdefg.eu-central-1.rds.amazonaws.com:5432", "host_vendor":"aws","monitored_databases":["employees", "db2", "db3"] ,"vendor_metadata":{ "region":"eu-central-1", "instanceId":"pg-for-test", "accessKeyId":"AK1234", "secretAccessKey":"KO1234"}}]```
 
 
 ### Data Flow
