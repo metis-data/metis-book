@@ -33,7 +33,7 @@ The vendor type is being used to collect more information about your databases, 
 If you are planning to add multiple hosts make sure they are all on the same vendor and environment otherwise you need to complete the flow separately
 :::
 
-### Create a Monitoring User And Give Permissions
+### Create a Monitoring User And Grant Permissions
 
 Metis Metadata Collector must have permission to query the system catalog and read the database schema.
 
@@ -94,11 +94,11 @@ postgresql://USERNAME:PASSWORD@HOSTNAME:PORT/?sslmode=disable
 
 Consult the documentation if you need to use additional options.
 
-### Vendor Metrics
+### Vendor Metrics (Recommended)
 
 ![deployment 2.png](Deploy%20Metis%20Agent/dep_2.png)
 
-Metis can extract information from cloud providers.
+Certain metadata, like host metrics, cannot be fetched via SQL queries. To obtain this data, the MMC agent needs to invoke services like AWS CloudWatch.
 
 #### AWS
 
@@ -175,53 +175,3 @@ print(db_names_string)
 Choose your deployment method. We currently provide scripts for Docker and Helm. The scripts are ready to be used with Bash. You may need to adjust syntax slightly if you want to use them in different shells.
 
 Copy the command and run it on your host’s environment.
-
-## More details about Metis Metadata Collector and how it works
-
-This section explains what Metis Metadata Collector does.
-
-
-
-### Data Flow
-
-#### Step 1 - Data Extraction
-
-Metis Metadata Collector captures the following:
-
-- Statistics about queries - every minute
-- Live queries - every second
-- Schemas - every day
-
-Metis Metadata Collector then sends the data to Metis.
-
-One MMC instance can monitor multiple servers and databases.
-
-##### Metis agent - data sources
-
-The Metis agent collects many data sets from the following sources:
-
-Database objects: Metis Metadata Collector uses a connection string and a set of predefined SQL commands to collect data sets such as existing databases, their size, database activity, the schema of each database, table size, index usage, and configuration. These Data Sets are collected from any database server: AWS RDS, AWS Aurora, SQL on K8S, Google Cloud SQL for PostgreSQL, Azure Database for PostgreSQL, etc.
-
-Performance Counters: Metis Metadata Collector also collects the main performance counters such as CPU, free memory, IO Throughput, and Avg Active Sessions. The current version supports only AWS CloudWatch and Prometheus.
-
-Queries: The SQL commands (all or a sample of them) and their execution plans.
-
-##### Configuration Overview
-
-When configuring Metis Metadata Collector, you need to specify how you want to install and configure the observability.
-
-Agent’s Host: Metis Metadata Collector is deployed as a Docker container. You can use it as it is, or deploy it to [Amazon Elastic Container Service](https://aws.amazon.com/ecs/), Kubernetes, or similar infrastructures.
-
-Monitored Postgres servers and databases: A connection string to the database server you want to monitor.
-
-Monitored performance counters source: Metis currently supports reading from CloudWatch or Postgres deployed on top of Docker or Kubernetes.
-
-Destination: Metis Metadata Collector sends the data to Metis using an API key. You can also consume the performance metrics of your database using our Prometheus exporter.
-
-#### Step 2 - Data Processing
-
-The backend processes the raw data into well-defined data sets. It also calculates insights to help focus on problems and how to solve them.
-
-#### Step 3 - Data Presentation
-
-Open the web app to view the analyzed data. The dashboard provides useful information about: - The PG Server: performance and configuration - PG Databases: size, performance, and activity - Tables and indexes: size, scheme analysis, activity - Queries: statistics and performance analysis
