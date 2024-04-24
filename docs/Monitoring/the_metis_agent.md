@@ -1,4 +1,8 @@
-## The Metis Agent
+---
+sidebar_position: 1
+---
+
+# 🤖 The Metis Agent
 
 **Metis Metadata Collector (MMC)** is an agent designed to collect information from your database servers and send it to the Metis platform. The agent is engineered to operate with minimum permissions, analyzing only system tables and not accessing any sensitive user data. Furthermore, it is lightweight, ensuring minimal impact on system performance.
 
