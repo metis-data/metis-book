@@ -19,7 +19,7 @@ Regardless of the database type, the prerequisites include:
 
 1. **Creating a New Dedicated User with Minimum Permissions**: This is considered a best practice to enhance security. The dedicated user will be used by MMC to access the database servers.
 2. **Creating the Metis Schema and Required Objects**: To facilitate this step, we provide scripts and a user-friendly wizard. These resources streamline the process, ensuring that the Metis schema and all necessary objects are created swiftly and accurately.
-3. (Optional) **Host Metrics from AWS CloudWatch**
+3. (Optional) Configure **AWS Outbound Rules**
 
 These tools streamline the setup process, enabling you to focus on harnessing the power of Metis without getting caught up in complicated deployment tasks.
 
