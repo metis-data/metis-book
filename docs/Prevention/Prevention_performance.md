@@ -94,7 +94,8 @@ Keep in mind that you may want to mix approaches. If your web server library sup
 
 Examples:
 
-- Hibernate instrumentation [[https://github.com/go-gorm/opentelemetry](https://github.com/metis-data/java-spring-postgresql-hibernate/blob/master/src/io/metisdata/demo/configuration/DataSourceConfiguration.java#L52-L84)](https://github.com/metis-data/java-spring-postgresql-hibernate/blob/master/src/io/metisdata/demo/configuration/DataSourceConfiguration.java#L52-L84)
+- [Hibernate instrumentation](https://github.com/metis-data/java-spring-postgresql-hibernate/blob/master/src/io/metisdata/demo/configuration/DataSourceConfiguration.java#L52-L84)
+- [Python SQLAlchemy](https://github.com/metis-data/python-flask-postgresql-sqlalchemy/blob/master/src/models/models.py#L9-L15)
 
 ### Option 5: Sending Traces Manually Outside Of Your Application
 
