@@ -38,11 +38,7 @@ CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT)
   
   BEGIN
   
-  -- Execute the query dynamically
-  
   /* metis */ EXECUTE query_text INTO result;
-  
-  -- Return the result
   
   RETURN result;
 
