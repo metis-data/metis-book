@@ -122,7 +122,7 @@ BEGIN
     FOR r IN (SELECT nspname FROM pg_namespace WHERE nspname NOT LIKE 'pg_%' AND nspname <> 'information_schema')
     LOOP
         -- Grant USAGE on all schemas        
-        EXECUTE 'GRANT USAGE ON SCHEMA ' || quote_ident(r.nspname) || 'TO metis';
+        EXECUTE 'GRANT USAGE ON SCHEMA ' || quote_ident(r.nspname) || ' TO metis';
         -- Grant SELECT on all tables in each schema
         EXECUTE 'GRANT SELECT ON ALL TABLES IN SCHEMA ' || quote_ident(r.nspname) || ' TO metis';
         -- Set default privileges for tables
