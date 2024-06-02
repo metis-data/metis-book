@@ -4,6 +4,9 @@ sidebar_position: 2
 
 # Prerequisites - PostgreSQL
 
+For effective monitoring, it`s recommended to grant the Metis agent specific permissions by creating a dedicated user.
+This ensures the agent operates with the minimum privileges required for its tasks, enhancing both security and performance.
+
 ## Create a new user
 
 Create a new DB user called `metis`. This user will be used by the MMC Agent. 
@@ -13,53 +16,70 @@ Create a new DB user called `metis`. This user will be used by the MMC Agent.
 CREATE USER metis WITH PASSWORD 'your_password';
 ```
 
-  
-## Grant Permissions to the user
+## 1. Grant Host Level permissions
+Allows the Metis Agent to access the "public" schema, which includes the ability to see objects within the schema but not to modify them.
 
-The user should be a member of the role `pg_monitor`. This a built-role dedicated for monitoring users.
+
 ```sql
--- Grant the permission "pg_monitor" to the user
 GRANT pg_monitor TO metis;
 ```
 
-Grant the CONNECT permissions on every databases. See below a script to use when when your PostgreSQL server has a large number of databases
+## 2. Grant Permissions and create an explain function on default db (postgres)
+Creates a function called "explain_parameterized_query" that runs dynamic SQL queries and returns results in JSON format. This function will be configured to execute with the same permissions as its creator, providing an additional security layer. Metis Agent will gain permission to use this function.
 
 ```sql
---Grant access to EVERY database the Metis agent should monitor.
-GRANT CONNECT ON DATABASE <DATABASE_NAME> TO metis;
+GRANT USAGE ON SCHEMA public TO metis;
+
+CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT) RETURNS JSON AS $$
+DECLARE
+result JSON;
+BEGIN
+/* metis */ EXECUTE query_text INTO result;
+RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
+ALTER FUNCTION explain_parameterized_query(query_text TEXT) SECURITY DEFINER;
+
+GRANT EXECUTE ON FUNCTION explain_parameterized_query(TEXT) TO  metis;
 ```
 
-
-## Create the pg_stat_statements Extension
-
-Create the extension pg_stat_statements in every database. See below a script to use when when your PostgreSQL server has a large number of databases
+## 3. Grant Connect and Usage permissions in each monitored database
+Metis Agent will first be granted the ability to connect to your database, then ensure that the pg_stat_statements extension is installed, which tracks execution statistics of all SQL statements, enabling them to monitor and optimize query performance effectively.
 
 ```sql
--- Enable extension in every database that you want to monitor
+GRANT CONNECT ON DATABASE <DATABASE_NAME> TO metis;
+
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
 ```
 
+## 4. Grant SELECT to enable DDL generation for SVG schema (optional) in each monitored database
+Metis Agent will be able to generate ddl of your database and send it to extract visualized schema
 
-## Configuration of a Large Number of Databases
-
-A script to configure the prerequisites on every database
 ```sql
-DO $$
-DECLARE
-    db RECORD;
+
+DO $$ DECLARE
+    r RECORD;
 BEGIN
-    -- Select databases that are not templates and not the RDS administrative database
-    FOR db IN SELECT datname FROM pg_database WHERE datistemplate = false AND datname != 'rdsadmin' LOOP
-      
-        EXECUTE format('GRANT CONNECT ON DATABASE %I TO metis', db.datname);
-       
-        PERFORM pg_catalog.set_config('search_path', '', false);
-        PERFORM pg_catalog.set_config('search_path', db.datname, true);
-        
-        EXECUTE format('GRANT pg_monitor TO metis;');
-   
-        -- Create the pg_stat_statements extension
-        CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+    FOR r IN (SELECT nspname FROM pg_namespace WHERE nspname NOT LIKE 'pg_%' AND nspname <> 'information_schema')
+    LOOP
+        -- Grant USAGE on all schemas        
+        EXECUTE 'GRANT USAGE ON SCHEMA ' || quote_ident(r.nspname) || 'TO metis';
+        -- Grant SELECT on all tables in each schema
+        EXECUTE 'GRANT SELECT ON ALL TABLES IN SCHEMA ' || quote_ident(r.nspname) || ' TO metis';
+        -- Set default privileges for tables
+        EXECUTE 'ALTER DEFAULT PRIVILEGES IN SCHEMA ' || quote_ident(r.nspname) || ' GRANT SELECT ON TABLES TO metis';
     END LOOP;
 END $$;
+
 ```
+
+
+
+
+
+
+
+
+
+  
