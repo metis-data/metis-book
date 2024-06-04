@@ -30,6 +30,8 @@ Creates a function called "explain_parameterized_query" that runs dynamic SQL qu
 ```sql
 GRANT USAGE ON SCHEMA public TO metis; 
 
+SET plan_cache_mode=force_generic_plan;
+
 CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT) 
   RETURNS JSON AS $$
   DECLARE
@@ -66,7 +68,7 @@ DO $$
 END $$;
 ```
 
-## 3. Grant Connect and Usage permissions in each monitored database
+## 3. Grant Connect, Usage permissions and create an explain function in each monitored database
 Metis Agent will first be granted the ability to connect to your database, then ensure that the pg_stat_statements extension is installed, which tracks execution statistics of all SQL statements, enabling them to monitor and optimize query performance effectively.
 
 ```sql
@@ -74,6 +76,8 @@ Metis Agent will first be granted the ability to connect to your database, then 
 GRANT CONNECT ON DATABASE <DATABASE_NAME> TO metis; 
 
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements; 
+
+SET plan_cache_mode=force_generic_plan;
 
 CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT) 
   RETURNS JSON AS $$
