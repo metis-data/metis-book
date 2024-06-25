@@ -75,6 +75,8 @@ GRANT CONNECT ON DATABASE <DATABASE_NAME> TO metis;
 
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements; 
 
+SET plan_cache_mode=force_generic_plan
+
 CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT) 
   RETURNS JSON AS $$
   DECLARE
