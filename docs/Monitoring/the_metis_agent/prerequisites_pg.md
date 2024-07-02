@@ -1,135 +1,69 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Prerequisites - PostgreSQL
 
-For effective monitoring, it`s recommended to grant the Metis agent specific permissions by creating a dedicated user.
-This ensures the agent operates with the minimum privileges required for its tasks, enhancing both security and performance.
+For effective monitoring, it's recommended to grant the Metis agent specific permissions by creating a dedicated user. This ensures the agent operates with the minimum privileges required for its tasks, enhancing both security and performance.
 
-## Create a new user
+## Steps to Set Up and Validate the Metis Agent
 
-Create a new DB user called `metis`. This user will be used by the MMC Agent. 
+### 1. Validate `psql` Installation
 
-```sql
--- Create a new user called "metis". Do not forget to change the password.
-CREATE USER metis WITH PASSWORD 'your_password';
+Ensure that you have `psql` installed on your system. You can verify this by running the following command:
+
+```bash
+psql --version
+```
+If `psql` is not installed, follow the instructions in the official PostgreSQL documentation to install it: [PostgreSQL Documentation](https://www.postgresql.org/docs/current/app-psql.html)
+
+### 2.  Run the Setup Script
+
+Use the provided setup script to automate the configuration process. This script will create the necessary user, grant permissions, and set up the required extensions and functions.
+
+Run the following command, replacing HOST, PORT, ADMIN_USER, and ADMIN_PASSWORD with your PostgreSQL server details:
+
+```bash
+curl -sSL https://static.metisdata.io/postgres_setup.sh | bash -s -- HOST PORT ADMIN_USER ADMIN_PASSWORD
 ```
 
-## 1. Grant Host Level permissions
-Metis Agent will gain broad monitoring privileges on your database, allows to access various system statistics and views necessary for performance tuning and diagnostics.
+
+### 3. Run the Validation Script
 
 
-```sql
-GRANT pg_monitor TO metis;
+After running the setup script, validate the setup to ensure everything was configured correctly:
+
+```bash
+curl -sSL https://static.metisdata.io/postgres_setup_validation.sh | bash -s -- HOST PORT ADMIN_USER ADMIN_PASSWORD
 ```
 
-## 2. Grant Permissions and create an explain function on default db (postgres)
-Creates a function called "explain_parameterized_query" that runs dynamic SQL queries and returns results in JSON format. This function will be configured to execute with the same permissions as its creator, providing an additional security layer. Metis Agent will gain permission to use this function.
+### 4. Explanation of the Setup Script
 
-```sql
-GRANT USAGE ON SCHEMA public TO metis; 
+The setup script performs the following tasks:
 
-CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT) 
-  RETURNS JSON AS $$
-  DECLARE
-  
-  result JSON;
-  
-  BEGIN
-  
-  /* metis */ EXECUTE query_text INTO result;
-  
-  RETURN result;
+1. **Checks for Required Arguments**: Ensures the necessary arguments (`hostname`, `port`, `admin_user`, `admin_password`) are provided.
 
-END;
+2. **Fetches the List of Databases**: Retrieves a list of databases on the PostgreSQL server, excluding the default templates.
 
-$$ LANGUAGE plpgsql; 
+3. **Grants `pg_monitor` to the Metis User**: Provides the `pg_monitor` role to the Metis user to allow broad monitoring privileges.
 
-ALTER FUNCTION explain_parameterized_query(query_text TEXT) SECURITY DEFINER; 
+4. **Grants Permissions and Creates Functions on the `postgres` Database**:
+    - Grants usage permission on the `public` schema to the Metis user.
+    - Creates the `explain_parameterized_query` function.
+    - Grants execution permission on the `explain_parameterized_query` function to the Metis user.
+    - Creates and configures the `pg_stat_statements` and `hypopg` extensions.
+    - Grants usage permissions on all schemas in the `postgres` database to the Metis user.
 
-GRANT EXECUTE ON FUNCTION explain_parameterized_query(TEXT) TO  metis;
+5. **Grants Permissions on Each Database**:
+    - Grants connect permission on each database to the Metis user.
+    - Ensures the `pg_stat_statements` extension is created on each database.
+    - Creates the `explain_parameterized_query` and `index_advisor` functions on each database.
+    - Grants execution permission on these functions to the Metis user.
+    - Grants usage permissions on all schemas in each database to the Metis user.
 
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+You can download and review the complete setup script using the following command:
 
-DO $$
-  DECLARE
-  schema_name text;
-  BEGIN
-  FOR schema_name IN
-  SELECT s.schema_name
-  FROM information_schema.schemata s
-  WHERE s.schema_name NOT IN ('pg_catalog', 'information_schema', 'pg_toast')
-  LOOP
-  EXECUTE format('GRANT USAGE ON SCHEMA %I TO metis;', schema_name);
-  END LOOP;
-END $$;
-```
+```bash
+curl -sSL https://static.metisdata.io/postgres_setup.sh -o postgres_setup.sh
+````
 
-## 3. Grant Connect and Usage permissions in each monitored database
-Metis Agent will first be granted the ability to connect to your database, then ensure that the pg_stat_statements extension is installed, which tracks execution statistics of all SQL statements, enabling them to monitor and optimize query performance effectively.
-
-```sql
-
-GRANT CONNECT ON DATABASE <DATABASE_NAME> TO metis; 
-
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements; 
-
-SET plan_cache_mode=force_generic_plan
-
-CREATE OR REPLACE FUNCTION explain_parameterized_query(query_text TEXT) 
-  RETURNS JSON AS $$
-  DECLARE
-  
-  result JSON;
-  
-  BEGIN
-  
-  /* metis */ EXECUTE query_text INTO result;
-    
-  RETURN result;
-
-END;
-
-$$ LANGUAGE plpgsql; 
-
-ALTER FUNCTION explain_parameterized_query(query_text TEXT) SECURITY DEFINER; 
-
-GRANT EXECUTE ON FUNCTION explain_parameterized_query(TEXT) TO  metis;
-
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements; 
-
-DO $$
-  DECLARE
-  schema_name text;
-  BEGIN
-  FOR schema_name IN
-  SELECT s.schema_name
-  FROM information_schema.schemata s
-  WHERE s.schema_name NOT IN ('pg_catalog', 'information_schema', 'pg_toast')
-  LOOP
-  EXECUTE format('GRANT USAGE ON SCHEMA %I TO metis;', schema_name);
-  END LOOP;
-END $$;
-```
-
-## 4. Grant SELECT to enable DDL generation for SVG schema (optional) in each monitored database
-Metis Agent will be able to generate ddl of your database and send it to extract visualized schema
-
-```sql
-
-DO $$ DECLARE
-    r RECORD;
-BEGIN
-    FOR r IN (SELECT nspname FROM pg_namespace WHERE nspname NOT LIKE 'pg_%' AND nspname <> 'information_schema')
-    LOOP
-        -- Grant USAGE on all schemas        
-        EXECUTE 'GRANT USAGE ON SCHEMA ' || quote_ident(r.nspname) || ' TO metis';
-        -- Grant SELECT on all tables in each schema
-        EXECUTE 'GRANT SELECT ON ALL TABLES IN SCHEMA ' || quote_ident(r.nspname) || ' TO metis';
-        -- Set default privileges for tables
-        EXECUTE 'ALTER DEFAULT PRIVILEGES IN SCHEMA ' || quote_ident(r.nspname) || ' GRANT SELECT ON TABLES TO metis';
-    END LOOP;
-END $$;
-
-```
