@@ -8,7 +8,16 @@ For effective monitoring, it's recommended to grant the Metis agent specific per
 
 ## Steps to Set Up and Validate the Metis Agent
 
-### 1. Validate `psql` Installation
+### 1. Create a new user
+
+Create a new DB user called `metis`. This user will be used by the MMC Agent.
+
+```sql
+-- Create a new user called "metis". Do not forget to change the password.
+CREATE USER metis WITH PASSWORD 'your_password';
+```
+
+### 2. Validate `psql` Installation
 
 Ensure that you have `psql` installed on your system. You can verify this by running the following command:
 
@@ -17,7 +26,7 @@ psql --version
 ```
 If `psql` is not installed, follow the instructions in the official PostgreSQL documentation to install it: [PostgreSQL Documentation](https://www.postgresql.org/docs/current/app-psql.html)
 
-### 2.  Run the Setup Script
+### 3.  Run the Setup Script
 
 Use the provided setup script to automate the configuration process. This script will create the necessary user, grant permissions, and set up the required extensions and functions.
 
@@ -28,7 +37,7 @@ curl -sSL https://static.metisdata.io/postgres_setup.sh | bash -s -- HOST PORT A
 ```
 
 
-### 3. Run the Validation Script
+### 4. Run the Validation Script
 
 
 After running the setup script, validate the setup to ensure everything was configured correctly:
@@ -37,7 +46,7 @@ After running the setup script, validate the setup to ensure everything was conf
 curl -sSL https://static.metisdata.io/postgres_setup_validation.sh | bash -s -- HOST PORT ADMIN_USER ADMIN_PASSWORD
 ```
 
-### 4. Explanation of the Setup Script
+### 5. Explanation of the Setup Script
 
 The setup script performs the following tasks:
 
