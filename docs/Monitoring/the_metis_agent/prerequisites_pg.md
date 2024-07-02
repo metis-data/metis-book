@@ -6,6 +6,8 @@ sidebar_position: 3
 
 For effective monitoring, it's recommended to grant the Metis agent specific permissions by creating a dedicated user. This ensures the agent operates with the minimum privileges required for its tasks, enhancing both security and performance.
 
+> **Note for non-RDS users**: If you are not using Amazon RDS, you will need to manually install the HypoPG extension. This extension is not mandatory but is crucial for the Metis index recommendation system. Follow the instructions in the official HypoPG documentation: [HypoPG Installation Guide](https://github.com/HypoPG/hypopg#installation)
+
 ## Steps to Set Up and Validate the Metis Agent
 
 ### 1. Create a new user
