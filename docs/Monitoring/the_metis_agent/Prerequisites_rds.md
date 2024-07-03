@@ -47,6 +47,11 @@ To request a change in the parameter group for an Amazon RDS MySQL instance, fol
 
 ## PostgreSQL
 
+> **Note for RDS users**: Ensure that your RDS PostgreSQL version supports the HypoPG extension. If HypoPG is not supported, the Metis index advisor functionality will not work. You can check the list of supported extensions and their availability in the [RDS-PostgresSQL Extensions Support](https://docs.aws.amazon.com/AmazonRDS/latest/PostgreSQLReleaseNotes/postgresql-extensions.html).
+>
+> **Note for Aurora users**: For users of Amazon Aurora PostgreSQL, verify that your Aurora version supports HypoPG. If HypoPG is not supported, the Metis index advisor functionality will not work. You can check the supported extensions for Aurora PostgreSQL in the [RDS-Aurora-PostgresSQL Extensions Support](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraPostgreSQLReleaseNotes/AuroraPostgreSQL.Extensions.html).
+
+
 To request a change in the parameter group for an Amazon RDS PostgreSQL instance, follow these steps:
 
 1. **Sign in to the AWS Management Console**:
@@ -86,7 +91,29 @@ To request a change in the parameter group for an Amazon RDS PostgreSQL instance
 
 By following these steps, you can successfully change the parameter group for both MySQL and PostgreSQL instances in Amazon RDS.
 
+### Enhanced Monitoring
 
+Enhanced Monitoring provides detailed insights into the health of your RDS instances. Follow these steps to enable Enhanced Monitoring:
+
+1. **Sign in to the AWS Management Console**:
+   - Go to the [AWS Management Console](https://aws.amazon.com/console/).
+
+2. **Navigate to the RDS Dashboard**:
+   - In the AWS Management Console, select **RDS** from the services menu.
+
+3. **Enable Enhanced Monitoring**:
+   - Select the DB instance you want to monitor.
+   - Click on **Modify**.
+   - In the **Monitoring** section, select **Enable Enhanced Monitoring**.
+   - Choose the monitoring role you want to use or create a new role.
+   - Select the granularity of the metrics (e.g., 1 second, 5 seconds, 10 seconds).
+   - Click **Continue** and then **Modify DB Instance**.
+
+4. **Review Monitoring Data**:
+   - Go to the **Monitoring** tab for your DB instance.
+   - Review the enhanced metrics available.
+
+> **Note**: Without Enhanced Monitoring enabled, the Avg Active Sessions widget will be presented empty.
 
 
 

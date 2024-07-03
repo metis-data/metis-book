@@ -34,13 +34,13 @@ Notice the user who run this script must be the admin of the MySQL as it grants 
 On-Prem MySQL
 
 ```bash
-curl -s https://static.metisdata.io/metis-mysql.sql | MYSQL_PWD="ADMIN_PASSWORD" mysql -h "[mysql-for-test.cofhrj7zmyn4.eu-central-1.rds.amazonaws.com](http://mysql-for-test.cofhrj7zmyn4.eu-central-1.rds.amazonaws.com/)" -u "ADMIN_USER" mysql
+curl -s https://static.metisdata.io/metis-mysql.sql | MYSQL_PWD="ADMIN_PASSWORD" mysql -h "HOST" -u "ADMIN_USER" mysql
 ```
 
 AWS RDS for MySQL
 
 ```bash
-curl -s https://static.metisdata.io/metis-mysql-rds.sql | MYSQL_PWD="ADMIN_PASSWORD" mysql -h "[mysql-for-test.cofhrj7zmyn4.eu-central-1.rds.amazonaws.com](http://mysql-for-test.cofhrj7zmyn4.eu-central-1.rds.amazonaws.com/)" -u "ADMIN_USER" mysql
+curl -s https://static.metisdata.io/metis-mysql-rds.sql | MYSQL_PWD="ADMIN_PASSWORD" mysql -h "HOST" -u "ADMIN_USER" mysql
 
 ```
 
