@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+---
+
+
 # Prerequisites -  RDS 
 
 ## MySQL
@@ -87,9 +92,9 @@ To request a change in the parameter group for an Amazon RDS PostgreSQL instance
 
 By following these steps, you can successfully change the parameter group for both MySQL and PostgreSQL instances in Amazon RDS.
 
-### Enhanced Monitoring
+### Performance Insights
 
-Enhanced Monitoring provides detailed insights into the health of your RDS instances. Follow these steps to enable Enhanced Monitoring:
+Performance Insights provides detailed insights into the health and performance of your RDS instances. Follow these steps to enable Performance Insights:
 
 1. **Sign in to the AWS Management Console**:
    - Go to the [AWS Management Console](https://aws.amazon.com/console/).
@@ -97,19 +102,15 @@ Enhanced Monitoring provides detailed insights into the health of your RDS insta
 2. **Navigate to the RDS Dashboard**:
    - In the AWS Management Console, select **RDS** from the services menu.
 
-3. **Enable Enhanced Monitoring**:
+3. **Enable Performance Insights**:
    - Select the DB instance you want to monitor.
    - Click on **Modify**.
-   - In the **Monitoring** section, select **Enable Enhanced Monitoring**.
-   - Choose the monitoring role you want to use or create a new role.
-   - Select the granularity of the metrics (e.g., 1 second, 5 seconds, 10 seconds).
+   - In the **Performance Insights** section, select **Enable Performance Insights**.
+   - Choose the retention period for the performance data.
    - Click **Continue** and then **Modify DB Instance**.
 
-4. **Review Monitoring Data**:
-   - Go to the **Monitoring** tab for your DB instance.
-   - Review the enhanced metrics available.
+4. **Review Performance Data**:
+   - Go to the **Performance Insights** tab for your DB instance.
+   - Review the available performance metrics.
 
-> **Note**: Without Enhanced Monitoring enabled, the Avg Active Sessions widget will be presented empty.
-
-
-
+> **Note**: Performance Insights is required to view Avg Active Sessions on Aurora and RDS PostgreSQL. Additionally, Performance Insights is necessary for monitoring throughput read in Aurora. The free edition of Performance Insights is sufficient for these purposes. Without enabling Performance Insights, these metrics will not be displayed.
