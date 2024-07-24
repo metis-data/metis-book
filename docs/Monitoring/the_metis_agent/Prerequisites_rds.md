@@ -26,7 +26,7 @@ To request a change in the parameter group for an Amazon RDS MySQL instance, fol
    - Select the newly created parameter group.
    - Click on **Edit parameters**.
    - Modify the desired parameters as needed.
-   - Edit the parameter group **performance-schema** to **1**
+   - Edit the parameter group **performance_schema** to **1**
 
    ![Example banner](/img/rds-prerequisite-performance-schema.png)
 
