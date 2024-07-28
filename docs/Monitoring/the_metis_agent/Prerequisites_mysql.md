@@ -3,19 +3,6 @@ sidebar_position: 4
 ---
 
 # Prerequisites - MySQL
-## Enable Performance Schema
-
-The [MySQL Performance Schema](https://dev.mysql.com/doc/refman/8.3/en/performance-schema.html) is a feature for monitoring MySQL Server execution at a low level. 
-
-To set up AWS RDS or Aurora, configure the AWS RDS Parameter Group manually.
-
-| PARAMETER | VALUE |
-| --- | --- |
-| performance_schema | 1 |
-| max_digest_length | 4096 |
-| performance_schema_max_digest_length | 4096 |
-
-To apply the new settings, you'll need to restart the server.
 
 ## Create a new user
 

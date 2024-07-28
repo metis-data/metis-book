@@ -26,9 +26,13 @@ To request a change in the parameter group for an Amazon RDS MySQL instance, fol
    - Select the newly created parameter group.
    - Click on **Edit parameters**.
    - Modify the desired parameters as needed.
-   - Edit the parameter group **performance_schema** to **1**
+   - Edit the parameter group with the following attributes:
 
-   ![Example banner](/img/rds-prerequisite-performance-schema.png)
+   | PARAMETER | VALUE |
+   | --- | --- |
+   | performance_schema | 1 |
+   | max_digest_length | 4096 |
+   | performance_schema_max_digest_length | 4096 |
 
    - Save the changes.
 
@@ -65,7 +69,7 @@ To request a change in the parameter group for an Amazon RDS PostgreSQL instance
    - Select the newly created parameter group.
    - Click on **Edit parameters**.
    - Modify the desired parameters as needed.
-    - Edit the parameter group **shared_preload_libraries** to **pg_stat_statement**
+    - Edit the parameter group **shared_preload_libraries** to **pg_stat_statements**
 
       ![Example banner](/img/rds-prerequisutes-shared-buff-parameter-group.png)
 
