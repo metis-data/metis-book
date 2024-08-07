@@ -116,11 +116,6 @@ const config = {
           // },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://demo.metisdata.io/',
-            label: 'Demo',
-            position: 'right',
-          },
-          {
             href: 'https://github.com/metis-data',
             label: 'GitHub',
             position: 'right',
