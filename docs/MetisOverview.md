@@ -33,9 +33,6 @@ Metis provides advanced monitoring of the production environment. Metis collects
 Metis gives clear insights about the root cause of the issues and all the relevant context for quickly solving the problems. The users don't need 
 
 
-## Live Demo
-Visit our [Live Demo](https://demo.metisdata.io/projects/) to see Metis in action. 
-
 ## Real-World Examples
 - A query is inefficient, it scans large tables. The IO is a bottleneck that affects the system.
 
