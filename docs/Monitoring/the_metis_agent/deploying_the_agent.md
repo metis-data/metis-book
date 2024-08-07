@@ -13,7 +13,7 @@ The MMC Agent can be deployed using a Docker Run or a HELM Chart. To generate th
 
 ## Deployment Wizard
 
-Go the the [monitoring](https://demo.app.metisdata.io/monitoring) page and click on “Add”. The wizard guides you which configuration parameters it expects. 
+Go the the [monitoring](https://app.metisdata.io/monitoring) page and click on “Add”. The wizard guides you which configuration parameters it expects. 
 
 The wizard also generates a Metis API Key automatically. 
 
