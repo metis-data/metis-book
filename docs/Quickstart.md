@@ -4,8 +4,7 @@ sidebar_position: 2
 ---
 
 # Quickstart!
-Welcome to Metis! In this quick tutorial, we will go over the basic steps of setting up your account with Metis and monitoring a PostgreSQL server using Metis Metadata Collector (MMC). 
-Let’s get started!
+Welcome to Metis! In this brief tutorial, we’ll walk you through the essential steps to set up your Metis account and demonstrate how to monitor a PostgreSQL server using the Metis Metadata Collector (MMC). The process for MySQL is very similar, so you can apply these instructions to either database. Let’s dive in!
 
 ## Create a New Metis account
 The first step is creating an account. The account will be used to generate the API keys and store the traces, metrics, and other data sent to the platform. 
