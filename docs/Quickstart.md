@@ -19,29 +19,31 @@ Go to the page [Monitoring](https://app.metisdata.io/monitoring). Click on the b
 
 ![Untitled](Quickstart/New_PG_Wizard_Select_vendor.png)
 
-Select your hosting infrastructure and click **Next**.
+The first step is to create a dedicated user on the database server, which is considered best practice. This user must be named "metis."
 
-![Untitled](Quickstart/New_PG_Wizard_Configure_server.png)
+![Untitled](Quickstart/2-create-metis-user.png) 
 
-Execute the scripts to create the necessary prerequisites. Metis Metadata Collector requires the extension called ```pg_stat_statements```.
+Provide the connection details. Since the Metis Agent (MMC) will use the user created in the previous step, you'll need to enter the password you just set and click **Next**.
 
-Once you are done, click **Next**.
+![Untitled](Quickstart/3-host-config.png)
 
-![Untitled](Quickstart/New_PG_Wizard_Con_str.png)
+You now have the option to collect metrics stored in CloudWatch that are not available in the database engine, such as CPU usage, free memory, and free storage. To enable this, configure the AWS credentials for CloudWatch.
 
-Enter the connection string to the database server. For PostgreSQL, it should look like this
+![Untitled](Quickstart/4-host-aws.png)
 
-```
-postgresql://user_name:your_password@host.region.rds.amazonaws.com:5432
-````
+In this step, you need to run a script that creates the required objects on the database server and grants the minimum permissions necessary for the agent to collect data.
 
-By providing the AWS credentials, Metis Metadata Collector can also collect the infrastructure metrics, such as CPU. This is optional.
+![Untitled](Quickstart/5-configurations.png)
 
-Click **Next**.
+The agent has generated a Docker Run or HELM script for deployment. You can now execute the agent and review the logs to ensure everything is functioning as expected.
 
-![Untitled](Quickstart/New_PG_Wizard_Docker_Run.png)
 
-Copy and run the generated Docker command to start monitoring the database server. The data will start flowing right away.
+Docker: 
+![Untitled](Quickstart/6-deploy-docker.png)
+HELM: 
+![Untitled](Quickstart/7-deploy-helm.png)
+
+
 
 :::note
 ❗ It might take 2-3 minutes to see the data.
