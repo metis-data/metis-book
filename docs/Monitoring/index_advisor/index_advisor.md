@@ -1,6 +1,6 @@
 ---
 sidebar_label: 'Index Advisor' 
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Overview: Index Advisor
