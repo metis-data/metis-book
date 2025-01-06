@@ -8,4 +8,10 @@ The Index Advisor is a powerful feature designed to optimize query performance o
 
 With its data-driven approach, the Index Advisor empowers database administrators and developers to make informed decisions about indexing strategies, streamlining the process of performance tuning for PostgreSQL environments.
 
+The Index Advisor provides insights into index usage over the last 7 days and analyzes execution plans to suggest improved indexing strategies.  
+ 
+ Currently, this feature is available exclusively for PostgreSQL.
+
+![Untitled](./index_advisor_main.png)
+
 
