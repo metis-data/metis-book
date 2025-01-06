@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Host Comparison' 
+sidebar_label: '⚖️ Host Comparison'
 sidebar_position: 7
 ---
 
