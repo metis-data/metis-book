@@ -1,5 +1,6 @@
 ---
-sidebar_label: 'Index Advisor' 
+sidebar_label: '📈 Index Advisor'
+ 
 sidebar_position: 3
 ---
 
