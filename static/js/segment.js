@@ -48,9 +48,9 @@
         n.parentNode.insertBefore(t, n);
         analytics._loadOptions = i;
       };
-      analytics._writeKey = '6kVlBH5hXAtUGht8kFgvCNF3sPKlDcBb';
+      analytics._writeKey = process.env.ANALYTICS_KEY
       analytics.SNIPPET_VERSION = '4.16.1';
-      analytics.load('6kVlBH5hXAtUGht8kFgvCNF3sPKlDcBb');
+      analytics.load(process.env.ANALYTICS_KEY);
       analytics.page();
     }
 })();
