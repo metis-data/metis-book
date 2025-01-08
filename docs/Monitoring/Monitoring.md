@@ -42,7 +42,7 @@ Here are some of the information that Metis Metadata Collector (MMC) collects:
 - Table Activity
 - Indexes Activity
 - Statistics Updates
-- Vacuum
+
 
 ### Queries
 
